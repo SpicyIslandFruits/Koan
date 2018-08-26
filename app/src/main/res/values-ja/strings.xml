@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Koan</string>
+    <string name="title_home">ホーム</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">掲示</string>
+    <string name="title_curriculum">時間割</string>
+</resources>

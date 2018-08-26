@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
                 message.setText(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_dashboard -> {
+            R.id.navigation_curriculum -> {
                 message.setText(R.string.title_dashboard)
                 return@OnNavigationItemSelectedListener true
             }
