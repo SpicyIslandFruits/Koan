@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="navItemChecked">#1DA1F2</color>
     <color name="navItemUnchecked">#808080</color>
+    <color name="silver">#C0C0C0</color>
 </resources>

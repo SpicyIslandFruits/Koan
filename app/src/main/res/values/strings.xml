@@ -4,4 +4,23 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_curriculum">Curriculum</string>
+    <string name="sunday">Sun</string>
+    <string name="monday">Mon</string>
+    <string name="tuesday">Tue</string>
+    <string name="wednesday">Wed</string>
+    <string name="thursday">Thu</string>
+    <string name="friday">Fri</string>
+    <string name="saturday">Sat</string>
+    <string name="first_lesson">1</string>
+    <string name="second_lesson">2</string>
+    <string name="third_lesson">3</string>
+    <string name="fourth_lesson">4</string>
+    <string name="fifth_lesson">5</string>
+    <string name="sixth_lesson">6</string>
+    <string name="first_lesson_time">8:50~</string>
+    <string name="second_lesson_time">10:30~</string>
+    <string name="third_lesson_time">13:00~</string>
+    <string name="fourth_lesson_time">14:40~</string>
+    <string name="fifth_lesson_time">16:20~</string>
+    <string name="sixth_lesson_time">18:00~</string>
 </resources>

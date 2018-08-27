@@ -1,10 +1,14 @@
 package com.example.spicyisland.koan
 
+import android.app.FragmentManager
+import android.app.FragmentTransaction
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -12,15 +16,16 @@ class MainActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                message.setText(R.string.title_home)
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.fragment, HomeFragment()).commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_curriculum -> {
-                message.setText(R.string.title_dashboard)
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.fragment, CurriculumFragment()).commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                message.setText(R.string.title_notifications)
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -30,12 +35,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment, HomeFragment()).commit()
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        KoanService(true).execute()
-        Handler().postDelayed({
-            KoanService("sample", KoanCurriculum, ReceivedKoanCookies, "tr", arrayListOf(1, 2, 3), this@MainActivity).execute()
-        },6000)
-        Handler().postDelayed({ Toast.makeText(this@MainActivity, ReceivedStrings.toString(), Toast.LENGTH_LONG).show()}, 12000)
     }
 }
