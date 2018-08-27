@@ -19,7 +19,7 @@ class KoanService {
                 val elementTexts = ArrayList<String>()
                 val elements = Jsoup.connect(url).cookies(cookies).method(Connection.Method.GET).execute().parse().body().getElementsByTag(tag)
                 for (i in tagPositions)
-                    elementTexts.add(elements[i].toString())
+                    elementTexts.add(elements[i].text())
                 return elementTexts
             }
 
@@ -44,6 +44,8 @@ class KoanService {
                         doc.select("input[name=SAMLResponse]").attr("value"),
                         "RelayState", doc.select("input[name=RelayState]").attr("value"))
                         .cookies(koanCookies).followRedirects(false).method(Connection.Method.POST).execute().cookies())
+
+                Jsoup.connect("https://koan.osaka-u.ac.jp/campusweb/ssologin.do?page=smart").cookies(koanCookies).method(Connection.Method.GET).execute()
 
                 return koanCookies
             }

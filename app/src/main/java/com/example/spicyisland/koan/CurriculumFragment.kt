@@ -20,7 +20,7 @@ class CurriculumFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        KoanService().getStringsObservableCallable(KoanCurriculum, koanCookies, "td", arrayListOf(3, 4, 5, 6, 7, 8, 9, 10))
+        KoanService().getStringsObservableCallable(KoanCurriculum, koanCookies, "td", arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25))
                 .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<ArrayList<String>>{
                     override fun onComplete() {
                         Log.d("d", "onComplete()")
@@ -31,7 +31,7 @@ class CurriculumFragment : Fragment() {
                     }
 
                     override fun onNext(t: ArrayList<String>) {
-
+                        view.monday1.text = t.toString()
                     }
 
                     override fun onError(e: Throwable) {
