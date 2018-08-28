@@ -1,8 +1,12 @@
 package com.example.spicyisland.koan
 
+import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -18,7 +22,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         sign_in_button.setOnClickListener{
-
+            
+            hideKeyboard()
             if (koanID.text.length == 8 && password.text.length >= 8){
 
                 KoanService().checkIDAndPass(koanID.text.toString(), password.text.toString())
@@ -40,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
                             override fun onError(e: Throwable) {
                                 koanID.text.clear()
                                 password.text.clear()
-                                koanID.error = getText(R.string.error_incorrect_password_or_ID)
+                                showToast()
                                 //TODO: プログレスバーを消す
                             }
 
@@ -55,4 +60,19 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+
+        hideKeyboard()
+        return super.onTouchEvent(event)
+
+    }
+
+    private fun showToast() {
+        Toast.makeText(this, R.string.error_incorrect_password_or_ID, Toast.LENGTH_LONG).show()
+    }
+
+    private fun hideKeyboard() {
+        (applicationContext?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+                .hideSoftInputFromWindow(currentFocus.windowToken, 0)
+    }
 }
