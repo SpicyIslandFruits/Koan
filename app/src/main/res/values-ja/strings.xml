@@ -17,4 +17,6 @@
     <string name="error_field_required">この項目は必須です</string>
     <string name="prompt_password">パスワード</string>
     <string name="action_sign_in">ログイン</string>
+    <string name="prompt_ID_error">KoanのIDは8文字です</string>
+    <string name="prompt_password_error">パスワードは8文字以上です</string>
 </resources>

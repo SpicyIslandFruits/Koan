@@ -1,5 +1,6 @@
 package com.example.spicyisland.koan
 
+import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -15,22 +16,33 @@ class StartActivity : AppCompatActivity() {
         supportActionBar!!.hide()
         setContentView(R.layout.activity_start)
 
-        KoanService().getKoanCookiesObservableCallable().subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Observer<Map<String, String>> {
-                    override fun onComplete() {
-                        startActivity(Intent(applicationContext, LoginActivity::class.java))
-                    }
+        val userDataStore = getSharedPreferences("UserDataStore", Context.MODE_PRIVATE)
 
-                    override fun onSubscribe(d: Disposable) { return }
+        if(userDataStore.contains("koanID") && userDataStore.contains("password")){
+            KoanService().getKoanCookiesObservableCallable(applicationContext).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(object : Observer<Map<String, String>> {
+                        override fun onComplete() {
+                            startActivity(Intent(applicationContext, MainActivity::class.java))
+                        }
 
-                    override fun onNext(cookies: Map<String, String>) {
-                        koanCookies = cookies
-                    }
+                        override fun onSubscribe(d: Disposable) {
+                            return
+                        }
 
-                    override fun onError(e: Throwable) {
-                        e.printStackTrace()
-                    }
+                        override fun onNext(cookies: Map<String, String>) {
+                            koanCookies = cookies
+                        }
 
-                })
+                        override fun onError(e: Throwable) {
+                            e.printStackTrace()
+                        }
+
+                    })
+
+        }else {
+
+            startActivity(Intent(applicationContext, LoginActivity::class.java))
+
+        }
     }
 }
