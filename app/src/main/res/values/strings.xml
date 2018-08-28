@@ -23,4 +23,13 @@
     <string name="fourth_lesson_time">14:40~</string>
     <string name="fifth_lesson_time">16:20~</string>
     <string name="sixth_lesson_time">18:00~</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_ID">Koan ID</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password_or_ID">ID or Password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
 </resources>
