@@ -23,6 +23,7 @@ class StartActivity : AppCompatActivity() {
                     .subscribe(object : Observer<Map<String, String>> {
                         override fun onComplete() {
                             startActivity(Intent(applicationContext, MainActivity::class.java))
+                            finish()
                         }
 
                         override fun onSubscribe(d: Disposable) {
@@ -42,6 +43,7 @@ class StartActivity : AppCompatActivity() {
         }else {
 
             startActivity(Intent(applicationContext, LoginActivity::class.java))
+            finish()
 
         }
     }

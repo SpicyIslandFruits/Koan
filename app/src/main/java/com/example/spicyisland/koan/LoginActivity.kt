@@ -25,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
                         .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<Unit>{
                             override fun onComplete() {
                                 startActivity(Intent(applicationContext, StartActivity::class.java))
+                                finish()
                             }
 
                             override fun onSubscribe(d: Disposable) {
