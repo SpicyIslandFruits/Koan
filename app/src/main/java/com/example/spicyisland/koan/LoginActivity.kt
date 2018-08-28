@@ -68,7 +68,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showToast() {
-        Toast.makeText(this, R.string.error_incorrect_password_or_ID, Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, R.string.error_incorrect_password_or_ID, Toast.LENGTH_LONG).show()
     }
 
     private fun hideKeyboard() {
