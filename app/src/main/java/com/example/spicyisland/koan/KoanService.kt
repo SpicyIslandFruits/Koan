@@ -7,50 +7,40 @@ import java.util.concurrent.Callable
 
 class KoanService {
 
-    fun getStringsObservableCallable(url: String,
+    fun getStringsObservableCallableFromTagAndTagPosition(url: String,
                                      cookies: Map<String, String>,
                                      tag: String,
                                      tagPositions: ArrayList<Int>): Observable<ArrayList<String>> {
 
-        return Observable.fromCallable(object : Callable<ArrayList<String>>{
-
-            @Throws(Exception::class)
-            override fun call(): ArrayList<String> {
-                val elementTexts = ArrayList<String>()
-                val elements = Jsoup.connect(url).cookies(cookies).method(Connection.Method.GET).execute().parse().body().getElementsByTag(tag)
-                for (i in tagPositions)
-                    elementTexts.add(elements[i].text())
-                return elementTexts
-            }
-
-        })
+        return Observable.fromCallable {
+            val elementTexts = ArrayList<String>()
+            val elements = Jsoup.connect(url).cookies(cookies).method(Connection.Method.GET).execute().parse().body().getElementsByTag(tag)
+            for (i in tagPositions)
+                elementTexts.add(elements[i].text())
+            elementTexts
+        }
     }
 
     fun getKoanCookiesObservableCallable(): Observable<Map<String, String>> {
 
-        return Observable.fromCallable(object : Callable<Map<String, String>>{
+        return Observable.fromCallable {
+            val koanCookies = Jsoup.connect(KoanMainPage).followRedirects(false).method(Connection.Method.GET).execute().cookies()
+            val idpCookies = Jsoup.connect(KoanSsoLoginPage).cookies(koanCookies).method(Connection.Method.GET).execute().cookies()
 
-            @Throws(Exception::class)
-            override fun call(): Map<String, String> {
-                val koanCookies = Jsoup.connect(KoanMainPage).followRedirects(false).method(Connection.Method.GET).execute().cookies()
-                val idpCookies = Jsoup.connect(KoanSsoLoginPage).cookies(koanCookies).method(Connection.Method.GET).execute().cookies()
+            Jsoup.connect(IdpAuthnPwd).data("USER_ID", "u215772g", "USER_PASSWORD", "Itsuki19971217")
+                    .cookies(idpCookies).method(Connection.Method.POST).execute()
 
-                Jsoup.connect(IdpAuthnPwd).data("USER_ID", "u324895f", "USER_PASSWORD", "YoYo1234YoYo1234")
-                        .cookies(idpCookies).method(Connection.Method.POST).execute()
+            val doc = Jsoup.connect(IdpRoleSelect).data("role", "self_0").cookies(idpCookies).method(Connection.Method.POST).execute().parse()
 
-                val doc = Jsoup.connect(IdpRoleSelect).data("role", "self_0").cookies(idpCookies).method(Connection.Method.POST).execute().parse()
+            koanCookies.putAll(Jsoup.connect(KoanSaml2Post).data("SAMLResponse",
+                    doc.select("input[name=SAMLResponse]").attr("value"),
+                    "RelayState", doc.select("input[name=RelayState]").attr("value"))
+                    .cookies(koanCookies).followRedirects(false).method(Connection.Method.POST).execute().cookies())
 
-                koanCookies.putAll(Jsoup.connect(KoanSaml2Post).data("SAMLResponse",
-                        doc.select("input[name=SAMLResponse]").attr("value"),
-                        "RelayState", doc.select("input[name=RelayState]").attr("value"))
-                        .cookies(koanCookies).followRedirects(false).method(Connection.Method.POST).execute().cookies())
+            Jsoup.connect("https://koan.osaka-u.ac.jp/campusweb/ssologin.do?page=smart").cookies(koanCookies).method(Connection.Method.GET).execute()
 
-                Jsoup.connect("https://koan.osaka-u.ac.jp/campusweb/ssologin.do?page=smart").cookies(koanCookies).method(Connection.Method.GET).execute()
-
-                return koanCookies
-            }
-
-        })
+            koanCookies
+        }
 
     }
 

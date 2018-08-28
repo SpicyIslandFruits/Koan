@@ -3,21 +3,14 @@ package com.example.spicyisland.koan
 import android.app.FragmentManager
 import android.app.FragmentTransaction
 import android.os.Bundle
-import android.support.annotation.MainThread
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import io.reactivex.Observer
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
-import org.reactivestreams.Subscriber
-import org.reactivestreams.Subscription
-import java.net.CookieHandler
-import java.net.CookieManager
-import java.net.CookieStore
 
 class MainActivity : AppCompatActivity() {
 
@@ -61,8 +54,9 @@ class MainActivity : AppCompatActivity() {
                         Log.d("d", "onSubscribe()")
                     }
 
-                    override fun onNext(t: Map<String, String>) {
-                        koanCookies = t
+                    override fun onNext(cookies: Map<String, String>) {
+                        koanCookies = cookies
+
                     }
 
                     override fun onError(e: Throwable) {

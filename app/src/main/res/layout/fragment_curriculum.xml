@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CurriculumFragment">
+    tools:context=".CurriculumFragment"
+    android:background="@android:color/white">
 
 
     <android.support.constraint.Guideline
@@ -100,41 +101,41 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@color/silver"
+        android:layout_height="0.57dp"
+        android:background="@color/lineColor"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"></View>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@color/silver"
+        android:layout_height="0.57dp"
+        android:background="@color/lineColor"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"></View>
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@color/silver"
+        android:layout_height="0.57dp"
+        android:background="@color/lineColor"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"></View>
 
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@color/silver"
+        android:layout_height="0.57dp"
+        android:background="@color/lineColor"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"></View>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.3dp"
-        android:background="@color/silver"
+        android:layout_height="0.57dp"
+        android:background="@color/lineColor"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"></View>
 
     <TextView
         android:id="@+id/curriculumMon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textSize="12sp"
         android:layout_marginStart="8dp"
         android:text="@string/monday"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -145,7 +146,7 @@
         android:id="@+id/curriculumTue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textSize="12sp"
         android:layout_marginStart="8dp"
         android:text="@string/tuesday"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -156,7 +157,7 @@
         android:id="@+id/curriculumWed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textSize="12sp"
         android:layout_marginStart="8dp"
         android:text="@string/wednesday"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -167,7 +168,7 @@
         android:id="@+id/curriculumThu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textSize="12sp"
         android:layout_marginStart="8dp"
         android:text="@string/thursday"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -178,7 +179,7 @@
         android:id="@+id/curriculumFri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textSize="12sp"
         android:layout_marginStart="8dp"
         android:text="@string/friday"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -189,7 +190,7 @@
         android:id="@+id/curriculumSat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textSize="12sp"
         android:layout_marginStart="8dp"
         android:text="@string/saturday"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -197,420 +198,571 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/firstLesson"
+        android:id="@+id/first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/first_lesson_time"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/secondLesson"
+        android:id="@+id/second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/second_lesson_time"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline2" />
 
     <TextView
-        android:id="@+id/thirdLesson"
+        android:id="@+id/third"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/third_lesson_time"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline3" />
 
     <TextView
-        android:id="@+id/fourthLesson"
+        android:id="@+id/fourth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/fourth_lesson_time"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/fifthLesson"
+        android:id="@+id/fifth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/fifth_lesson_time"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline5" />
 
     <TextView
-        android:id="@+id/sixthLesson"
+        android:id="@+id/sixth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sixth_lesson_time"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline6" />
 
     <TextView
-        android:id="@+id/monday1"
+        android:id="@+id/firstMonday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/monday2"
+        android:id="@+id/secondMonday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/guideline2" />
 
     <TextView
-        android:id="@+id/monday3"
+        android:id="@+id/thirdMonday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toEndOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/guideline3" />
 
     <TextView
-        android:id="@+id/monday4"
+        android:id="@+id/fourthMonday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toEndOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/monday5"
+        android:id="@+id/fifthMonday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toEndOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/guideline5" />
 
     <TextView
-        android:id="@+id/monday6"
+        android:id="@+id/sixthMonday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toEndOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/guideline6" />
 
     <TextView
-        android:id="@+id/tuesday1"
+        android:id="@+id/firstTuesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toEndOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/tuesday2"
+        android:id="@+id/secondTuesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toEndOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/guideline2" />
 
     <TextView
-        android:id="@+id/tuesday3"
+        android:id="@+id/thirdTuesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toEndOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/guideline3" />
 
     <TextView
-        android:id="@+id/tuesday4"
+        android:id="@+id/fourthTuesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toEndOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/tuesday5"
+        android:id="@+id/fifthTuesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toEndOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/guideline5" />
 
     <TextView
-        android:id="@+id/tuesday6"
+        android:id="@+id/sixthTuesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toEndOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/guideline6" />
 
     <TextView
-        android:id="@+id/wednesday1"
+        android:id="@+id/firstWednesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintStart_toEndOf="@+id/guideline9"
         app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/wednesday2"
+        android:id="@+id/secondWednesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintStart_toEndOf="@+id/guideline9"
         app:layout_constraintTop_toBottomOf="@+id/guideline2" />
 
     <TextView
-        android:id="@+id/wednesday3"
+        android:id="@+id/thirdWednesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintStart_toEndOf="@+id/guideline9"
         app:layout_constraintTop_toBottomOf="@+id/guideline3" />
 
     <TextView
-        android:id="@+id/wednesday4"
+        android:id="@+id/fourthWednesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintStart_toEndOf="@+id/guideline9"
         app:layout_constraintTop_toBottomOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/wednesday5"
+        android:id="@+id/fifthWednesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintStart_toEndOf="@+id/guideline9"
         app:layout_constraintTop_toBottomOf="@+id/guideline5" />
 
     <TextView
-        android:id="@+id/wednesday6"
+        android:id="@+id/sixthWednesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintStart_toEndOf="@+id/guideline9"
         app:layout_constraintTop_toBottomOf="@+id/guideline6" />
 
     <TextView
-        android:id="@+id/thursday1"
+        android:id="@+id/firstThursday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toEndOf="@+id/guideline10"
         app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/thursday2"
+        android:id="@+id/secondThursday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toEndOf="@+id/guideline10"
         app:layout_constraintTop_toBottomOf="@+id/guideline2" />
 
     <TextView
-        android:id="@+id/thursday3"
+        android:id="@+id/thirdThursday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toEndOf="@+id/guideline10"
         app:layout_constraintTop_toBottomOf="@+id/guideline3" />
 
     <TextView
-        android:id="@+id/thursday4"
+        android:id="@+id/fourthThursday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toEndOf="@+id/guideline10"
         app:layout_constraintTop_toBottomOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/thursday5"
+        android:id="@+id/fifthThursday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toEndOf="@+id/guideline10"
         app:layout_constraintTop_toBottomOf="@+id/guideline5" />
 
     <TextView
-        android:id="@+id/thursday6"
+        android:id="@+id/sixthThursday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toEndOf="@+id/guideline10"
         app:layout_constraintTop_toBottomOf="@+id/guideline6" />
 
     <TextView
-        android:id="@+id/friday1"
+        android:id="@+id/firstFriday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toEndOf="@+id/guideline11"
         app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/friday2"
+        android:id="@+id/secondFriday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toEndOf="@+id/guideline11"
         app:layout_constraintTop_toBottomOf="@+id/guideline2" />
 
     <TextView
-        android:id="@+id/friday3"
+        android:id="@+id/thirdFriday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toEndOf="@+id/guideline11"
         app:layout_constraintTop_toBottomOf="@+id/guideline3" />
 
     <TextView
-        android:id="@+id/friday4"
+        android:id="@+id/fourthFriday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toEndOf="@+id/guideline11"
         app:layout_constraintTop_toBottomOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/friday5"
+        android:id="@+id/fifthFriday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toEndOf="@+id/guideline11"
         app:layout_constraintTop_toBottomOf="@+id/guideline5" />
 
     <TextView
-        android:id="@+id/friday6"
+        android:id="@+id/sixthFriday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toEndOf="@+id/guideline11"
         app:layout_constraintTop_toBottomOf="@+id/guideline6" />
 
     <TextView
-        android:id="@+id/saturday1"
+        android:id="@+id/firstSaturday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
         app:layout_constraintStart_toEndOf="@+id/guideline12"
         app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/saturday2"
+        android:id="@+id/secondSaturday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline12"
         app:layout_constraintTop_toBottomOf="@+id/guideline2" />
 
     <TextView
-        android:id="@+id/saturday3"
+        android:id="@+id/thirdSaturday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
         app:layout_constraintStart_toEndOf="@+id/guideline12"
         app:layout_constraintTop_toBottomOf="@+id/guideline3" />
 
     <TextView
-        android:id="@+id/saturday4"
+        android:id="@+id/fourthSaturday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
         app:layout_constraintStart_toEndOf="@+id/guideline12"
         app:layout_constraintTop_toBottomOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/saturday5"
+        android:id="@+id/fifthSaturday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
         app:layout_constraintStart_toEndOf="@+id/guideline12"
         app:layout_constraintTop_toBottomOf="@+id/guideline5" />
 
     <TextView
-        android:id="@+id/saturday6"
+        android:id="@+id/sixthSaturday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxWidth="50dp"
+        android:maxWidth="52dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:padding="3dp"
+        android:maxLines="8"
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
         app:layout_constraintStart_toEndOf="@+id/guideline12"
         app:layout_constraintTop_toBottomOf="@+id/guideline6" />
