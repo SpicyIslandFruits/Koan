@@ -36,6 +36,7 @@ class StartActivity : AppCompatActivity() {
                         }
 
                         override fun onError(e: Throwable) {
+                            //TODO: エラーはいてトースト出してログイン画面に戻す処理
                             e.printStackTrace()
                         }
 
