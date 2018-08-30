@@ -11,7 +11,10 @@ import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_login.*
+
+
 
 /**
  * TODO: ログイン画面の見た目を良くする、ロゴを貼る
@@ -38,8 +41,19 @@ class LoginActivity : AppCompatActivity() {
                             }
 
                             override fun onNext(t: Unit) {
-                                getSharedPreferences("UserDataStore", MODE_PRIVATE).edit()
-                                        .putString("koanID", koanID.text.toString()).putString("password", password.text.toString()).apply()
+
+                                val userData = koanID.text.toString() + password.text.toString()
+                                val enCryptor = EnCryptor()
+                                val realm = Realm.getDefaultInstance()
+                                val oldUser = realm.where(User::class.java).findAll()
+
+                                realm.beginTransaction()
+                                oldUser.deleteAllFromRealm()
+                                val user = realm.createObject(User::class.java)
+                                user.userData = enCryptor.encryptText(userData)
+                                user.iv = enCryptor.iv
+                                realm.commitTransaction()
+
                             }
 
                             override fun onError(e: Throwable) {
@@ -75,4 +89,5 @@ class LoginActivity : AppCompatActivity() {
         (applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
                 .hideSoftInputFromWindow(currentFocus.windowToken, 0)
     }
+
 }

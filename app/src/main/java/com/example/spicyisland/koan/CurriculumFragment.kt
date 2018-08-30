@@ -10,6 +10,7 @@ import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_curriculum.*
 
 class CurriculumFragment : Fragment() {
@@ -20,6 +21,8 @@ class CurriculumFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //TODO: realmから時間割を取得して表示させるかもしれない
         if (receivedStrings.get("curriculum") == null) {
             KoanService().getStringsObservableCallableFromTagAndTagPosition(KoanCurriculum, koanCookies,
                     "td", curriculumTagPositions)

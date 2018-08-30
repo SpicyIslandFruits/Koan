@@ -1,14 +1,13 @@
 package com.example.spicyisland.koan
 
-import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import io.realm.Realm
 
 class StartActivity : AppCompatActivity() {
 
@@ -17,10 +16,14 @@ class StartActivity : AppCompatActivity() {
         supportActionBar!!.hide()
         setContentView(R.layout.activity_start)
 
-        val userDataStore = getSharedPreferences("UserDataStore", Context.MODE_PRIVATE)
+        val realm = Realm.getDefaultInstance()
+        val encryptedUserData = realm.where(User::class.java).findFirst()
 
-        if(userDataStore.contains("koanID") && userDataStore.contains("password")){
-            KoanService().getKoanCookiesObservableCallable(applicationContext).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+        if(encryptedUserData != null) {
+
+            val userData = DeCryptor().decryptData(encryptedUserData.userData, encryptedUserData.iv)
+
+            KoanService().getKoanCookiesObservableCallable(userData.substring(0, 8), userData.substring(8)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
                     .subscribe(object : Observer<Map<String, String>> {
                         override fun onComplete() {
                             startActivity(Intent(applicationContext, MainActivity::class.java))

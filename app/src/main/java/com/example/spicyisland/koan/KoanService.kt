@@ -22,15 +22,14 @@ class KoanService {
         }
     }
 
-    fun getKoanCookiesObservableCallable(context: Context): Observable<Map<String, String>> {
+    fun getKoanCookiesObservableCallable(userID: String, userPassword: String): Observable<Map<String, String>> {
 
         return Observable.fromCallable {
             val koanCookies = Jsoup.connect(KoanMainPage).followRedirects(false).method(Connection.Method.GET).execute().cookies()
             val idpCookies = Jsoup.connect(KoanSsoLoginPage).cookies(koanCookies).method(Connection.Method.GET).execute().cookies()
-            val userDataStore = context.getSharedPreferences("UserDataStore", Context.MODE_PRIVATE)
 
             Jsoup.connect(IdpAuthnPwd)
-                    .data("USER_ID", userDataStore.getString("koanID", ""), "USER_PASSWORD", userDataStore.getString("password", ""))
+                    .data("USER_ID", userID, "USER_PASSWORD", userPassword)
                     .cookies(idpCookies).method(Connection.Method.POST).execute()
 
             val doc = Jsoup.connect(IdpRoleSelect).data("role", "self_0").cookies(idpCookies).method(Connection.Method.POST).execute().parse()
