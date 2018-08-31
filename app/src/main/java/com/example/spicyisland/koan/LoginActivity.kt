@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_login.*
  */
 class LoginActivity : AppCompatActivity() {
 
+    var isSigningIn = false
     val realm = Realm.getDefaultInstance()
     val oldUser = realm.where(User::class.java).findAll()
     val enCryptor = EnCryptor()
@@ -30,9 +31,9 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         sign_in_button.setOnClickListener{
-            
+
             hideKeyboard()
-            if (koanID.text.length == 8 && password.text.length >= 8){
+            if (koanID.text.length == 8 && password.text.length >= 8 && !isSigningIn){
 
                 KoanService.checkIDAndPass(koanID.text.toString(), password.text.toString())
                         .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<Unit>{
@@ -42,6 +43,7 @@ class LoginActivity : AppCompatActivity() {
                             }
 
                             override fun onSubscribe(d: Disposable) {
+                                isSigningIn = true
                                 //TODO: プログレスバーを回す
                             }
 
@@ -59,6 +61,7 @@ class LoginActivity : AppCompatActivity() {
                             }
 
                             override fun onError(e: Throwable) {
+                                isSigningIn = false
                                 koanID.text.clear()
                                 password.text.clear()
                                 showToast()

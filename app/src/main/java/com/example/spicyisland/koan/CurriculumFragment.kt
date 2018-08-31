@@ -26,8 +26,12 @@ class CurriculumFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (userData!!.curriculum.size >= 36)
+        if (userData!!.curriculum.size >= 36) {
             setTexts(userData!!.curriculum)
+        } else {
+          //TODO: プログレスバーを回す処理
+        }
+
         if (!isConnecting)
             getAndSaveCurriculum()
 
