@@ -2,7 +2,6 @@ package com.example.spicyisland.koan
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,8 +17,8 @@ var isConnecting: Boolean = false
 
 class CurriculumFragment : Fragment() {
 
-    val realm = Realm.getDefaultInstance()
-    val userData = realm.where(User::class.java).findFirst()
+    val realm = Realm.getDefaultInstance()!!
+    private val userData = realm.where(User::class.java).findFirst()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_curriculum, container, false)
@@ -46,8 +45,12 @@ class CurriculumFragment : Fragment() {
         KoanService.getStringsObservableCallableFromTagAndTagPosition(KoanCurriculum, koanCookies,
                 "td", curriculumTagPositions)
                 .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<RealmList<String>> {
+                    val realm = Realm.getDefaultInstance()
+                    val userData = realm.where(User::class.java).findFirst()
+
                     override fun onComplete() {
                         isConnecting = false
+                        realm.close()
                     }
 
                     override fun onSubscribe(d: Disposable) {
@@ -59,7 +62,11 @@ class CurriculumFragment : Fragment() {
                         userData!!.curriculum = curriculum
                         realm.commitTransaction()
                         if (isAttaching){
-                            setTexts(userData!!.curriculum!!)
+                            try {
+                                setTexts(userData.curriculum!!)
+                            }catch (e: IllegalStateException){
+                                e.printStackTrace()
+                            }
                         }
                     }
 
