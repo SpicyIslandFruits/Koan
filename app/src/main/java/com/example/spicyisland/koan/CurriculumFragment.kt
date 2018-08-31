@@ -26,8 +26,10 @@ class CurriculumFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if (userData!!.curriculum.size >= 36)
             setTexts(userData.curriculum)
-        else
+        else {
+            curriculumLayout.visibility = View.INVISIBLE
             progressBar.visibility = View.VISIBLE
+        }
 
         if (koanCookies.isNotEmpty())
             getAndSaveCurriculum()
@@ -44,6 +46,7 @@ class CurriculumFragment : Fragment() {
                     override fun onComplete() {
                         try {
                             progressBar.visibility = View.GONE
+                            curriculumLayout.visibility = View.VISIBLE
                         } catch (e: IllegalStateException) {
                             e.printStackTrace()
                         }
