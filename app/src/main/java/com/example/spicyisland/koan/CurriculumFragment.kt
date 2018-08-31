@@ -26,25 +26,17 @@ class CurriculumFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        try {
-            setTexts(userData!!.curriculum!!)
-            if (!isConnecting) {
-                getAndSaveCurriculum()
-            }
-        }catch (e: Exception){
-            //TODO: プログレスバー回す処理もやる
-            if (!isConnecting) {
-                getAndSaveCurriculum(true)
-            }
-        }
+        if (userData!!.curriculum.size >= 36)
+            setTexts(userData!!.curriculum)
+        if (!isConnecting)
+            getAndSaveCurriculum()
 
     }
 
-    private fun getAndSaveCurriculum(isAttaching: Boolean = false){
+    private fun getAndSaveCurriculum(){
         KoanService.getStringsObservableCallableFromTagAndTagPosition(KoanCurriculum, koanCookies,
                 "td", curriculumTagPositions)
-                .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<RealmList<String>> {
+                .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<MutableList<String>> {
                     val realm = Realm.getDefaultInstance()
                     val userData = realm.where(User::class.java).findFirst()
 
@@ -57,17 +49,22 @@ class CurriculumFragment : Fragment() {
                         isConnecting = true
                     }
 
-                    override fun onNext(curriculum: RealmList<String>) {
+                    override fun onNext(curriculums: MutableList<String>) {
+                        var realmCurriculum = RealmList<String>()
+
+                        for (curriculum in curriculums)
+                            realmCurriculum.add(curriculum)
+
                         realm.beginTransaction()
-                        userData!!.curriculum = curriculum
+                        userData!!.curriculum = realmCurriculum
                         realm.commitTransaction()
-                        if (isAttaching){
-                            try {
-                                setTexts(userData.curriculum!!)
-                            }catch (e: IllegalStateException){
-                                e.printStackTrace()
-                            }
+
+                        try {
+                            setTexts(userData.curriculum!!)
+                        }catch (e: IllegalStateException){
+                            e.printStackTrace()
                         }
+
                     }
 
                     override fun onError(e: Throwable) {
@@ -83,7 +80,7 @@ class CurriculumFragment : Fragment() {
         realm.close()
     }
 
-    private fun setTexts(curriculum: RealmList<String>) {
+    private fun setTexts(curriculum: MutableList<String>) {
 
         firstMonday.text = curriculum[0]
         if(curriculum[0] != "")

@@ -1,7 +1,6 @@
 package com.example.spicyisland.koan
 
 import io.reactivex.Observable
-import io.realm.RealmList
 import org.jsoup.Connection
 import org.jsoup.Jsoup
 
@@ -10,10 +9,10 @@ object KoanService {
     fun getStringsObservableCallableFromTagAndTagPosition(url: String,
                                      cookies: Map<String, String>,
                                      tag: String,
-                                     tagPositions: ArrayList<Int>): Observable<RealmList<String>> {
+                                     tagPositions: ArrayList<Int>): Observable<MutableList<String>> {
 
         return Observable.fromCallable {
-            val elementTexts = RealmList<String>()
+            val elementTexts = mutableListOf<String>()
             val elements = Jsoup.connect(url).cookies(cookies).method(Connection.Method.GET).execute().parse().body().getElementsByTag(tag)
             for (i in tagPositions)
                 elementTexts.add(elements[i].text())

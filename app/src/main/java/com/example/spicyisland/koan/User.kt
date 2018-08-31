@@ -6,5 +6,5 @@ import io.realm.RealmObject
 open class User: RealmObject() {
     var userData = byteArrayOf()
     var iv = byteArrayOf()
-    var curriculum: RealmList<String>? = null
+    var curriculum = RealmList<String>()
 }
