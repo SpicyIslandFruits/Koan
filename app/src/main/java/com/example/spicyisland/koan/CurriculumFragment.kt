@@ -11,9 +11,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
+import io.realm.RealmList
 import kotlinx.android.synthetic.main.fragment_curriculum.*
 
+var isConnecting: Boolean = false
+
 class CurriculumFragment : Fragment() {
+
+    val realm = Realm.getDefaultInstance()
+    val userData = realm.where(User::class.java).findFirst()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_curriculum, container, false)
@@ -22,35 +28,55 @@ class CurriculumFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //TODO: realmから時間割を取得して表示させるかもしれない
-        if (receivedStrings.get("curriculum") == null) {
-            KoanService().getStringsObservableCallableFromTagAndTagPosition(KoanCurriculum, koanCookies,
-                    "td", curriculumTagPositions)
-                    .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<ArrayList<String>> {
-                        override fun onComplete() {
-                            Log.d("d", "onComplete()")
-                        }
-
-                        override fun onSubscribe(d: Disposable) {
-                            Log.d("d", "onSubscribed()")
-                        }
-
-                        override fun onNext(curriculum: ArrayList<String>) {
-                            receivedStrings.put("curriculum", curriculum)
-                            setTexts(curriculum)
-                        }
-
-                        override fun onError(e: Throwable) {
-                            e.printStackTrace()
-                        }
-
-                    })
-        }else{
-            setTexts(receivedStrings.get("curriculum")!!)
+        try {
+            setTexts(userData!!.curriculum!!)
+            if (!isConnecting) {
+                getAndSaveCurriculum()
+            }
+        }catch (e: Exception){
+            //TODO: プログレスバー回す処理もやる
+            if (!isConnecting) {
+                getAndSaveCurriculum(true)
+            }
         }
+
     }
 
-    fun setTexts(curriculum: ArrayList<String>) {
+    private fun getAndSaveCurriculum(isAttaching: Boolean = false){
+        KoanService.getStringsObservableCallableFromTagAndTagPosition(KoanCurriculum, koanCookies,
+                "td", curriculumTagPositions)
+                .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<RealmList<String>> {
+                    override fun onComplete() {
+                        isConnecting = false
+                    }
+
+                    override fun onSubscribe(d: Disposable) {
+                        isConnecting = true
+                    }
+
+                    override fun onNext(curriculum: RealmList<String>) {
+                        realm.beginTransaction()
+                        userData!!.curriculum = curriculum
+                        realm.commitTransaction()
+                        if (isAttaching){
+                            setTexts(userData!!.curriculum!!)
+                        }
+                    }
+
+                    override fun onError(e: Throwable) {
+                        e.printStackTrace()
+                    }
+
+                })
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        realm.close()
+    }
+
+    private fun setTexts(curriculum: RealmList<String>) {
 
         firstMonday.text = curriculum[0]
         if(curriculum[0] != "")

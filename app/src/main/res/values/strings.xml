@@ -29,7 +29,8 @@
     <string name="prompt_ID">Koan ID</string>
     <string name="prompt_ID_error">Koan ID must be 8 characters</string>
     <string name="prompt_password">Password</string>
-    <string name="prompt_password_error">Password must contain at least 8 characters</string>
+    <string name="prompt_password_number_of_characters_error">Password must contain at least 8 characters</string>
+    <string name="prompt_password_capital_letter_error">Password must contain at least 1 capital character</string>
     <string name="action_sign_in">Sign in</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password_or_ID">ID or Password is incorrect</string>

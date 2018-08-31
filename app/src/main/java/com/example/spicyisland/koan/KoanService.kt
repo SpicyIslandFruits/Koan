@@ -1,20 +1,19 @@
 package com.example.spicyisland.koan
 
-import android.content.Context
 import io.reactivex.Observable
+import io.realm.RealmList
 import org.jsoup.Connection
 import org.jsoup.Jsoup
-import java.util.concurrent.Callable
 
-class KoanService {
+object KoanService {
 
     fun getStringsObservableCallableFromTagAndTagPosition(url: String,
                                      cookies: Map<String, String>,
                                      tag: String,
-                                     tagPositions: ArrayList<Int>): Observable<ArrayList<String>> {
+                                     tagPositions: ArrayList<Int>): Observable<RealmList<String>> {
 
         return Observable.fromCallable {
-            val elementTexts = ArrayList<String>()
+            val elementTexts = RealmList<String>()
             val elements = Jsoup.connect(url).cookies(cookies).method(Connection.Method.GET).execute().parse().body().getElementsByTag(tag)
             for (i in tagPositions)
                 elementTexts.add(elements[i].text())

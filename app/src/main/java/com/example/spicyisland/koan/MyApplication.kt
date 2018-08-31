@@ -10,6 +10,6 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Realm.init(this)
-        Realm.setDefaultConfiguration(RealmConfiguration.Builder().build())
+        Realm.setDefaultConfiguration(RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().build())
     }
 }

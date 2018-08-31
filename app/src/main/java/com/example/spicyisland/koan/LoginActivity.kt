@@ -20,6 +20,11 @@ import kotlinx.android.synthetic.main.activity_login.*
  * TODO: ログイン画面の見た目を良くする、ロゴを貼る
  */
 class LoginActivity : AppCompatActivity() {
+
+    val realm = Realm.getDefaultInstance()
+    val oldUser = realm.where(User::class.java).findAll()
+    val enCryptor = EnCryptor()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -29,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
             hideKeyboard()
             if (koanID.text.length == 8 && password.text.length >= 8){
 
-                KoanService().checkIDAndPass(koanID.text.toString(), password.text.toString())
+                KoanService.checkIDAndPass(koanID.text.toString(), password.text.toString())
                         .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<Unit>{
                             override fun onComplete() {
                                 startActivity(Intent(applicationContext, StartActivity::class.java))
@@ -43,9 +48,6 @@ class LoginActivity : AppCompatActivity() {
                             override fun onNext(t: Unit) {
 
                                 val userData = koanID.text.toString() + password.text.toString()
-                                val enCryptor = EnCryptor()
-                                val realm = Realm.getDefaultInstance()
-                                val oldUser = realm.where(User::class.java).findAll()
 
                                 realm.beginTransaction()
                                 oldUser.deleteAllFromRealm()
@@ -65,13 +67,16 @@ class LoginActivity : AppCompatActivity() {
 
                         })
             }
-            if (koanID.text.length != 8){
+            if (koanID.text.length != 8)
                 koanID.error = getText(R.string.prompt_ID_error)
-            }
-            if (password.text.length < 8){
-                password.error = getText(R.string.prompt_password_error)
-            }
+            if (password.text.length < 8)
+                password.error = getText(R.string.prompt_password_number_of_characters_error)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        realm.close()
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {

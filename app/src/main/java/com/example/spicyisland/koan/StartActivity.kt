@@ -11,19 +11,20 @@ import io.realm.Realm
 
 class StartActivity : AppCompatActivity() {
 
+    val realm = Realm.getDefaultInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.hide()
         setContentView(R.layout.activity_start)
 
-        val realm = Realm.getDefaultInstance()
         val encryptedUserData = realm.where(User::class.java).findFirst()
 
         if(encryptedUserData != null) {
 
             val userData = DeCryptor().decryptData(encryptedUserData.userData, encryptedUserData.iv)
 
-            KoanService().getKoanCookiesObservableCallable(userData.substring(0, 8), userData.substring(8)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+            KoanService.getKoanCookiesObservableCallable(userData.substring(0, 8), userData.substring(8)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
                     .subscribe(object : Observer<Map<String, String>> {
                         override fun onComplete() {
                             startActivity(Intent(applicationContext, MainActivity::class.java))
@@ -51,5 +52,10 @@ class StartActivity : AppCompatActivity() {
             finish()
 
         }
+    }
+
+    override fun onDestroy() {
+        realm.close()
+        super.onDestroy()
     }
 }
