@@ -16,7 +16,6 @@ class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.hide()
-        setContentView(R.layout.activity_start)
 
         val encryptedUserData = realm.where(User::class.java).findFirst()
 
@@ -24,7 +23,8 @@ class StartActivity : AppCompatActivity() {
 
             val userData = DeCryptor().decryptData(encryptedUserData.userData, encryptedUserData.iv)
 
-            KoanService.getKoanCookiesObservableCallable(userData.substring(0, 8), userData.substring(8)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+            KoanService.getKoanCookiesObservableCallable(userData.substring(0, 8), userData.substring(8))
+                    .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
                     .subscribe(object : Observer<Map<String, String>> {
                         override fun onComplete() {
                             return

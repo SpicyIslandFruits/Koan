@@ -5,6 +5,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import io.reactivex.Observer
@@ -34,23 +35,21 @@ class LoginActivity : AppCompatActivity() {
 
             hideKeyboard()
             if (koanID.text.length == 8 && password.text.length >= 8 && !isSigningIn){
-
-                KoanService.checkIDAndPass(koanID.text.toString(), password.text.toString())
-                        .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<Unit>{
+                login_progress.visibility = View.VISIBLE
+                KoanService.getKoanCookiesObservableCallable(koanID.text.toString(), password.text.toString()).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(object : Observer<Map<String, String>> {
                             override fun onComplete() {
-                                startActivity(Intent(applicationContext, StartActivity::class.java))
+                                startActivity(Intent(applicationContext, MainActivity::class.java))
                                 finish()
                             }
 
                             override fun onSubscribe(d: Disposable) {
                                 isSigningIn = true
-                                //TODO: プログレスバーを回す
                             }
 
-                            override fun onNext(t: Unit) {
-
+                            override fun onNext(cookies: Map<String, String>) {
+                                koanCookies = cookies
                                 val userData = koanID.text.toString() + password.text.toString()
-
                                 realm.beginTransaction()
                                 oldUser.deleteAllFromRealm()
                                 val user = realm.createObject(User::class.java)
@@ -62,10 +61,9 @@ class LoginActivity : AppCompatActivity() {
 
                             override fun onError(e: Throwable) {
                                 isSigningIn = false
-                                koanID.text.clear()
                                 password.text.clear()
                                 showToast()
-                                //TODO: プログレスバーを消す
+                                login_progress.visibility = View.GONE
                             }
 
                         })
@@ -83,10 +81,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-
         hideKeyboard()
         return super.onTouchEvent(event)
-
     }
 
     private fun showToast() {

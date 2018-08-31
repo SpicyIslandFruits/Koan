@@ -13,8 +13,6 @@ import io.realm.Realm
 import io.realm.RealmList
 import kotlinx.android.synthetic.main.fragment_curriculum.*
 
-var isConnecting: Boolean = false
-
 class CurriculumFragment : Fragment() {
 
     val realm = Realm.getDefaultInstance()!!
@@ -26,14 +24,14 @@ class CurriculumFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (userData!!.curriculum.size >= 36) {
+        if (userData!!.curriculum.size >= 36)
             setTexts(userData.curriculum)
-        } else {
-          //TODO: プログレスバーを回す処理
-        }
+        else
+            progressBar.visibility = View.VISIBLE
 
-        if (!isConnecting && koanCookies.isNotEmpty())
+        if (koanCookies.isNotEmpty())
             getAndSaveCurriculum()
+
     }
 
     private fun getAndSaveCurriculum(){
@@ -44,12 +42,16 @@ class CurriculumFragment : Fragment() {
                     val userData = realm.where(User::class.java).findFirst()
 
                     override fun onComplete() {
-                        isConnecting = false
+                        try {
+                            progressBar.visibility = View.GONE
+                        } catch (e: IllegalStateException) {
+                            e.printStackTrace()
+                        }
                         realm.close()
                     }
 
                     override fun onSubscribe(d: Disposable) {
-                        isConnecting = true
+
                     }
 
                     override fun onNext(curriculums: MutableList<String>) {
