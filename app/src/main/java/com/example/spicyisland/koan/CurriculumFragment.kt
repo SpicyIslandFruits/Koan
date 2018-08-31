@@ -27,14 +27,13 @@ class CurriculumFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (userData!!.curriculum.size >= 36) {
-            setTexts(userData!!.curriculum)
+            setTexts(userData.curriculum)
         } else {
           //TODO: プログレスバーを回す処理
         }
 
-        if (!isConnecting)
+        if (!isConnecting && koanCookies.isNotEmpty())
             getAndSaveCurriculum()
-
     }
 
     private fun getAndSaveCurriculum(){
@@ -54,7 +53,7 @@ class CurriculumFragment : Fragment() {
                     }
 
                     override fun onNext(curriculums: MutableList<String>) {
-                        var realmCurriculum = RealmList<String>()
+                        val realmCurriculum = RealmList<String>()
 
                         for (curriculum in curriculums)
                             realmCurriculum.add(curriculum)
@@ -63,8 +62,9 @@ class CurriculumFragment : Fragment() {
                         userData!!.curriculum = realmCurriculum
                         realm.commitTransaction()
 
+                        //subscribeが終わる前にフラグメントが破棄された場合はsetTextsが呼べないため何もしない
                         try {
-                            setTexts(userData.curriculum!!)
+                            setTexts(userData.curriculum)
                         }catch (e: IllegalStateException){
                             e.printStackTrace()
                         }

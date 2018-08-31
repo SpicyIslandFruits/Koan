@@ -27,12 +27,12 @@ class StartActivity : AppCompatActivity() {
             KoanService.getKoanCookiesObservableCallable(userData.substring(0, 8), userData.substring(8)).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
                     .subscribe(object : Observer<Map<String, String>> {
                         override fun onComplete() {
-                            startActivity(Intent(applicationContext, MainActivity::class.java))
-                            finish()
+                            return
                         }
 
                         override fun onSubscribe(d: Disposable) {
-                            return
+                            startActivity(Intent(applicationContext, MainActivity::class.java))
+                            finish()
                         }
 
                         override fun onNext(cookies: Map<String, String>) {
