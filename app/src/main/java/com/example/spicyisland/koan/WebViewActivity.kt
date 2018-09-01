@@ -14,10 +14,6 @@ class WebViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_view)
         val webView = webView
-        val cookieManager = CookieManager.getInstance()
-        cookieManager.setAcceptCookie(true)
-        for (koanCookie in koanCookies)
-            cookieManager.setCookie(KoanUrl, koanCookie.key + "=" + koanCookie.value)
         webView.webChromeClient = WebChromeClient()
         webView.webViewClient = WebViewClient()
         webView.clearCache(true)
@@ -35,7 +31,7 @@ class WebViewActivity : AppCompatActivity() {
 
         return super.onKeyDown(keyCode, event)
     }
-
+//気が向いたらブラウザのロードの表示をします。
 //    inner class MyWebViewClient : WebViewClient() {
 //        override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
 //            super.onPageStarted(view, url, favicon)

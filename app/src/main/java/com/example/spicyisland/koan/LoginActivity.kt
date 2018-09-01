@@ -15,6 +15,7 @@ import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_login.*
 
+
 class LoginActivity : AppCompatActivity() {
 
     var isSigningIn = false
@@ -45,7 +46,6 @@ class LoginActivity : AppCompatActivity() {
                             }
 
                             override fun onNext(cookies: Map<String, String>) {
-                                koanCookies = cookies
                                 val userData = koanID.text.toString() + password.text.toString()
                                 realm.beginTransaction()
                                 oldUser.deleteAllFromRealm()

@@ -1,10 +1,12 @@
 package com.example.spicyisland.koan
 
 import android.os.Bundle
+import android.support.annotation.MainThread
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.CookieManager
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -17,6 +19,7 @@ class CurriculumFragment : Fragment() {
 
     val realm = Realm.getDefaultInstance()!!
     private val userData = realm.where(User::class.java).findFirst()
+    private val koanCookies = KoanService.getCookieMapFromCookieManager()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_curriculum, container, false)
@@ -24,6 +27,7 @@ class CurriculumFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         if (userData!!.curriculum.size >= 36)
             setTexts(userData.curriculum)
         else {
@@ -37,6 +41,7 @@ class CurriculumFragment : Fragment() {
     }
 
     private fun getAndSaveCurriculum(){
+
         KoanService.getStringsObservableCallableFromTagAndTagPosition(KoanCurriculum, koanCookies,
                 "td", curriculumTagPositions)
                 .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<MutableList<String>> {
@@ -77,12 +82,12 @@ class CurriculumFragment : Fragment() {
                     }
 
                     override fun onError(e: Throwable) {
+                        //アプリ内ブラウザからログアウトしたり、cookieの有効期限が切れた場合は自動でcookieを再取得する
                         e.printStackTrace()
+                        RecoverCookies().recoverCookies()
                     }
-
                 })
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

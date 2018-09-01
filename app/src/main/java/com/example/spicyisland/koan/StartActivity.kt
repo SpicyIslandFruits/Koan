@@ -24,11 +24,11 @@ class StartActivity : AppCompatActivity() {
 
             val userData = DeCryptor().decryptData(encryptedUserData.userData, encryptedUserData.iv)
 
-            KoanService.getKoanCookiesObservableCallable(userData.substring(0, 8), userData.substring(8))
+            KoanService.getKoanCookiesObservableCallable(userData.substring(0, 8), userData.substring(8), true)
                     .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
                     .subscribe(object : Observer<Map<String, String>> {
                         override fun onComplete() {
-                            return
+
                         }
 
                         override fun onSubscribe(d: Disposable) {
@@ -37,11 +37,11 @@ class StartActivity : AppCompatActivity() {
                         }
 
                         override fun onNext(cookies: Map<String, String>) {
-                            koanCookies = cookies
+
                         }
 
                         override fun onError(e: Throwable) {
-                            //TODO: エラーはいてトースト出してログイン画面に戻す処理
+                            //TODO: トーストを出す処理
                             e.printStackTrace()
                         }
 

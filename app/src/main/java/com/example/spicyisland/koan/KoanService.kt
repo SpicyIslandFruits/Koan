@@ -1,5 +1,6 @@
 package com.example.spicyisland.koan
 
+import android.webkit.CookieManager
 import io.reactivex.Observable
 import org.jsoup.Connection
 import org.jsoup.Jsoup
@@ -20,7 +21,10 @@ object KoanService {
         }
     }
 
-    fun getKoanCookiesObservableCallable(userID: String, userPassword: String): Observable<Map<String, String>> {
+    fun getKoanCookiesObservableCallable(userID: String,
+                                         userPassword: String,
+                                         isSaveCookies: Boolean = false,
+                                         url: String = KoanUrl): Observable<Map<String, String>> {
 
         return Observable.fromCallable {
             val koanCookies = Jsoup.connect(KoanMainPage).followRedirects(false).method(Connection.Method.GET).execute().cookies()
@@ -38,6 +42,13 @@ object KoanService {
                     .cookies(koanCookies).followRedirects(false).method(Connection.Method.POST).execute().cookies())
 
             Jsoup.connect("https://koan.osaka-u.ac.jp/campusweb/ssologin.do?page=smart").cookies(koanCookies).method(Connection.Method.GET).execute()
+
+            if (isSaveCookies) {
+                val cookieManager = CookieManager.getInstance()
+                cookieManager.setAcceptCookie(true)
+                for (koanCookie in koanCookies)
+                    cookieManager.setCookie(url, koanCookie.key + "=" + koanCookie.value)
+            }
 
             koanCookies
         }
@@ -59,6 +70,17 @@ object KoanService {
                     "RelayState", doc.select("input[name=RelayState]").attr("value"))
                     .cookies(koanCookies).followRedirects(false).method(Connection.Method.POST).execute().cookies())
         }
+    }
+
+    fun getCookieMapFromCookieManager(url: String = KoanUrl): MutableMap<String, String>{
+        val cookieManager = CookieManager.getInstance()
+        val koanCookiesString = cookieManager.getCookie(url)
+        val koanCookie = koanCookiesString.split("=", ";")
+        var koanCookies: MutableMap<String, String> = mutableMapOf()
+        for (i in 0 until koanCookie.size step 2){
+            koanCookies[koanCookie[i]] = koanCookie[i+1]
+        }
+        return koanCookies
     }
 
 }
