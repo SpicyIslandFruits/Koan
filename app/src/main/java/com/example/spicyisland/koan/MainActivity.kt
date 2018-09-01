@@ -14,15 +14,16 @@ class MainActivity : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_home -> {
-                supportFragmentManager.beginTransaction().replace(R.id.fragment, HomeFragment()).commit()
-                return@OnNavigationItemSelectedListener true
-            }
             R.id.navigation_curriculum -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fragment, CurriculumFragment()).commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
+                supportFragmentManager.beginTransaction().replace(R.id.fragment, NotificationFragment()).commit()
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_account -> {
+                supportFragmentManager.beginTransaction().replace(R.id.fragment, AccountFragment()).commit()
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -32,7 +33,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportFragmentManager.beginTransaction().replace(R.id.fragment, HomeFragment()).commit()
+        supportActionBar!!.elevation = 8f
+        supportFragmentManager.beginTransaction().replace(R.id.fragment, CurriculumFragment()).commit()
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 }

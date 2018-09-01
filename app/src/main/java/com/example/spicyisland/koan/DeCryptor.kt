@@ -1,6 +1,5 @@
 package com.example.spicyisland.koan
 
-import android.util.Base64
 import java.security.*
 import javax.crypto.*
 import javax.crypto.spec.GCMParameterSpec
