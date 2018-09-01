@@ -24,11 +24,11 @@ class StartActivity : AppCompatActivity() {
 
             val userData = DeCryptor().decryptData(encryptedUserData.userData, encryptedUserData.iv)
 
-            KoanService.getKoanCookiesObservableCallable(userData.substring(0, 8), userData.substring(8), true)
+            KoanService().getKoanCookiesObservableCallable(userData.substring(0, 8), userData.substring(8), true)
                     .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
                     .subscribe(object : Observer<Map<String, String>> {
                         override fun onComplete() {
-
+                            return
                         }
 
                         override fun onSubscribe(d: Disposable) {
@@ -37,7 +37,7 @@ class StartActivity : AppCompatActivity() {
                         }
 
                         override fun onNext(cookies: Map<String, String>) {
-
+                            return
                         }
 
                         override fun onError(e: Throwable) {

@@ -15,11 +15,13 @@ import io.realm.Realm
 import io.realm.RealmList
 import kotlinx.android.synthetic.main.fragment_curriculum.*
 
+var isConnecting = false
+
 class CurriculumFragment : Fragment() {
 
     val realm = Realm.getDefaultInstance()!!
     private val userData = realm.where(User::class.java).findFirst()
-    private val koanCookies = KoanService.getCookieMapFromCookieManager()
+    private val koanCookies = KoanService().getCookieMapFromCookieManager()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_curriculum, container, false)
@@ -35,14 +37,14 @@ class CurriculumFragment : Fragment() {
             progressBar.visibility = View.VISIBLE
         }
 
-        if (koanCookies.isNotEmpty())
+        if (koanCookies != null && !isConnecting)
             getAndSaveCurriculum()
 
     }
 
     private fun getAndSaveCurriculum(){
 
-        KoanService.getStringsObservableCallableFromTagAndTagPosition(KoanCurriculum, koanCookies,
+        KoanService().getStringsObservableCallableFromTagAndTagPosition(KoanCurriculum, koanCookies!!,
                 "td", curriculumTagPositions)
                 .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<MutableList<String>> {
                     val realm = Realm.getDefaultInstance()
@@ -55,11 +57,12 @@ class CurriculumFragment : Fragment() {
                         } catch (e: IllegalStateException) {
                             e.printStackTrace()
                         }
+                        isConnecting = false
                         realm.close()
                     }
 
                     override fun onSubscribe(d: Disposable) {
-
+                        isConnecting = true
                     }
 
                     override fun onNext(curriculums: MutableList<String>) {
@@ -84,7 +87,13 @@ class CurriculumFragment : Fragment() {
                     override fun onError(e: Throwable) {
                         //アプリ内ブラウザからログアウトしたり、cookieの有効期限が切れた場合は自動でcookieを再取得する
                         e.printStackTrace()
-                        RecoverCookies().recoverCookies()
+                        val realm = Realm.getDefaultInstance()
+                        val encryptedUserData = realm.where(User::class.java).findFirst()
+                        val userData = DeCryptor().decryptData(encryptedUserData!!.userData, encryptedUserData.iv)
+                        KoanService().getKoanCookiesObservableCallable(userData.substring(0, 8),
+                                userData.substring(8),
+                                true).subscribeOn(Schedulers.newThread())
+                                .subscribe()
                     }
                 })
     }
