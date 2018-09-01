@@ -21,5 +21,8 @@
     <string name="prompt_ID_error">KoanのIDは8文字です</string>
     <string name="prompt_password_number_of_characters_error">パスワードは8文字以上です</string>
     <string name="prompt_password_capital_letter_error">パスワードには大文字が含まれている必要があります</string>
+    <string name="open_koan">ブラウザでkoanを開く</string>
+    <string name="frequently_asked_question">よくある質問</string>
+    <string name="logout">ログアウト</string>
 
 </resources>
