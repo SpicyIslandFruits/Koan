@@ -15,11 +15,6 @@ import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_login.*
 
-
-
-/**
- * TODO: ログイン画面の見た目を良くする、ロゴを貼る
- */
 class LoginActivity : AppCompatActivity() {
 
     var isSigningIn = false
@@ -37,7 +32,8 @@ class LoginActivity : AppCompatActivity() {
             hideKeyboard()
             if (koanID.text.length == 8 && password.text.length >= 8 && !isSigningIn){
                 login_progress.visibility = View.VISIBLE
-                KoanService.getKoanCookiesObservableCallable(koanID.text.toString(), password.text.toString()).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+                KoanService.getKoanCookiesObservableCallable(koanID.text.toString(),
+                        password.text.toString()).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
                         .subscribe(object : Observer<Map<String, String>> {
                             override fun onComplete() {
                                 startActivity(Intent(applicationContext, MainActivity::class.java))
