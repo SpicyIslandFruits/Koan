@@ -29,3 +29,6 @@ const val KoanSaml2Post = "https://koan.osaka-u.ac.jp/Shibboleth.sso/SAML2/POST"
  * これ以降はkoanCookiesをセットする
  */
 const val KoanCurriculum = "https://koan.osaka-u.ac.jp/campusweb/campussmart.do?action=rfw&_flowId=RSW0001000-flow&page=main&tabId=rs&wfId=RSW0001000-flow"
+
+
+const val KoanUrl = "https://koan.osaka-u.ac.jp/"
