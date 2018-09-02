@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.webkit.CookieManager
 import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_account.*
-import android.content.DialogInterface
 import android.support.v7.app.AlertDialog
 
 class AccountFragment : Fragment() {
