@@ -38,11 +38,11 @@ class CurriculumFragment : Fragment() {
             progressBar.visibility = View.VISIBLE
         }
 
+        if (userData != null && !isConnecting)
+            getAndSaveCurriculum()
+
         if (userData == null)
             startActivity(Intent(this.context, StartActivity::class.java))
-
-        if (!isConnecting && userData != null)
-            getAndSaveCurriculum()
 
     }
 
