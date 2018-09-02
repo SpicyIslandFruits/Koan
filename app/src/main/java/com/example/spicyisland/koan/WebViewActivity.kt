@@ -6,6 +6,7 @@ import android.view.KeyEvent
 import android.webkit.CookieManager
 import android.webkit.WebChromeClient
 import android.webkit.WebViewClient
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_web_view.*
 
 class WebViewActivity : AppCompatActivity() {
@@ -13,6 +14,11 @@ class WebViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_view)
+        //Cookieの数が2でも３でもないときはnullを返し、トーストで自動ログインできないことを伝える
+        if(KoanService.getCookieMapFromCookieManager() == null
+                && KoanService.getCookieMapFromCookieManager(KoanUrl, 2) == null){
+            Toast.makeText(this, getText(R.string.still_getting_cookie), Toast.LENGTH_LONG).show()
+        }
         val webView = webView
         webView.webChromeClient = WebChromeClient()
         webView.webViewClient = WebViewClient()

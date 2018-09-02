@@ -39,6 +39,7 @@
     <string name="open_koan">Open koan in web browser</string>
     <string name="frequently_asked_question">FAQ</string>
     <string name="logout">Logout</string>
+    <string name="still_getting_cookie">Cookie has not set yet. Auto login is unavailable.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

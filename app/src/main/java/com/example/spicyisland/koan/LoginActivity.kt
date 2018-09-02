@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
             hideKeyboard()
             if (koanID.text.length == 8 && password.text.length >= 8 && !isSigningIn){
                 login_progress.visibility = View.VISIBLE
-                KoanService().getKoanCookiesObservableCallable(koanID.text.toString(),
+                KoanService.getKoanCookiesObservableCallable(koanID.text.toString(),
                         password.text.toString(), true).subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
                         .subscribe(object : Observer<Map<String, String>> {
                             override fun onComplete() {
@@ -42,6 +42,8 @@ class LoginActivity : AppCompatActivity() {
 
                             override fun onSubscribe(d: Disposable) {
                                 isSigningIn = true
+                                password.isEnabled = false
+                                koanID.isEnabled = false
                             }
 
                             override fun onNext(cookies: Map<String, String>) {
@@ -57,6 +59,8 @@ class LoginActivity : AppCompatActivity() {
 
                             override fun onError(e: Throwable) {
                                 isSigningIn = false
+                                password.isEnabled = true
+                                koanID.isEnabled = true
                                 password.text.clear()
                                 showToast()
                                 login_progress.visibility = View.GONE

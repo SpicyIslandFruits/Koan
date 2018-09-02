@@ -5,10 +5,10 @@ import io.reactivex.Observable
 import org.jsoup.Connection
 import org.jsoup.Jsoup
 
-class KoanService {
+object KoanService {
 
     fun getStringsObservableCallableFromTagAndTagPosition(url: String,
-                                     cookies: Map<String, String>,
+                                     cookies: Map<String, String>?,
                                      tag: String,
                                      tagPositions: ArrayList<Int>): Observable<MutableList<String>> {
 
@@ -72,7 +72,7 @@ class KoanService {
         }
     }
 
-    fun getCookieMapFromCookieManager(url: String = KoanUrl): MutableMap<String, String>? {
+    fun getCookieMapFromCookieManager(url: String = KoanUrl, expectedCookieSize: Int = 3): MutableMap<String, String>? {
         val cookieManager = CookieManager.getInstance()
         val koanCookiesString = cookieManager.getCookie(url)
         var koanCookies: MutableMap<String, String>? = mutableMapOf()
@@ -80,6 +80,10 @@ class KoanService {
             val koanCookie = koanCookiesString.split("=", ";")
             for (i in 0 until koanCookie.size step 2)
                 koanCookies!![koanCookie[i]] = koanCookie[i + 1]
+
+            if (koanCookies!!.size != expectedCookieSize){
+                koanCookies = null
+            }
         }else{
             koanCookies = null
         }

@@ -24,5 +24,6 @@
     <string name="open_koan">ブラウザでkoanを開く</string>
     <string name="frequently_asked_question">よくある質問</string>
     <string name="logout">ログアウト</string>
+    <string name="still_getting_cookie">Cookieの取得が完了していないため、自動ログインは行われません</string>
 
 </resources>

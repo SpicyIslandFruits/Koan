@@ -24,7 +24,7 @@ class StartActivity : AppCompatActivity() {
 
             val userData = DeCryptor().decryptData(encryptedUserData.userData, encryptedUserData.iv)
 
-            KoanService().getKoanCookiesObservableCallable(userData.substring(0, 8), userData.substring(8), true)
+            KoanService.getKoanCookiesObservableCallable(userData.substring(0, 8), userData.substring(8), true)
                     .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
                     .subscribe(object : Observer<Map<String, String>> {
                         override fun onComplete() {
