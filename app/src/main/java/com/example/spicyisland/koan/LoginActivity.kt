@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
                                 password.isEnabled = true
                                 koanID.isEnabled = true
                                 password.text.clear()
-                                showToast()
+                                showErrorText()
                                 login_progress.visibility = View.GONE
                             }
 
@@ -85,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
         return super.onTouchEvent(event)
     }
 
-    private fun showToast() {
+    private fun showErrorText() {
         Toast.makeText(applicationContext, R.string.error_incorrect_password_or_ID, Toast.LENGTH_LONG).show()
     }
 
