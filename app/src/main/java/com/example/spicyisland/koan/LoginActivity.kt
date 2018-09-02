@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity() {
 
     var isSigningIn = false
-    val realm = Realm.getDefaultInstance()
+    val realm = Realm.getDefaultInstance()!!
     val oldUser = realm.where(User::class.java).findAll()
     val enCryptor = EnCryptor()
 

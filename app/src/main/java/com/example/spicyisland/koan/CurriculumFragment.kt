@@ -1,5 +1,6 @@
 package com.example.spicyisland.koan
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.MainThread
 import android.support.v4.app.Fragment
@@ -30,14 +31,17 @@ class CurriculumFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (userData!!.curriculum.size >= 36)
+        if (userData != null && userData.curriculum.size >= 36)
             setTexts(userData.curriculum)
         else {
             curriculumLayout.visibility = View.INVISIBLE
             progressBar.visibility = View.VISIBLE
         }
 
-        if (!isConnecting)
+        if (userData == null)
+            startActivity(Intent(this.context, StartActivity::class.java))
+
+        if (!isConnecting && userData != null)
             getAndSaveCurriculum()
 
     }

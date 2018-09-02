@@ -12,7 +12,7 @@ import io.realm.Realm
 
 class StartActivity : AppCompatActivity() {
 
-    val realm = Realm.getDefaultInstance()
+    val realm = Realm.getDefaultInstance()!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
