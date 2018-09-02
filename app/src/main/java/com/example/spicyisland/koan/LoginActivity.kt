@@ -14,6 +14,10 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_login.*
+import android.support.v4.content.ContextCompat
+import android.view.WindowManager
+
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -25,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.hide()
+        changeStatusBarColorToWhite()
         setContentView(R.layout.activity_login)
 
         sign_in_button.setOnClickListener{
@@ -92,6 +97,12 @@ class LoginActivity : AppCompatActivity() {
     private fun hideKeyboard() {
         (applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
                 .hideSoftInputFromWindow(currentFocus.windowToken, 0)
+    }
+
+    private fun changeStatusBarColorToWhite(){
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = ContextCompat.getColor(this@LoginActivity, R.color.colorPrimary)
     }
 
 }
