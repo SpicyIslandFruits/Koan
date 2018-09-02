@@ -29,6 +29,13 @@ class AccountFragment : Fragment() {
         }
     }
 
+    private fun logout(){
+        removeAllCookies()
+        removeAllRealmUserObject()
+        startActivity(Intent(this.context, StartActivity::class.java))
+        activity!!.finish()
+    }
+
     private fun removeAllRealmUserObject(){
         val realm = Realm.getDefaultInstance()
         val oldUser = realm.where(User::class.java).findAll()
@@ -36,13 +43,6 @@ class AccountFragment : Fragment() {
         oldUser.deleteAllFromRealm()
         realm.commitTransaction()
         realm.close()
-    }
-
-    private fun logout(){
-        removeAllCookies()
-        removeAllRealmUserObject()
-        startActivity(Intent(this.context, StartActivity::class.java))
-        activity!!.finish()
     }
 
     private fun removeAllCookies() {
