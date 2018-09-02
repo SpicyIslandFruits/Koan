@@ -25,6 +25,8 @@
     <string name="fifth_lesson_time">16:20~</string>
     <string name="sixth_lesson_time">18:00~</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="logout_conformation_title">Logout</string>
+    <string name="logout_confirmation_message">Are you sure to logout?</string>
 
     <!-- Strings related to login -->
     <string name="prompt_ID">Koan ID</string>

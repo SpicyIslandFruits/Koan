@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import android.webkit.CookieManager
 import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_account.*
+import android.content.DialogInterface
+import android.support.v7.app.AlertDialog
+
 
 class AccountFragment : Fragment() {
 
@@ -23,9 +26,7 @@ class AccountFragment : Fragment() {
         }
 
         logOutButton.setOnClickListener{
-            removeAllCookies()
-            removeAllRealmUserObject()
-            startActivity(Intent(this.context, StartActivity::class.java))
+            createLogoutDialog()
         }
     }
 
@@ -38,8 +39,25 @@ class AccountFragment : Fragment() {
         realm.close()
     }
 
+    private fun logout(){
+        removeAllCookies()
+        removeAllRealmUserObject()
+        startActivity(Intent(this.context, StartActivity::class.java))
+    }
+
     private fun removeAllCookies() {
         val cookieManager = CookieManager.getInstance()
         cookieManager.removeAllCookies(null)
+    }
+
+    private fun createLogoutDialog(){
+        AlertDialog.Builder(this.context!!)
+                .setTitle(R.string.logout_conformation_title)
+                .setMessage(R.string.logout_confirmation_message)
+                .setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
+                    logout()
+                })
+                .setNegativeButton("Cancel", null)
+                .show()
     }
 }
