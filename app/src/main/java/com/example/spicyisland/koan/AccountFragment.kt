@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.fragment_account.*
 import android.content.DialogInterface
 import android.support.v7.app.AlertDialog
 
-
 class AccountFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -21,11 +20,12 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        openKoanButton.setOnClickListener{
+        openKoanButton.setOnClickListener {
             startActivity(Intent(this.context, WebViewActivity::class.java))
         }
 
-        logOutButton.setOnClickListener{
+        logOutButton.setOnClickListener {
+            logOutButton.isEnabled = false
             createLogoutDialog()
         }
     }
@@ -43,6 +43,7 @@ class AccountFragment : Fragment() {
         removeAllCookies()
         removeAllRealmUserObject()
         startActivity(Intent(this.context, StartActivity::class.java))
+        activity!!.finish()
     }
 
     private fun removeAllCookies() {
@@ -54,10 +55,12 @@ class AccountFragment : Fragment() {
         AlertDialog.Builder(this.context!!)
                 .setTitle(R.string.logout_conformation_title)
                 .setMessage(R.string.logout_confirmation_message)
-                .setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
+                .setPositiveButton("OK"){ _, _ ->
                     logout()
-                })
-                .setNegativeButton("Cancel", null)
+                }
+                .setNegativeButton("Cancel"){_, _ ->
+                    logOutButton.isEnabled = true
+                }
                 .show()
     }
 }

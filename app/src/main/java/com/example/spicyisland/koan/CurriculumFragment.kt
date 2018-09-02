@@ -2,12 +2,10 @@ package com.example.spicyisland.koan
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.annotation.MainThread
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.CookieManager
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -51,8 +49,6 @@ class CurriculumFragment : Fragment() {
         KoanService.getStringsObservableCallableFromTagAndTagPosition(KoanCurriculum, koanCookies,
                 "td", curriculumTagPositions)
                 .subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(object : Observer<MutableList<String>> {
-                    val realm = Realm.getDefaultInstance()
-                    val userData = realm.where(User::class.java).findFirst()
 
                     override fun onComplete() {
                         try {
@@ -70,17 +66,21 @@ class CurriculumFragment : Fragment() {
 
                     override fun onNext(curriculums: MutableList<String>) {
                         val realmCurriculum = RealmList<String>()
+                        val tempRealm = Realm.getDefaultInstance()
+                        val tempUserData = tempRealm.where(User::class.java).findFirst()
                         for (curriculum in curriculums)
                             realmCurriculum.add(curriculum)
 
-                        realm.beginTransaction()
-                        userData!!.curriculum = realmCurriculum
-                        realm.commitTransaction()
+                        tempRealm.beginTransaction()
+                        if (tempUserData != null) {
+                            tempUserData.curriculum = realmCurriculum
+                        }
+                        tempRealm.commitTransaction()
 
                         //subscribeが終わる前にフラグメントが破棄された場合はsetTextsが呼べないため何もしない
                         try {
-                            setTexts(userData.curriculum)
-                        }catch (e: IllegalStateException){
+                            setTexts(tempUserData!!.curriculum)
+                        }catch (e: Exception){
                             e.printStackTrace()
                         }
                         isConnecting = false
