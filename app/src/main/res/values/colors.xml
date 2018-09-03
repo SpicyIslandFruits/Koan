@@ -8,6 +8,6 @@
     <color name="lineColor">#F0F0F0</color>
     <color name="curriculumBackgroundGreen">#009688</color>
     <color name="titleTextColor">#212121</color>
-    <color name="tabItemSelectedColor">#6200EE</color>
+    <color name="tabItemSelectedColor">#4285f4</color>
     <color name="tabTextColor">#666666</color>
 </resources>
