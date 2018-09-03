@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.os.Bundle
+import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
+import com.example.spicyisland.koan.R.string.*
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,7 +21,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
+        container.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(state: Int) {}
 
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+            }
+
+            override fun onPageSelected(position: Int) {
+                when(position){
+                    0 -> supportActionBar!!.title = "Curriculum"
+                    1 -> supportActionBar!!.title = "BulletinBoard"
+                    2 -> supportActionBar!!.title = "Account"
+                }
+            }
+
+        })
         container.adapter = mSectionsPagerAdapter
 
     }

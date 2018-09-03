@@ -7,7 +7,9 @@
     <color name="navItemUnchecked">#808080</color>
     <color name="lineColor">#F0F0F0</color>
     <color name="curriculumBackgroundGreen">#009688</color>
+    <color name="curriculumTextColor">#757575</color>
     <color name="titleTextColor">#212121</color>
     <color name="tabItemSelectedColor">#4285f4</color>
     <color name="tabTextColor">#666666</color>
+    <color name="textColor">#212121</color>
 </resources>
