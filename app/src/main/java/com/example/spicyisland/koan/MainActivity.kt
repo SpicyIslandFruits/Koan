@@ -5,11 +5,6 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-/**
- * TODO: 時間割を初めて取得しに行く際に、連打されると固まるのでどうにかする
- * TODO: 時間割取得中はプログレスバーを回す
- * TODO: しばらくするとクッキーが無効になるので、クッキーが無効になった際の処理も書く、バックグラウンドで取得し直すのがいいかもしれない
- */
 class MainActivity : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
