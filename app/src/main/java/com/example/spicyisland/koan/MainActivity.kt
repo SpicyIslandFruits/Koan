@@ -1,5 +1,6 @@
 package com.example.spicyisland.koan
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 
 import android.support.v4.app.Fragment
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar!!.title = "Curriculum"
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
         container.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
             override fun onPageScrollStateChanged(state: Int) {}
@@ -53,6 +55,9 @@ class MainActivity : AppCompatActivity() {
             R.id.action_curriculum -> {container.currentItem = 0; return true}
             R.id.action_notifications -> {container.currentItem = 1; return true}
             R.id.action_account -> {container.currentItem = 2; return true}
+            R.id.action_koan -> {
+                startActivity(Intent(this, WebViewActivity::class.java))
+            }
         }
         return super.onOptionsItemSelected(item)
     }

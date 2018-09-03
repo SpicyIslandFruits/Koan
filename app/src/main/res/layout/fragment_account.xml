@@ -90,7 +90,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_koan_black"
+        android:src="@drawable/ic_feedback_black_24dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +103,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_help_black"
+        android:src="@drawable/ic_help_black_24dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,8 +131,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:gravity="center_vertical"
+        android:text="@string/feedback"
         android:textColor="@android:color/black"
-        android:text="@string/open_koan"
         app:layout_constraintBottom_toTopOf="@+id/view3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
@@ -171,7 +171,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view4" />
 
     <ImageButton
-        android:id="@+id/openKoanButton"
+        android:id="@+id/feedbackButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@null"

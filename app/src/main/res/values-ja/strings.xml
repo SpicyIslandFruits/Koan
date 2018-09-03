@@ -27,5 +27,7 @@
     <string name="still_getting_cookie">Cookieの取得が完了していないため、自動ログインは行われません</string>
     <string name="logout_conformation_title">ログアウト</string>
     <string name="logout_confirmation_message">本当にログアウトしてもよろしいですか？</string>
+    <string name="feedback">作者にエールを送る</string>
+
 
 </resources>

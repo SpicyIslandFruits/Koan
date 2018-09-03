@@ -19,4 +19,11 @@
         android:orderInCategory="100"
         android:title="@string/title_account"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_koan"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_open_in_browser_black_24dp"
+        android:title="@string/title_koan"
+        app:showAsAction="ifRoom" />
 </menu>
