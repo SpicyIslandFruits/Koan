@@ -42,9 +42,9 @@ class MainActivity : AppCompatActivity() {
         val id = item.itemId
 
         when (id) {
-            R.id.action_curriculum -> return true
-            R.id.action_notifications -> return true
-            R.id.action_account -> return true
+            R.id.action_curriculum -> {container.currentItem = 0; return true}
+            R.id.action_notifications -> {container.currentItem = 1; return true}
+            R.id.action_account -> {container.currentItem = 2; return true}
         }
         return super.onOptionsItemSelected(item)
     }
