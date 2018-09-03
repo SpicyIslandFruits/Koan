@@ -7,6 +7,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="actionOverflowButtonStyle">@style/MyActionButtonOverflow</item>
     </style>
 
+    <style name="MyActionButtonOverflow" parent="@style/Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@color/actionButtonOverflow</item>
+    </style>
 </resources>
