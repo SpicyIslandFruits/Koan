@@ -1,6 +1,5 @@
 package com.example.spicyisland.koan
 
-import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
 
 import android.support.v4.app.Fragment
