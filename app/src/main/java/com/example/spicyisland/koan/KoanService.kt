@@ -11,7 +11,13 @@ import org.jsoup.Jsoup
  * TODO: クッキーを取り出して通信を始めたあとに、別でクッキーを取得する処理を行うと、クッキーと掲示板のリンクが噛み合わなくなるので禁止
  * TODO: クッキーの取得をやり直した場合は必ず他のデータも全部取得し直す、ReceivedStuffに入っているデータはすべて削除する
  * TODO: それでもエラーが出た場合は、インターネット接続か、ログインのやり直しを求めるトーストを表示
+ *
+ * TODO: クッキーの取得をやり直す場合は、上に書いた一連の処理が終わるまでisRecoveringCookiesをtrueにする、終わったら最後のonErrorとすべてのonNextでfalseに戻すのを忘れない
+ * TODO: 最初から最後まで実行してしまうメソッドをここに書く
+ * TODO: 個別でメソッドを書いて合体させる感じで書く
  */
+var isRecoveringCookies = false
+
 object KoanService {
 
     /**

@@ -14,6 +14,11 @@ import com.example.spicyisland.koan.R.string.*
 
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * TODO: receivedStuffs = ViewModelProviders.of(this).get(ReceivedStuffs::class.java)を書く
+ * TODO: Realmにデータがなければログイン画面、あればそれをreceivedStuffs.receivedStrings.valueに追加する
+ * TODO: onCreateViewにisRecoveringCookieがfalseのときにクッキーを取得してから時間割と掲示板のリンクを取得する一連の処理を書く
+ */
 class MainActivity : AppCompatActivity() {
 
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null

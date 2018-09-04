@@ -14,6 +14,9 @@ import io.realm.Realm
 import io.realm.RealmList
 import kotlinx.android.synthetic.main.fragment_curriculum.*
 
+/**
+ * TODO: receivedStuffs.receivedStrings.value.get("curriculum")で時間割を取得し、binding.curriculumに代入する
+ */
 var isConnecting = false
 
 class CurriculumFragment : Fragment() {
