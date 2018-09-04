@@ -1,6 +1,19 @@
 package com.example.spicyisland.koan
 
+import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
+
 /**
- * 受け取ってきた文字列の集合をキーをつけて保持しておけるグローバル変数
+ * LiveDataとして扱うためのクラス
  */
-var receivedStrings: MutableMap<String, ArrayList<String>> = mutableMapOf()
+class ReceivedStuffs: ViewModel() {
+    val receivedStrings = MutableLiveData<MutableMap<String, ArrayList<String>>>()
+}
+
+/**
+ * ReceivedStuffsのインスタンスを保管しておく変数
+ * ViewModelProviders.of(this).get(ReceivedStuffs::class.java)
+ * これでインスタンスを取得できる
+ * 値を変えたい場合はreceivedStuffs.receivedStrings.value = MutableMap<String, ArrayList<String>>()という感じ
+ */
+lateinit var receivedStuffs: ReceivedStuffs
