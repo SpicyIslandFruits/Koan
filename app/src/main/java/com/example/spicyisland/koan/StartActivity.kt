@@ -10,6 +10,9 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
 
+/**
+ * TODO: このクラスは削除してMainActivityに統合
+ */
 class StartActivity : AppCompatActivity() {
 
     val realm = Realm.getDefaultInstance()!!

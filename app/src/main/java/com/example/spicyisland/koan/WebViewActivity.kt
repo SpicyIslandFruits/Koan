@@ -10,10 +10,17 @@ import kotlinx.android.synthetic.main.activity_web_view.*
 
 class WebViewActivity : AppCompatActivity() {
 
+    /**
+     * webViewを起動して初めてのリクエストかどうかを確認
+     */
     var isFirstRequest = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        /**
+         * webViewのセッティング
+         */
         setContentView(R.layout.activity_web_view)
         val webView = webView
         webView.webChromeClient = WebChromeClient()
@@ -22,10 +29,17 @@ class WebViewActivity : AppCompatActivity() {
         webView.clearHistory()
         webView.settings.javaScriptEnabled = true
         webView.settings.javaScriptCanOpenWindowsAutomatically = true
+
+        /**
+         * TODO: urlを指定してロードできるようにする、指定しない場合はKoanMainPageに行く
+         */
         webView.loadUrl(KoanMainPage)
 
     }
 
+    /**
+     * キーボードのバックボタン処理をブラウザバックにする
+     */
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
             webView.goBack()
@@ -35,6 +49,9 @@ class WebViewActivity : AppCompatActivity() {
         return super.onKeyDown(keyCode, event)
     }
 
+    /**
+     * webViewを起動して初めてのリクエストでリダイレクトされた場合はログインが完了していないと判断してメッセージを出す
+     */
     inner class MyWebViewClient : WebViewClient(){
         override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
             if (Build.VERSION.SDK_INT >= 24 && request!!.isRedirect && isFirstRequest)
