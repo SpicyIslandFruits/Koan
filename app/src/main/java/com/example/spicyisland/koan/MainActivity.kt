@@ -38,7 +38,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * TODO: onErrorでisRecoveringCookiesをfalseに変えてrecoverCookiesを手順通りに行う処理を書いたメソッドを実行する処理
+     * 時間割を取得し、データをrealmとグローバル変数に保存するメソッド
+     * onErrorでisRecoveringCookiesをfalseに変えてrecoverCookiesを手順通りに行う処理を書いたメソッドを実行する処理
      * データの保存処理とtry..catchが多い為長い、、、
      */
     private fun getAndSaveAndSubscribeCurriculum() {
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                     override fun onSubscribe(d: Disposable) {}
 
                     /**
-                     * 取得したデータをrealmListの形に直して保存し、グローバル変数にも入れるメソッド
+                     * 取得したデータをrealmListの形に直して保存し、グローバル変数にも入れる
                      */
                     override fun onNext(curriculum: MutableList<String>) {
                         /**
