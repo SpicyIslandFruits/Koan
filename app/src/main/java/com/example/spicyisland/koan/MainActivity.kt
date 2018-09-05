@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
          */
         receivedStuffs = ViewModelProviders.of(this).get(ReceivedStuffs::class.java)
         receivedStuffs.receivedBulletinBoardLinks.value = mutableListOf()
+        receivedStuffs.receivedCurriculum.value = mutableListOf()
 
         /**
          * realmの初期化
@@ -221,8 +222,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * TODO: メソッドを完成させる
-     * TODO: 現在このメソッドを実行すると必ずonErrorに行きます
      * TODO: onNextでreceivedStuffsにキーをbulletinBoardTextsで文字列を保存する処理
      * TODO: onErrorでisRecoveringCookiesをfalseに変えてrecoverCookiesを手順通りに行う処理を書いたメソッドを実行する処理
      * TODO: ログイン画面に行ってアクティビティが破棄される可能性があるので
@@ -237,16 +236,27 @@ class MainActivity : AppCompatActivity() {
                         IsRecovering.isRecoveringBulletinBoardLinks = false
                     }
 
-                    override fun onSubscribe(d: Disposable) {
+                    override fun onSubscribe(d: Disposable) {}
 
-                    }
-
-                    override fun onNext(t: MutableList<String>) {
-
+                    override fun onNext(receivedBulletinBoardLinks: MutableList<String>) {
+                        /**
+                         * 掲示板のリンク(13個)を取ってくる
+                         */
+                        receivedStuffs.receivedBulletinBoardLinks.value = receivedBulletinBoardLinks
                     }
 
                     override fun onError(e: Throwable) {
                         IsRecovering.isRecoveringBulletinBoardLinks = false
+                        /**
+                         * 通信に失敗した場合クッキーが無効になったとみなしクッキーの取得からやり直す
+                         * クッキーの再取得をする場合はすべてのデータが再取得される
+                         * アクティビティが破棄されていた場合メソッドを実行できないので何もしない
+                         */
+                        try {
+                            recoverAndSubscribeCookies()
+                        }catch (e: Exception){
+                            e.printStackTrace()
+                        }
                     }
 
                 })
@@ -297,7 +307,7 @@ class MainActivity : AppCompatActivity() {
         override fun getItem(position: Int): Fragment {
             when(position){
                 0 -> return CurriculumFragment()
-                1 -> return NotificationFragment()
+                1 -> return BulletinBoardFragment()
                 2 -> return AccountFragment()
             }
             return CurriculumFragment()
