@@ -43,7 +43,7 @@ class AccountFragment : Fragment() {
     private fun logout(){
         removeAllCookies()
         removeAllRealmUserObject()
-        startActivity(Intent(this.context, StartActivity::class.java))
+        startActivity(Intent(this.context, LoginActivity::class.java))
         activity!!.finish()
     }
 

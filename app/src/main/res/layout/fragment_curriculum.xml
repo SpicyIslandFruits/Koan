@@ -1,788 +1,869 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CurriculumFragment">
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="receivedStuffs"
+            type="com.example.spicyisland.koan.ReceivedStuffs" />
+    </data>
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/curriculumLayout"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".CurriculumFragment">
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.04" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.2" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.36" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.52" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.68" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.84" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.14" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.28" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.42" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.56" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.70" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.84" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.98" />
-
-        <View
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/curriculumLayout"
             android:layout_width="match_parent"
-            android:layout_height="0.57dp"
-            android:background="@color/lineColor"
-            app:layout_constraintBottom_toTopOf="@+id/guideline2"></View>
+            android:layout_height="match_parent"
+            android:visibility='@{receivedStuffs.receivedCurriculum == null ? View.GONE : View.VISIBLE}'>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.57dp"
-            android:background="@color/lineColor"
-            app:layout_constraintBottom_toTopOf="@+id/guideline3"></View>
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.04" />
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="0.57dp"
-            android:background="@color/lineColor"
-            app:layout_constraintBottom_toTopOf="@+id/guideline4"></View>
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.2" />
 
-        <View
-            android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="0.57dp"
-            android:background="@color/lineColor"
-            app:layout_constraintBottom_toTopOf="@+id/guideline5"></View>
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.36" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.57dp"
-            android:background="@color/lineColor"
-            app:layout_constraintBottom_toTopOf="@+id/guideline6"></View>
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.52" />
 
-        <TextView
-            android:id="@+id/curriculumMon"
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.68" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.84" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.14" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.28" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.42" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.56" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.70" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.84" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.98" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.57dp"
+                android:background="@color/lineColor"
+                app:layout_constraintBottom_toTopOf="@+id/guideline2"></View>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.57dp"
+                android:background="@color/lineColor"
+                app:layout_constraintBottom_toTopOf="@+id/guideline3"></View>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="0.57dp"
+                android:background="@color/lineColor"
+                app:layout_constraintBottom_toTopOf="@+id/guideline4"></View>
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="0.57dp"
+                android:background="@color/lineColor"
+                app:layout_constraintBottom_toTopOf="@+id/guideline5"></View>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.57dp"
+                android:background="@color/lineColor"
+                app:layout_constraintBottom_toTopOf="@+id/guideline6"></View>
+
+            <TextView
+                android:id="@+id/curriculumMon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/monday"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="@+id/guideline7"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/curriculumTue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/tuesday"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="@+id/guideline8"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/curriculumWed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/wednesday"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="@+id/guideline9"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/curriculumThu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/thursday"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="@+id/guideline10"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/curriculumFri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/friday"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="@+id/guideline11"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/curriculumSat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/saturday"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="@+id/guideline12"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/first_lesson_time"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline2"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+            <TextView
+                android:id="@+id/second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/second_lesson_time"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline3"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/guideline2" />
+
+            <TextView
+                android:id="@+id/third"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/third_lesson_time"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/view"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/guideline3" />
+
+            <TextView
+                android:id="@+id/fourth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fourth_lesson_time"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/view2"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/guideline4" />
+
+            <TextView
+                android:id="@+id/fifth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fifth_lesson_time"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline6"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/guideline5" />
+
+            <TextView
+                android:id="@+id/sixth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sixth_lesson_time"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/guideline6" />
+
+            <TextView
+                android:id="@+id/firstMonday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[0]}'
+                android:background='@{receivedStuffs.receivedCurriculum[0].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                app:layout_constraintStart_toStartOf="@+id/guideline7"
+                app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+            <TextView
+                android:id="@+id/secondMonday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[6]}'
+                android:background='@{receivedStuffs.receivedCurriculum[6].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                app:layout_constraintStart_toStartOf="@+id/guideline7"
+                app:layout_constraintTop_toBottomOf="@+id/guideline2" />
+
+            <TextView
+                android:id="@+id/thirdMonday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[12]}'
+                android:background='@{receivedStuffs.receivedCurriculum[12].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                app:layout_constraintStart_toEndOf="@+id/guideline7"
+                app:layout_constraintTop_toBottomOf="@+id/guideline3" />
+
+            <TextView
+                android:id="@+id/fourthMonday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[18]}'
+                android:background='@{receivedStuffs.receivedCurriculum[18].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                app:layout_constraintStart_toEndOf="@+id/guideline7"
+                app:layout_constraintTop_toBottomOf="@+id/guideline4" />
+
+            <TextView
+                android:id="@+id/fifthMonday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[24]}'
+                android:background='@{receivedStuffs.receivedCurriculum[24].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                app:layout_constraintStart_toEndOf="@+id/guideline7"
+                app:layout_constraintTop_toBottomOf="@+id/guideline5" />
+
+            <TextView
+                android:id="@+id/sixthMonday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[30]}'
+                android:background='@{receivedStuffs.receivedCurriculum[30].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                app:layout_constraintStart_toEndOf="@+id/guideline7"
+                app:layout_constraintTop_toBottomOf="@+id/guideline6" />
+
+            <TextView
+                android:id="@+id/firstTuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[1]}'
+                android:background='@{receivedStuffs.receivedCurriculum[1].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                app:layout_constraintStart_toEndOf="@+id/guideline8"
+                app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+            <TextView
+                android:id="@+id/secondTuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[7]}'
+                android:background='@{receivedStuffs.receivedCurriculum[7].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                app:layout_constraintStart_toEndOf="@+id/guideline8"
+                app:layout_constraintTop_toBottomOf="@+id/guideline2" />
+
+            <TextView
+                android:id="@+id/thirdTuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[13]}'
+                android:background='@{receivedStuffs.receivedCurriculum[13].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                app:layout_constraintStart_toEndOf="@+id/guideline8"
+                app:layout_constraintTop_toBottomOf="@+id/guideline3" />
+
+            <TextView
+                android:id="@+id/fourthTuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[19]}'
+                android:background='@{receivedStuffs.receivedCurriculum[19].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                app:layout_constraintStart_toEndOf="@+id/guideline8"
+                app:layout_constraintTop_toBottomOf="@+id/guideline4" />
+
+            <TextView
+                android:id="@+id/fifthTuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[25]}'
+                android:background='@{receivedStuffs.receivedCurriculum[25].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                app:layout_constraintStart_toEndOf="@+id/guideline8"
+                app:layout_constraintTop_toBottomOf="@+id/guideline5" />
+
+            <TextView
+                android:id="@+id/sixthTuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[31]}'
+                android:background='@{receivedStuffs.receivedCurriculum[31].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                app:layout_constraintStart_toEndOf="@+id/guideline8"
+                app:layout_constraintTop_toBottomOf="@+id/guideline6" />
+
+            <TextView
+                android:id="@+id/firstWednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[2]}'
+                android:background='@{receivedStuffs.receivedCurriculum[2].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                app:layout_constraintStart_toEndOf="@+id/guideline9"
+                app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+            <TextView
+                android:id="@+id/secondWednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[8]}'
+                android:background='@{receivedStuffs.receivedCurriculum[8].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                app:layout_constraintStart_toEndOf="@+id/guideline9"
+                app:layout_constraintTop_toBottomOf="@+id/guideline2" />
+
+            <TextView
+                android:id="@+id/thirdWednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[14]}'
+                android:background='@{receivedStuffs.receivedCurriculum[14].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                app:layout_constraintStart_toEndOf="@+id/guideline9"
+                app:layout_constraintTop_toBottomOf="@+id/guideline3" />
+
+            <TextView
+                android:id="@+id/fourthWednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[20]}'
+                android:background='@{receivedStuffs.receivedCurriculum[20].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                app:layout_constraintStart_toEndOf="@+id/guideline9"
+                app:layout_constraintTop_toBottomOf="@+id/guideline4" />
+
+            <TextView
+                android:id="@+id/fifthWednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[26]}'
+                android:background='@{receivedStuffs.receivedCurriculum[26].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                app:layout_constraintStart_toEndOf="@+id/guideline9"
+                app:layout_constraintTop_toBottomOf="@+id/guideline5" />
+
+            <TextView
+                android:id="@+id/sixthWednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[32]}'
+                android:background='@{receivedStuffs.receivedCurriculum[32].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                app:layout_constraintStart_toEndOf="@+id/guideline9"
+                app:layout_constraintTop_toBottomOf="@+id/guideline6" />
+
+            <TextView
+                android:id="@+id/firstThursday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[3]}'
+                android:background='@{receivedStuffs.receivedCurriculum[3].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline11"
+                app:layout_constraintStart_toEndOf="@+id/guideline10"
+                app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+            <TextView
+                android:id="@+id/secondThursday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[9]}'
+                android:background='@{receivedStuffs.receivedCurriculum[9].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline11"
+                app:layout_constraintStart_toEndOf="@+id/guideline10"
+                app:layout_constraintTop_toBottomOf="@+id/guideline2" />
+
+            <TextView
+                android:id="@+id/thirdThursday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[15]}'
+                android:background='@{receivedStuffs.receivedCurriculum[15].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline11"
+                app:layout_constraintStart_toEndOf="@+id/guideline10"
+                app:layout_constraintTop_toBottomOf="@+id/guideline3" />
+
+            <TextView
+                android:id="@+id/fourthThursday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[21]}'
+                android:background='@{receivedStuffs.receivedCurriculum[21].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline11"
+                app:layout_constraintStart_toEndOf="@+id/guideline10"
+                app:layout_constraintTop_toBottomOf="@+id/guideline4" />
+
+            <TextView
+                android:id="@+id/fifthThursday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[27]}'
+                android:background='@{receivedStuffs.receivedCurriculum[27].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline11"
+                app:layout_constraintStart_toEndOf="@+id/guideline10"
+                app:layout_constraintTop_toBottomOf="@+id/guideline5" />
+
+            <TextView
+                android:id="@+id/sixthThursday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[33]}'
+                android:background='@{receivedStuffs.receivedCurriculum[33].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline11"
+                app:layout_constraintStart_toEndOf="@+id/guideline10"
+                app:layout_constraintTop_toBottomOf="@+id/guideline6" />
+
+            <TextView
+                android:id="@+id/firstFriday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[4]}'
+                android:background='@{receivedStuffs.receivedCurriculum[4].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                app:layout_constraintStart_toEndOf="@+id/guideline11"
+                app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+            <TextView
+                android:id="@+id/secondFriday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[10]}'
+                android:background='@{receivedStuffs.receivedCurriculum[10].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                app:layout_constraintStart_toEndOf="@+id/guideline11"
+                app:layout_constraintTop_toBottomOf="@+id/guideline2" />
+
+            <TextView
+                android:id="@+id/thirdFriday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[16]}'
+                android:background='@{receivedStuffs.receivedCurriculum[16].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                app:layout_constraintStart_toEndOf="@+id/guideline11"
+                app:layout_constraintTop_toBottomOf="@+id/guideline3" />
+
+            <TextView
+                android:id="@+id/fourthFriday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[22]}'
+                android:background='@{receivedStuffs.receivedCurriculum[22].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                app:layout_constraintStart_toEndOf="@+id/guideline11"
+                app:layout_constraintTop_toBottomOf="@+id/guideline4" />
+
+            <TextView
+                android:id="@+id/fifthFriday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[28]}'
+                android:background='@{receivedStuffs.receivedCurriculum[28].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                app:layout_constraintStart_toEndOf="@+id/guideline11"
+                app:layout_constraintTop_toBottomOf="@+id/guideline5" />
+
+            <TextView
+                android:id="@+id/sixthFriday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[34]}'
+                android:background='@{receivedStuffs.receivedCurriculum[34].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                app:layout_constraintStart_toEndOf="@+id/guideline11"
+                app:layout_constraintTop_toBottomOf="@+id/guideline6" />
+
+            <TextView
+                android:id="@+id/firstSaturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[5]}'
+                android:background='@{receivedStuffs.receivedCurriculum[5].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                app:layout_constraintStart_toEndOf="@+id/guideline12"
+                app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+            <TextView
+                android:id="@+id/secondSaturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[11]}'
+                android:background='@{receivedStuffs.receivedCurriculum[11].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline12"
+                app:layout_constraintTop_toBottomOf="@+id/guideline2" />
+
+            <TextView
+                android:id="@+id/thirdSaturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[17]}'
+                android:background='@{receivedStuffs.receivedCurriculum[17].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                app:layout_constraintStart_toEndOf="@+id/guideline12"
+                app:layout_constraintTop_toBottomOf="@+id/guideline3" />
+
+            <TextView
+                android:id="@+id/fourthSaturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[23]}'
+                android:background='@{receivedStuffs.receivedCurriculum[23].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                app:layout_constraintStart_toEndOf="@+id/guideline12"
+                app:layout_constraintTop_toBottomOf="@+id/guideline4" />
+
+            <TextView
+                android:id="@+id/fifthSaturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[29]}'
+                android:background='@{receivedStuffs.receivedCurriculum[29].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                app:layout_constraintStart_toEndOf="@+id/guideline12"
+                app:layout_constraintTop_toBottomOf="@+id/guideline5" />
+
+            <TextView
+                android:id="@+id/sixthSaturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxLines="8"
+                android:maxWidth="52dp"
+                android:padding="3dp"
+                android:text='@{receivedStuffs.receivedCurriculum[35]}'
+                android:background='@{receivedStuffs.receivedCurriculum[35].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                app:layout_constraintStart_toEndOf="@+id/guideline12"
+                app:layout_constraintTop_toBottomOf="@+id/guideline6" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/monday"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/curriculumTue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/tuesday"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="@+id/guideline8"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/curriculumWed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/wednesday"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="@+id/guideline9"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/curriculumThu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/thursday"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="@+id/guideline10"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/curriculumFri"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/friday"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="@+id/guideline11"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/curriculumSat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/saturday"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="@+id/guideline12"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/first"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/first_lesson_time"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline2"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guideline" />
-
-        <TextView
-            android:id="@+id/second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/second_lesson_time"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline3"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guideline2" />
-
-        <TextView
-            android:id="@+id/third"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/third_lesson_time"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/view"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guideline3" />
-
-        <TextView
-            android:id="@+id/fourth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fourth_lesson_time"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/view2"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guideline4" />
-
-        <TextView
-            android:id="@+id/fifth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/fifth_lesson_time"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline6"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guideline5" />
-
-        <TextView
-            android:id="@+id/sixth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sixth_lesson_time"
-            android:textSize="12sp"
+            android:layout_margin="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guideline6" />
-
-        <TextView
-            android:id="@+id/firstMonday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toBottomOf="@+id/guideline" />
-
-        <TextView
-            android:id="@+id/secondMonday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toBottomOf="@+id/guideline2" />
-
-        <TextView
-            android:id="@+id/thirdMonday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toEndOf="@+id/guideline7"
-            app:layout_constraintTop_toBottomOf="@+id/guideline3" />
-
-        <TextView
-            android:id="@+id/fourthMonday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toEndOf="@+id/guideline7"
-            app:layout_constraintTop_toBottomOf="@+id/guideline4" />
-
-        <TextView
-            android:id="@+id/fifthMonday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toEndOf="@+id/guideline7"
-            app:layout_constraintTop_toBottomOf="@+id/guideline5" />
-
-        <TextView
-            android:id="@+id/sixthMonday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toEndOf="@+id/guideline7"
-            app:layout_constraintTop_toBottomOf="@+id/guideline6" />
-
-        <TextView
-            android:id="@+id/firstTuesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline9"
-            app:layout_constraintStart_toEndOf="@+id/guideline8"
-            app:layout_constraintTop_toTopOf="@+id/guideline" />
-
-        <TextView
-            android:id="@+id/secondTuesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline9"
-            app:layout_constraintStart_toEndOf="@+id/guideline8"
-            app:layout_constraintTop_toBottomOf="@+id/guideline2" />
-
-        <TextView
-            android:id="@+id/thirdTuesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline9"
-            app:layout_constraintStart_toEndOf="@+id/guideline8"
-            app:layout_constraintTop_toBottomOf="@+id/guideline3" />
-
-        <TextView
-            android:id="@+id/fourthTuesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline9"
-            app:layout_constraintStart_toEndOf="@+id/guideline8"
-            app:layout_constraintTop_toBottomOf="@+id/guideline4" />
-
-        <TextView
-            android:id="@+id/fifthTuesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline9"
-            app:layout_constraintStart_toEndOf="@+id/guideline8"
-            app:layout_constraintTop_toBottomOf="@+id/guideline5" />
-
-        <TextView
-            android:id="@+id/sixthTuesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline9"
-            app:layout_constraintStart_toEndOf="@+id/guideline8"
-            app:layout_constraintTop_toBottomOf="@+id/guideline6" />
-
-        <TextView
-            android:id="@+id/firstWednesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline10"
-            app:layout_constraintStart_toEndOf="@+id/guideline9"
-            app:layout_constraintTop_toBottomOf="@+id/guideline" />
-
-        <TextView
-            android:id="@+id/secondWednesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline10"
-            app:layout_constraintStart_toEndOf="@+id/guideline9"
-            app:layout_constraintTop_toBottomOf="@+id/guideline2" />
-
-        <TextView
-            android:id="@+id/thirdWednesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline10"
-            app:layout_constraintStart_toEndOf="@+id/guideline9"
-            app:layout_constraintTop_toBottomOf="@+id/guideline3" />
-
-        <TextView
-            android:id="@+id/fourthWednesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline10"
-            app:layout_constraintStart_toEndOf="@+id/guideline9"
-            app:layout_constraintTop_toBottomOf="@+id/guideline4" />
-
-        <TextView
-            android:id="@+id/fifthWednesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline10"
-            app:layout_constraintStart_toEndOf="@+id/guideline9"
-            app:layout_constraintTop_toBottomOf="@+id/guideline5" />
-
-        <TextView
-            android:id="@+id/sixthWednesday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline10"
-            app:layout_constraintStart_toEndOf="@+id/guideline9"
-            app:layout_constraintTop_toBottomOf="@+id/guideline6" />
-
-        <TextView
-            android:id="@+id/firstThursday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline11"
-            app:layout_constraintStart_toEndOf="@+id/guideline10"
-            app:layout_constraintTop_toBottomOf="@+id/guideline" />
-
-        <TextView
-            android:id="@+id/secondThursday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline11"
-            app:layout_constraintStart_toEndOf="@+id/guideline10"
-            app:layout_constraintTop_toBottomOf="@+id/guideline2" />
-
-        <TextView
-            android:id="@+id/thirdThursday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline11"
-            app:layout_constraintStart_toEndOf="@+id/guideline10"
-            app:layout_constraintTop_toBottomOf="@+id/guideline3" />
-
-        <TextView
-            android:id="@+id/fourthThursday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline11"
-            app:layout_constraintStart_toEndOf="@+id/guideline10"
-            app:layout_constraintTop_toBottomOf="@+id/guideline4" />
-
-        <TextView
-            android:id="@+id/fifthThursday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline11"
-            app:layout_constraintStart_toEndOf="@+id/guideline10"
-            app:layout_constraintTop_toBottomOf="@+id/guideline5" />
-
-        <TextView
-            android:id="@+id/sixthThursday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline11"
-            app:layout_constraintStart_toEndOf="@+id/guideline10"
-            app:layout_constraintTop_toBottomOf="@+id/guideline6" />
-
-        <TextView
-            android:id="@+id/firstFriday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline12"
-            app:layout_constraintStart_toEndOf="@+id/guideline11"
-            app:layout_constraintTop_toBottomOf="@+id/guideline" />
-
-        <TextView
-            android:id="@+id/secondFriday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline12"
-            app:layout_constraintStart_toEndOf="@+id/guideline11"
-            app:layout_constraintTop_toBottomOf="@+id/guideline2" />
-
-        <TextView
-            android:id="@+id/thirdFriday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline12"
-            app:layout_constraintStart_toEndOf="@+id/guideline11"
-            app:layout_constraintTop_toBottomOf="@+id/guideline3" />
-
-        <TextView
-            android:id="@+id/fourthFriday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline12"
-            app:layout_constraintStart_toEndOf="@+id/guideline11"
-            app:layout_constraintTop_toBottomOf="@+id/guideline4" />
-
-        <TextView
-            android:id="@+id/fifthFriday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline12"
-            app:layout_constraintStart_toEndOf="@+id/guideline11"
-            app:layout_constraintTop_toBottomOf="@+id/guideline5" />
-
-        <TextView
-            android:id="@+id/sixthFriday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline12"
-            app:layout_constraintStart_toEndOf="@+id/guideline11"
-            app:layout_constraintTop_toBottomOf="@+id/guideline6" />
-
-        <TextView
-            android:id="@+id/firstSaturday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline13"
-            app:layout_constraintStart_toEndOf="@+id/guideline12"
-            app:layout_constraintTop_toBottomOf="@+id/guideline" />
-
-        <TextView
-            android:id="@+id/secondSaturday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/guideline12"
-            app:layout_constraintTop_toBottomOf="@+id/guideline2" />
-
-        <TextView
-            android:id="@+id/thirdSaturday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline13"
-            app:layout_constraintStart_toEndOf="@+id/guideline12"
-            app:layout_constraintTop_toBottomOf="@+id/guideline3" />
-
-        <TextView
-            android:id="@+id/fourthSaturday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline13"
-            app:layout_constraintStart_toEndOf="@+id/guideline12"
-            app:layout_constraintTop_toBottomOf="@+id/guideline4" />
-
-        <TextView
-            android:id="@+id/fifthSaturday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline13"
-            app:layout_constraintStart_toEndOf="@+id/guideline12"
-            app:layout_constraintTop_toBottomOf="@+id/guideline5" />
-
-        <TextView
-            android:id="@+id/sixthSaturday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:maxLines="8"
-            android:maxWidth="52dp"
-            android:padding="3dp"
-            android:textColor="@android:color/white"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline13"
-            app:layout_constraintStart_toEndOf="@+id/guideline12"
-            app:layout_constraintTop_toBottomOf="@+id/guideline6" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility='@{receivedStuffs.receivedCurriculum == null ? View.VISIBLE : View.GONE}'/>
 
     </android.support.constraint.ConstraintLayout>
-
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</android.support.constraint.ConstraintLayout>
+</layout>

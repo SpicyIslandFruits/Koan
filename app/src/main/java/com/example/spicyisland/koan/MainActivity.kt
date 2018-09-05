@@ -1,5 +1,6 @@
 package com.example.spicyisland.koan
 
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 
@@ -7,6 +8,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
@@ -30,11 +32,118 @@ class MainActivity : AppCompatActivity() {
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        /**
+         * 見た目の整形
+         */
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar!!.title = "Curriculum"
         initContainer()
 
+        /**
+         * ReceivedStuffsの初期化
+         */
+        receivedStuffs = ViewModelProviders.of(this).get(ReceivedStuffs::class.java)
+        receivedStuffs.receivedBulletinBoardLinks.value = mutableListOf()
+
+        /**
+         * realmの初期化
+         */
+        val realm = Realm.getDefaultInstance()
+        val userData = realm.where(User::class.java).findFirst()
+
+        /**
+         * realmにユーザーデータがあった場合はそこから時間割を取ってきて表示
+         * データの形式が不正な場合は再ログインを求める
+         * なかった場合はログイン画面に飛ばす
+         */
+        if (userData != null && userData.curriculum.size == 36){
+            receivedStuffs.receivedCurriculum.value = userData.curriculum
+            recoverAndSubscribeCookies()
+        } else if(userData != null) {
+            Toast.makeText(this@MainActivity, R.string.curriculum_not_found, Toast.LENGTH_LONG).show()
+            recoverAndSubscribeCookies()
+        } else {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        getAndSaveAndSubscribeCurriculum()
+        getAndSubscribeBulletinBoardLinks()
+    }
+
+    /**
+     * クッキーを再取得する処理、リンクや時間割も同時に取ってくる、基本的にすべてのデータを再取得する
+     * 特にリンクはクッキーと噛み合っていないといけないため絶対に一緒に取ってくる
+     */
+    private fun recoverAndSubscribeCookies(){
+        /**
+         * クッキーの再取得と同時にすべてtrueになり、全部完了しないと次のクッキーを取得させない
+         * すべてのデータを空にする
+         */
+        if (!IsRecovering.isRecoveringCookies && !IsRecovering.isRecoveringCurriculum && !IsRecovering.isRecoveringBulletinBoardLinks) {
+            KoanService.recoverCookies()
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(object : Observer<Map<String, String>> {
+                        override fun onComplete() {
+                            IsRecovering.isRecoveringCookies = false
+                        }
+
+                        override fun onSubscribe(d: Disposable) {
+                            /**
+                             * 更新中であることを明示
+                             * これが全部falseになるまでこのメソッドは使用不能
+                             */
+                            IsRecovering.isRecoveringCookies = true
+                            IsRecovering.isRecoveringCurriculum = true
+                            IsRecovering.isRecoveringBulletinBoardLinks = true
+
+                            /**
+                             * 掲示板のデータはクッキーが変わると使用不能になるので
+                             * データを空にする処理
+                             */
+                            receivedStuffs.receivedBulletinBoardLinks.value = mutableListOf()
+                        }
+
+                        override fun onNext(t: Map<String, String>) {
+                            try {
+                                getAndSaveAndSubscribeCurriculum()
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                                IsRecovering.isRecoveringCurriculum = false
+                            }
+
+                            try {
+                                getAndSubscribeBulletinBoardLinks()
+                            }catch (e: Exception) {
+                                e.printStackTrace()
+                                IsRecovering.isRecoveringBulletinBoardLinks = false
+                            }
+
+                        }
+
+                        override fun onError(e: Throwable) {
+                            /**
+                             * ここでエラーになるということは、onNextは呼ばれないので次の通信を可能にするために
+                             * すべてのフラッグをfalseに戻さなければならない
+                             */
+                            IsRecovering.isRecoveringCookies = false
+                            IsRecovering.isRecoveringCurriculum = false
+                            IsRecovering.isRecoveringBulletinBoardLinks = false
+                            try {
+                                Toast.makeText(this@MainActivity, R.string.recover_cookie_error, Toast.LENGTH_LONG).show()
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
+
+                    })
+        }
     }
 
     /**
@@ -87,7 +196,7 @@ class MainActivity : AppCompatActivity() {
                         /**
                          * グローバル変数に入れる処理
                          */
-                        receivedStuffs.receivedStrings.value!!["curriculum"] = curriculum
+                        receivedStuffs.receivedCurriculum.value = curriculum
 
                         /**
                          * realm閉じる
@@ -110,58 +219,6 @@ class MainActivity : AppCompatActivity() {
                     }
 
                 })
-    }
-
-    /**
-     * クッキーを再取得する処理、リンクや時間割も同時に取ってくる、基本的にすべてのデータを再取得する
-     * 特にリンクはクッキーと噛み合っていないといけないため絶対に一緒に取ってくる
-     */
-    private fun recoverAndSubscribeCookies(){
-        /**
-         * クッキーの再取得と同時にすべてtrueになり、全部完了しないと次のクッキーを取得させない
-         */
-        if (!IsRecovering.isRecoveringCookies && !IsRecovering.isRecoveringCurriculum && !IsRecovering.isRecoveringBulletinBoardLinks) {
-            KoanService.recoverCookies()
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(object : Observer<Map<String, String>> {
-                        override fun onComplete() {
-                            IsRecovering.isRecoveringCookies = false
-                        }
-
-                        override fun onSubscribe(d: Disposable) {
-                            /**
-                             * 更新中であることを明示
-                             * これが全部falseにならないとメソッドを実行しない
-                             */
-                            IsRecovering.isRecoveringCookies = true
-                            IsRecovering.isRecoveringCurriculum = true
-                            IsRecovering.isRecoveringBulletinBoardLinks = true
-
-                            receivedStuffs.receivedStrings.value = mutableMapOf()
-                        }
-
-                        override fun onNext(t: Map<String, String>) {
-                            try {
-                                getAndSaveAndSubscribeCurriculum()
-                                getAndSubscribeBulletinBoardLinks()
-                            } catch (e: Exception) {
-                                e.printStackTrace()
-                            }
-
-                        }
-
-                        override fun onError(e: Throwable) {
-                            IsRecovering.isRecoveringCookies = false
-                            try {
-                                Toast.makeText(this@MainActivity, R.string.recover_cookie_error, Toast.LENGTH_LONG).show()
-                            } catch (e: Exception) {
-                                e.printStackTrace()
-                            }
-                        }
-
-                    })
-        }
     }
 
     /**

@@ -29,6 +29,7 @@
     <string name="logout_conformation_title">Logout</string>
     <string name="logout_confirmation_message">Are you sure to logout?</string>
     <string name="feedback">Send me your feedback</string>
+    <string name="curriculum_not_found">There\'s no curriculum available now. Please wait a while</string>
 
 
     <!-- Strings related to login -->

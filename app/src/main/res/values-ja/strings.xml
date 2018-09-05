@@ -28,6 +28,7 @@
     <string name="logout_conformation_title">ログアウト</string>
     <string name="logout_confirmation_message">本当にログアウトしてもよろしいですか？</string>
     <string name="feedback">作者にエールを送る</string>
+    <string name="curriculum_not_found">現在表示可能な時間割がありません。少々お待ちください</string>
 
     <string name="realm_error">データの保存に失敗しました、アカウント画面から再ログインしてください</string>
     <string name="recover_cookie_error">クッキーの取得に失敗しました、インターネット接続かログイン情報を確認してください</string>
