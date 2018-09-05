@@ -37,20 +37,25 @@ const val KoanUrl = "https://koan.osaka-u.ac.jp/"
 const val KoanUrlWithoutSlash = "https://koan.osaka-u.ac.jp"
 
 /**
- * 掲示板のurlの末尾
+ * 掲示板のurl
+ */
+const val BulletinBoardLink = "https://koan.osaka-u.ac.jp/campusweb/campussmart.do?action=rfw&_flowId=KJW0001100-flow&page=main&tabId=kj&wfId=KJW0001100-flow"
+
+/**
+ * 掲示板のここに掲示のurlの末尾
  * KoanUrlWithoutSlashにflowExecutionKey足してからこれを最後に付け加える
  * 以下同様
  */
-const val lessonBulletinBulletinLink = "&_eventId=displayJugyo"
-const val lessonBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=1&genrecd=1"
-const val notificationBulletinLink = "&_eventId=displayOshirase"
-const val individualBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=3&genrecd=2"
-const val studentAffairsOfficeBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=342"
-const val minorCourseBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=344"
-const val teachingProfessionBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=345"
-const val scholarshipBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=343"
-const val careerBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=346"
-const val schoolLifeBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=347"
-const val studyAbroadStudentBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=348"
-const val studyAbroadBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=349"
-const val otherBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=350"
+const val LessonBulletinBulletinLink = "&_eventId=displayJugyo"
+const val LessonBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=1&genrecd=1"
+const val NotificationBulletinLink = "&_eventId=displayOshirase"
+const val IndividualBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=3&genrecd=2"
+const val StudentAffairsOfficeBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=342"
+const val MinorCourseBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=344"
+const val TeachingProfessionBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=345"
+const val ScholarshipBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=343"
+const val CareerBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=346"
+const val SchoolLifeBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=347"
+const val StudyAbroadStudentBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=348"
+const val StudyAbroadBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=349"
+const val OtherBulletinLink = "&_eventId=dispKeijiListGenre&keijitype=4&genrecd=350"

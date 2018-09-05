@@ -180,11 +180,31 @@ object KoanService {
      */
     fun getBulletinBoardLinks(): Observable<MutableList<String>> {
         val koanCookies = KoanService.getCookieMapFromCookieManager()
-        /**
-         * TODO: メソッドを完成させる
-         */
-        return getStringsObservableCallableFromTagAndTagPosition("", null,
-                "", arrayListOf())
+        return Observable.fromCallable{
+            var koanBulletinLinkList = mutableListOf<String>()
+
+            val res = Jsoup.connect(BulletinBoardLink)
+                    .cookies(koanCookies).followRedirects(false).method(Connection.Method.GET).execute()
+            val flowExecutionKey = res.header("location")
+
+            val urlBegin = KoanUrlWithoutSlash+flowExecutionKey
+
+            koanBulletinLinkList[0] = urlBegin+LessonBulletinBulletinLink
+            koanBulletinLinkList[1] = urlBegin+LessonBulletinLink
+            koanBulletinLinkList[2] = urlBegin+NotificationBulletinLink
+            koanBulletinLinkList[3] = urlBegin+IndividualBulletinLink
+            koanBulletinLinkList[4] = urlBegin+StudentAffairsOfficeBulletinLink
+            koanBulletinLinkList[5] = urlBegin+MinorCourseBulletinLink
+            koanBulletinLinkList[6] = urlBegin+TeachingProfessionBulletinLink
+            koanBulletinLinkList[7] = urlBegin+ScholarshipBulletinLink
+            koanBulletinLinkList[8] = urlBegin+CareerBulletinLink
+            koanBulletinLinkList[9] = urlBegin+SchoolLifeBulletinLink
+            koanBulletinLinkList[10] = urlBegin+StudyAbroadStudentBulletinLink
+            koanBulletinLinkList[11] = urlBegin+StudyAbroadBulletinLink
+            koanBulletinLinkList[12] = urlBegin+OtherBulletinLink
+
+            koanBulletinLinkList
+        }
     }
 
 }
