@@ -143,6 +143,9 @@ class MainActivity : AppCompatActivity() {
                             IsRecovering.isRecoveringCurriculum = false
                             IsRecovering.isRecoveringBulletinBoardLinks = false
                             try {
+                                /**
+                                 * たまにこのトーストが出ないときがあるが理由がよくわからない
+                                 */
                                 Toast.makeText(this@MainActivity, R.string.recover_cookie_error, Toast.LENGTH_LONG).show()
                             } catch (e: Exception) {
                                 e.printStackTrace()
