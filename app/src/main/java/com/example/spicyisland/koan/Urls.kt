@@ -34,8 +34,8 @@ const val KoanCurriculum = "https://koan.osaka-u.ac.jp/campusweb/campussmart.do?
  * koanのホストのurlとスラッシュ抜いたやつ
  */
 const val KoanUrl = "https://koan.osaka-u.ac.jp/"
-
 const val KoanUrlWithoutSlash = "https://koan.osaka-u.ac.jp"
+
 /**
  * 掲示板のurlの末尾
  * KoanUrlWithoutSlashにflowExecutionKey足してからこれを最後に付け加える
