@@ -29,7 +29,6 @@
     <string name="logout_confirmation_message">本当にログアウトしてもよろしいですか？</string>
     <string name="feedback">作者にエールを送る</string>
 
-    <!--TODO: 下の２つの英語訳を書く-->
     <string name="realm_error">データの保存に失敗しました、アカウント画面から再ログインしてください</string>
     <string name="recover_cookie_error">クッキーの取得に失敗しました、インターネット接続かログイン情報を確認してください</string>
 

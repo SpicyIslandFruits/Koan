@@ -45,6 +45,8 @@
     <string name="frequently_asked_question">FAQ</string>
     <string name="logout">Logout</string>
     <string name="still_getting_cookie">Cookie has not set yet. Auto login is unavailable.</string>
+    <string name="realm_error">Failed to load data. Please logout.</string>
+    <string name="recover_cookie_error">Failed to get cookies. Please check internet connection or account information.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="title_activity_main">MainActivity</string>
