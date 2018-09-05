@@ -8,7 +8,7 @@ import io.realm.Realm
  * 基本的にクッキーを取得し直したらonErrorにインターネット接続かログインのやり直しを求める処理
  * onNextにすべてのデータの再取得処理を書かなければいけないのでこれは使わない可能性が高い
  */
-class RecoverCookies() {
+class RecoverCookies {
     init {
         val realm = Realm.getDefaultInstance()
         val encryptedUserData = realm.where(User::class.java).findFirst()

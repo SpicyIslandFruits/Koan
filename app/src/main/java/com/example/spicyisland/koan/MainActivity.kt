@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  * TODO: receivedStuffs = ViewModelProviders.of(this).get(ReceivedStuffs::class.java)を書く
  * TODO: Realmにデータがなければログイン画面、あればそれをreceivedStuffs.receivedStrings.valueに追加する
  * TODO: onCreateViewにisRecoveringCookieがfalseのときにクッキーを取得してから時間割と掲示板のリンクを取得する一連の処理を書く
+ * TODO: onStartに時間割と掲示板のリンクを取得する一連の処理を書く
  */
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +26,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar!!.title = "Curriculum"
+        initContainer()
+
+    }
+
+    private fun initContainer(){
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
         container.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
             override fun onPageScrollStateChanged(state: Int) {}
@@ -43,7 +49,6 @@ class MainActivity : AppCompatActivity() {
 
         })
         container.adapter = mSectionsPagerAdapter
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

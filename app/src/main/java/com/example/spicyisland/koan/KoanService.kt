@@ -2,6 +2,7 @@ package com.example.spicyisland.koan
 
 import android.webkit.CookieManager
 import io.reactivex.Observable
+import io.realm.Realm
 import org.jsoup.Connection
 import org.jsoup.Jsoup
 
@@ -46,8 +47,8 @@ object KoanService {
      * TODO: 指定されたとおりに取得できなかったらエラーを吐くのでonErrorでそのエラーを処理するコードを書く
      * TODO: onErrorでは基本的にインターネット接続の確認、ログインのやり直しを求めるトーストを表示する
      */
-    fun getKoanCookiesObservableCallable(userID: String,
-                                         userPassword: String,
+    fun getKoanCookiesObservableCallable(koanID: String?,
+                                         userPassword: String?,
                                          isSaveCookies: Boolean = false,
                                          url: String = KoanUrl): Observable<Map<String, String>> {
 
@@ -56,7 +57,7 @@ object KoanService {
             val idpCookies = Jsoup.connect(KoanSsoLoginPage).cookies(koanCookies).method(Connection.Method.GET).execute().cookies()
 
             Jsoup.connect(IdpAuthnPwd)
-                    .data("USER_ID", userID, "USER_PASSWORD", userPassword)
+                    .data("USER_ID", koanID, "USER_PASSWORD", userPassword)
                     .cookies(idpCookies).method(Connection.Method.POST).execute()
 
             val doc = Jsoup.connect(IdpRoleSelect).data("role", "self_0").cookies(idpCookies).method(Connection.Method.POST).execute().parse()
@@ -124,4 +125,66 @@ object KoanService {
 
         return koanCookies
     }
+
+    /**
+     * データベースからidとパスワードを取得して復号化してマップで返します
+     * TODO: このメソッドを使った場合はアクティビティ側でnullチェックを行い、nullの場合はトーストで再ログインを求めてください
+     */
+    fun getAndDecryptIDAndPassFromRealm(): Map<String, String>? {
+        val userData = mutableMapOf<String, String>()
+        val realm = Realm.getDefaultInstance()
+        val encryptedUserData = realm.where(User::class.java).findFirst()
+        if (encryptedUserData != null) {
+            val decrypted = DeCryptor().decryptData(encryptedUserData.userData, encryptedUserData.iv)
+            userData["koanID"] = decrypted.substring(0, 8)
+            userData["Password"] = decrypted.substring(8)
+            return userData
+        } else {
+            return null
+        }
+    }
+
+    /**
+     * isRecoveringCookiesをtrueにする
+     * receivedStuffs.receivedStringsを空にする
+     * koanCookieを取得する
+     * TODO: このメソッドを呼び出し、onNextで時間割と掲示板の取得、onCompleteでisRecoveringCookiesをtrue、onErrorでトーストの表示とisRecoveringCookiesをfalseにするメソッドをアクティビティに書く
+     */
+    fun recoverCookies(): Observable<Map<String, String>>? {
+        isRecoveringCookies = true
+        receivedStuffs.receivedStrings.value = mutableMapOf()
+        var userData: Map<String, String>?
+        if (getAndDecryptIDAndPassFromRealm() != null) {
+            userData = getAndDecryptIDAndPassFromRealm()
+        } else {
+            userData = mapOf()
+        }
+        return getKoanCookiesObservableCallable(userData!!["koanID"], userData["Password"], true)
+    }
+
+    /**
+     * TODO: このメソッドを呼び出す場合...
+     * TODO: onNextでデータの保存をtryしてエラーをcatchした場合再ログインを求めるトーストの表示する処理、receivedStuffsに入れる処理を書く
+     * TODO: onErrorでisRecoveringCookiesをfalseに変えてrecoverCookiesを手順通りに行う処理を書いたメソッドを実行する処理をアクティビティに書く
+     */
+    fun getAndSaveCurriculum() {
+        val koanCookies = KoanService.getCookieMapFromCookieManager()
+        getStringsObservableCallableFromTagAndTagPosition(KoanCurriculum, koanCookies,
+                "td", curriculumTagPositions)
+    }
+
+    /**
+     * TODO: メソッドを完成させる
+     * TODO: 具体的には、getStringObservableCallableを実行して掲示板のリンクをObservableで取得してくる
+     * TODO: このメソッドを呼び出す場合...
+     * TODO: onNextでreceivedStuffsに文字列を保存する処理
+     * TODO: onErrorでisRecoveringCookiesをfalseに変えてrecoverCookiesを手順通りに行う処理を書いたメソッドを実行する処理をアクティビティに書く
+     */
+    fun getBulletinBoardLinks() {
+        val koanCookies = KoanService.getCookieMapFromCookieManager()
+        /**
+         * TODO: メソッドを完成させる
+         */
+    }
+
 }
