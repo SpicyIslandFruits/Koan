@@ -29,6 +29,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
+    private var isOnCreateJustExecuted = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         /**
@@ -41,10 +42,10 @@ class MainActivity : AppCompatActivity() {
 
         /**
          * ReceivedStuffsの初期化
+         * curriculumは初期化してはならない
          */
         receivedStuffs = ViewModelProviders.of(this).get(ReceivedStuffs::class.java)
         receivedStuffs.receivedBulletinBoardLinks.value = mutableListOf()
-        receivedStuffs.receivedCurriculum.value = mutableListOf()
 
         /**
          * realmの初期化
@@ -60,9 +61,11 @@ class MainActivity : AppCompatActivity() {
         if (userData != null && userData.curriculum.size == 36){
             receivedStuffs.receivedCurriculum.value = userData.curriculum
             recoverAndSubscribeCookies()
+            isOnCreateJustExecuted = true
         } else if(userData != null) {
             Toast.makeText(this@MainActivity, R.string.curriculum_not_found, Toast.LENGTH_LONG).show()
             recoverAndSubscribeCookies()
+            isOnCreateJustExecuted = true
         } else {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
@@ -72,8 +75,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        getAndSaveAndSubscribeCurriculum()
-        getAndSubscribeBulletinBoardLinks()
+        if (!isOnCreateJustExecuted) {
+            getAndSaveAndSubscribeCurriculum()
+            getAndSubscribeBulletinBoardLinks()
+        } else {
+            isOnCreateJustExecuted = false
+        }
     }
 
     /**

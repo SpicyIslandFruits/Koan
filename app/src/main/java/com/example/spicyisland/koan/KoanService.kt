@@ -189,23 +189,20 @@ object KoanService {
 
             val urlBegin = KoanUrlWithoutSlash+flowExecutionKey
 
-            try {
-                koanBulletinLinkList.add(0, urlBegin + LessonBulletinBulletinLink)
-                koanBulletinLinkList.add(1, urlBegin + LessonBulletinLink)
-                koanBulletinLinkList.add(2, urlBegin + NotificationBulletinLink)
-                koanBulletinLinkList.add(3, urlBegin + IndividualBulletinLink)
-                koanBulletinLinkList.add(4, urlBegin + StudentAffairsOfficeBulletinLink)
-                koanBulletinLinkList.add(5, urlBegin + MinorCourseBulletinLink)
-                koanBulletinLinkList.add(6, urlBegin + TeachingProfessionBulletinLink)
-                koanBulletinLinkList.add(7, urlBegin + ScholarshipBulletinLink)
-                koanBulletinLinkList.add(8, urlBegin + CareerBulletinLink)
-                koanBulletinLinkList.add(9, urlBegin + SchoolLifeBulletinLink)
-                koanBulletinLinkList.add(10, urlBegin + StudyAbroadStudentBulletinLink)
-                koanBulletinLinkList.add(11, urlBegin + StudyAbroadBulletinLink)
-                koanBulletinLinkList.add(12, urlBegin + OtherBulletinLink)
-            }catch (e: Exception){
-                e.printStackTrace()
-            }
+            koanBulletinLinkList.add(0, urlBegin + LessonBulletinBulletinLink)
+            koanBulletinLinkList.add(1, urlBegin + LessonBulletinLink)
+            koanBulletinLinkList.add(2, urlBegin + NotificationBulletinLink)
+            koanBulletinLinkList.add(3, urlBegin + IndividualBulletinLink)
+            koanBulletinLinkList.add(4, urlBegin + StudentAffairsOfficeBulletinLink)
+            koanBulletinLinkList.add(5, urlBegin + MinorCourseBulletinLink)
+            koanBulletinLinkList.add(6, urlBegin + TeachingProfessionBulletinLink)
+            koanBulletinLinkList.add(7, urlBegin + ScholarshipBulletinLink)
+            koanBulletinLinkList.add(8, urlBegin + CareerBulletinLink)
+            koanBulletinLinkList.add(9, urlBegin + SchoolLifeBulletinLink)
+            koanBulletinLinkList.add(10, urlBegin + StudyAbroadStudentBulletinLink)
+            koanBulletinLinkList.add(11, urlBegin + StudyAbroadBulletinLink)
+            koanBulletinLinkList.add(12, urlBegin + OtherBulletinLink)
+
             koanBulletinLinkList
         }
     }
