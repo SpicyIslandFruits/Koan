@@ -2,7 +2,6 @@ package com.example.spicyisland.koan
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.os.Handler
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,7 @@ import com.example.spicyisland.koan.databinding.FragmentCurriculumBinding
 
 class CurriculumFragment : Fragment() {
 
-    lateinit var binding: FragmentCurriculumBinding
+    private lateinit var binding: FragmentCurriculumBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_curriculum, container, false)

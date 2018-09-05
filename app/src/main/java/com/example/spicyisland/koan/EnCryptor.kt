@@ -2,7 +2,6 @@ package com.example.spicyisland.koan
 
 import android.security.keystore.KeyProperties
 import android.security.keystore.KeyGenParameterSpec
-import android.util.Base64
 import javax.crypto.*
 
 class EnCryptor {
