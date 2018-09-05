@@ -14,7 +14,7 @@
     <string name="friday">金</string>
     <string name="saturday">土</string>
     <string name="error_invalid_password">パスワードが短すぎます</string>
-    <string name="error_incorrect_password_or_ID">IDかパスワードが間違っています</string>
+    <string name="error_incorrect_password_or_ID">データの取得に失敗しました。インターネット接続またはログイン情報を確認してください</string>
     <string name="error_field_required">この項目は必須です</string>
     <string name="prompt_password">パスワード</string>
     <string name="action_sign_in">ログイン</string>

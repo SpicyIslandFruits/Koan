@@ -40,7 +40,7 @@
     <string name="prompt_password_capital_letter_error">Password must contain at least 1 capital character</string>
     <string name="action_sign_in">Sign in</string>
     <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password_or_ID">ID or Password is incorrect</string>
+    <string name="error_incorrect_password_or_ID">Login failed. Please check internet connection or ID and Password</string>
     <string name="error_field_required">This field is required</string>
     <string name="open_koan">Open koan in web browser</string>
     <string name="frequently_asked_question">FAQ</string>
