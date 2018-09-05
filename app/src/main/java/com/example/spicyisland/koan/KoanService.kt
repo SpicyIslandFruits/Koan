@@ -8,16 +8,15 @@ import org.jsoup.Jsoup
 
 /**
  * サービスはangularの真似をしてオブジェクトお保持するようにしてみた
- * TODO: クッキーを取り出してsubscribeまで行うメソッドを作る、時間割と掲示板のリンクの分を作る
  * TODO: クッキーを取り出して通信を始めたあとに、別でクッキーを取得する処理を行うと、クッキーと掲示板のリンクが噛み合わなくなるので禁止
  * TODO: クッキーの取得をやり直した場合は必ず他のデータも全部取得し直す、ReceivedStuffに入っているデータはすべて削除する
  * TODO: それでもエラーが出た場合は、インターネット接続か、ログインのやり直しを求めるトーストを表示
- *
- * TODO: クッキーの取得をやり直す場合は、上に書いた一連の処理が終わるまでisRecoveringCookiesをtrueにする、終わったら最後のonErrorとすべてのonNextでfalseに戻すのを忘れない
- * TODO: 最初から最後まで実行してしまうメソッドをここに書く
- * TODO: 個別でメソッドを書いて合体させる感じで書く
  */
-var isRecoveringCookies = false
+object IsRecovering{
+    var isRecoveringCookies = false
+    var isRecoveringCurriculum = false
+    var isRecoveringBulletinBoardLinks = false
+}
 
 object KoanService {
 
@@ -145,15 +144,13 @@ object KoanService {
     }
 
     /**
-     * isRecoveringCookiesをtrueにする
-     * receivedStuffs.receivedStringsを空にする
-     * koanCookieを取得する
-     * TODO: このメソッドを呼び出し、onNextで時間割と掲示板の取得、onCompleteでisRecoveringCookiesをtrue、onErrorでトーストの表示とisRecoveringCookiesをfalseにするメソッドをアクティビティに書く
+     * koanCookieを取得するメソッド
+     * TODO: このメソッドを呼び出し、
+     * TODO: onNextで時間割と掲示板の取得、onCompleteでisRecoveringCookiesをfalseにし、
+     * TODO: onErrorでトーストの表示とisRecoveringCookiesをfalseにするメソッドをアクティビティに書く
      */
-    fun recoverCookies(): Observable<Map<String, String>>? {
-        isRecoveringCookies = true
-        receivedStuffs.receivedStrings.value = mutableMapOf()
-        var userData: Map<String, String>?
+    fun recoverCookies(): Observable<Map<String, String>> {
+        val userData: Map<String, String>?
         if (getAndDecryptIDAndPassFromRealm() != null) {
             userData = getAndDecryptIDAndPassFromRealm()
         } else {
@@ -164,27 +161,30 @@ object KoanService {
 
     /**
      * TODO: このメソッドを呼び出す場合...
-     * TODO: onNextでデータの保存をtryしてエラーをcatchした場合再ログインを求めるトーストの表示する処理、receivedStuffsに入れる処理を書く
+     * TODO: onNextでデータの保存をtryしてエラーをcatchした場合再ログインを求めるトーストを表示する処理、receivedStuffsに入れる処理を書く
      * TODO: onErrorでisRecoveringCookiesをfalseに変えてrecoverCookiesを手順通りに行う処理を書いたメソッドを実行する処理をアクティビティに書く
      */
-    fun getAndSaveCurriculum() {
+    fun getAndSaveCurriculum(): Observable<MutableList<String>> {
         val koanCookies = KoanService.getCookieMapFromCookieManager()
-        getStringsObservableCallableFromTagAndTagPosition(KoanCurriculum, koanCookies,
+        return getStringsObservableCallableFromTagAndTagPosition(KoanCurriculum, koanCookies,
                 "td", curriculumTagPositions)
     }
 
     /**
      * TODO: メソッドを完成させる
+     * TODO: 現在このメソッドを実行すると必ずonErrorに行きます
      * TODO: 具体的には、getStringObservableCallableを実行して掲示板のリンクをObservableで取得してくる
      * TODO: このメソッドを呼び出す場合...
      * TODO: onNextでreceivedStuffsに文字列を保存する処理
      * TODO: onErrorでisRecoveringCookiesをfalseに変えてrecoverCookiesを手順通りに行う処理を書いたメソッドを実行する処理をアクティビティに書く
      */
-    fun getBulletinBoardLinks() {
+    fun getBulletinBoardLinks(): Observable<MutableList<String>> {
         val koanCookies = KoanService.getCookieMapFromCookieManager()
         /**
          * TODO: メソッドを完成させる
          */
+        return getStringsObservableCallableFromTagAndTagPosition("", null,
+                "", arrayListOf())
     }
 
 }

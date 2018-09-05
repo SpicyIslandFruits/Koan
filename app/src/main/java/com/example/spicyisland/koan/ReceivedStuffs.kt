@@ -7,7 +7,7 @@ import android.arch.lifecycle.ViewModel
  * LiveDataとして扱うためのクラス
  */
 class ReceivedStuffs: ViewModel() {
-    val receivedStrings = MutableLiveData<MutableMap<String, ArrayList<String>>>()
+    val receivedStrings = MutableLiveData<MutableMap<String, MutableList<String>>>()
 }
 
 /**
