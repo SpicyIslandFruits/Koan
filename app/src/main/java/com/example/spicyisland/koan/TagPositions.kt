@@ -12,4 +12,4 @@ val curriculumTagPositions: ArrayList<Int> = arrayListOf(14, 15, 16, 17, 18, 19,
  * 気が向いたら数えてアップデートなどで表示できるようにする
  * 今はとりあえず掲示板押したらブラウザで開く
  */
-val bulletinTagPositions: ArrayList<Int> = arrayListOf()
+val bulletinUnreadCountTagPositions: ArrayList<Int> = arrayListOf(4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28)

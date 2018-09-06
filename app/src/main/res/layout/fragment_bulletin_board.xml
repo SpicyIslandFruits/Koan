@@ -8,117 +8,611 @@
             name="receivedStuffs"
             type="com.example.spicyisland.koan.ReceivedStuffs" />
     </data>
-    <GridLayout
+    <android.support.v7.widget.GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnCount="3"
-        android:rowCount="5"
+        app:columnCount="3"
+        app:rowCount="5"
         tools:context=".BulletinBoardFragment"
         android:padding="16dp">
 
         <android.support.v7.widget.CardView
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
             android:layout_margin="8dp"
             app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_attachment_black_24dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lesson_bulletin_bulletin_link"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[0]}' />
+
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
             android:layout_margin="8dp"
             app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_attachment_black_24dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lesson_bulletin_link"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[1]}' />
+
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
             android:layout_margin="8dp"
             app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_attachment_black_24dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/notification_bulletin_link"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[2]}' />
+
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
             android:layout_margin="8dp"
             app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_attachment_black_24dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/individual_bulletin_link"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[3]}' />
+
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
             android:layout_margin="8dp"
             app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_attachment_black_24dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/student_affair_office_bulletin_link"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[4]}' />
+
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
             android:layout_margin="8dp"
             app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_attachment_black_24dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/minor_course_bulletin_link"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[5]}' />
+
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
             android:layout_margin="8dp"
             app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_attachment_black_24dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/teaching_profession_bulletin_link"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[6]}' />
+
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
             android:layout_margin="8dp"
             app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_attachment_black_24dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scholarship_bulletin_link"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[7]}' />
+
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
             android:layout_margin="8dp"
             app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_attachment_black_24dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/career_bulletin_link"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[8]}' />
+
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
             android:layout_margin="8dp"
             app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_attachment_black_24dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/school_life_bulletin_link"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[9]}' />
+
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
             android:layout_margin="8dp"
             app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_attachment_black_24dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/study_abroad_study_bulletin_link"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[10]}' />
+
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
             android:layout_margin="8dp"
             app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_attachment_black_24dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/study_abroad_bulletin_link"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[11]}' />
+
+            </LinearLayout>
 
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
+            android:layout_width="0dp"
             android:layout_margin="8dp"
             app:cardCornerRadius="5dp">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_attachment_black_24dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/other_bulletin_link"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[12]}' />
+
+            </LinearLayout>
+
         </android.support.v7.widget.CardView>
 
-    </GridLayout>
+    </android.support.v7.widget.GridLayout>
 </layout>

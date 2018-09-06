@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.activity_main.*
  * TODO: Realmにデータがなければログイン画面、あればそれをreceivedStuffs.receivedStrings.valueに追加する
  * TODO: onCreateViewにisRecoveringCookieがfalseのときにクッキーを取得してから時間割と掲示板のリンクを取得する一連の処理を書く
  * TODO: onStartに時間割と掲示板のリンクを取得する処理を書く
+ * recoverKoanCookiesをするときは時間割以外のすべてのデータを削除してからやること
  */
 class MainActivity : AppCompatActivity() {
 
@@ -90,7 +91,7 @@ class MainActivity : AppCompatActivity() {
          * クッキーの再取得と同時にすべてtrueになり、全部完了しないと次のクッキーを取得させない
          * すべてのデータを空にする
          */
-        if (!IsRecovering.isRecoveringCookies && !IsRecovering.isRecoveringCurriculum && !IsRecovering.isRecoveringBulletinBoardLinks) {
+        if (!IsRecovering.isRecoveringCookies && !IsRecovering.isRecoveringCurriculum && !IsRecovering.isRecoveringBulletinBoardLinksAndUnreadCount) {
             KoanService.recoverCookies()
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -106,14 +107,17 @@ class MainActivity : AppCompatActivity() {
                              */
                             IsRecovering.isRecoveringCookies = true
                             IsRecovering.isRecoveringCurriculum = true
-                            IsRecovering.isRecoveringBulletinBoardLinks = true
+                            IsRecovering.isRecoveringBulletinBoardLinksAndUnreadCount = true
 
                             /**
                              * 掲示板のデータはクッキーが変わると使用不能になるので
                              * データを空にする処理
+                             * リンクと未読の数を消す
                              * 時間割を消すと文字まで消えてしまうので禁止
                              */
                             receivedStuffs.receivedBulletinBoardLinks.value = null
+                            receivedStuffs.receivedBulletinBoardUnreadCount.value = null
+
                         }
 
                         override fun onNext(t: Map<String, String>) {
@@ -128,7 +132,7 @@ class MainActivity : AppCompatActivity() {
                                 getAndSubscribeBulletinBoardLinks()
                             }catch (e: Exception) {
                                 e.printStackTrace()
-                                IsRecovering.isRecoveringBulletinBoardLinks = false
+                                IsRecovering.isRecoveringBulletinBoardLinksAndUnreadCount = false
                             }
 
                         }
@@ -140,7 +144,7 @@ class MainActivity : AppCompatActivity() {
                              */
                             IsRecovering.isRecoveringCookies = false
                             IsRecovering.isRecoveringCurriculum = false
-                            IsRecovering.isRecoveringBulletinBoardLinks = false
+                            IsRecovering.isRecoveringBulletinBoardLinksAndUnreadCount = false
                             try {
                                 /**
                                  * たまにこのトーストが出ないときがあるが理由がよくわからない
@@ -237,25 +241,28 @@ class MainActivity : AppCompatActivity() {
      * TODO: アクティビティがアクティビティのインスタンスやメソッドにアクセスする場合はtry..catchで挟む
      */
     private fun getAndSubscribeBulletinBoardLinks(){
-        KoanService.getBulletinBoardLinks()
+        KoanService.getBulletinBoardLinksAndUnreadCount()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Observer<MutableList<String>> {
+                .subscribe(object : Observer<MutableMap<String, MutableList<String>>> {
                     override fun onComplete() {
-                        IsRecovering.isRecoveringBulletinBoardLinks = false
+                        IsRecovering.isRecoveringBulletinBoardLinksAndUnreadCount = false
                     }
 
                     override fun onSubscribe(d: Disposable) {}
 
-                    override fun onNext(receivedBulletinBoardLinks: MutableList<String>) {
+                    override fun onNext(receivedKoanBulletinBoardLinksAndUnreadCount: MutableMap<String, MutableList<String>>) {
                         /**
-                         * 掲示板のリンク(13個)を取ってくる
+                         * 掲示板のリンク(13個)と未読数を取ってくる
                          */
-                        receivedStuffs.receivedBulletinBoardLinks.value = receivedBulletinBoardLinks
+                        receivedStuffs.receivedBulletinBoardLinks.value =
+                                receivedKoanBulletinBoardLinksAndUnreadCount["koanBulletinLinkList"]
+                        receivedStuffs.receivedBulletinBoardUnreadCount.value =
+                                receivedKoanBulletinBoardLinksAndUnreadCount["koanBulletinUnreadCount"]
                     }
 
                     override fun onError(e: Throwable) {
-                        IsRecovering.isRecoveringBulletinBoardLinks = false
+                        IsRecovering.isRecoveringBulletinBoardLinksAndUnreadCount = false
                         /**
                          * 通信に失敗した場合クッキーが無効になったとみなしクッキーの取得からやり直す
                          * クッキーの再取得をする場合はすべてのデータが再取得される

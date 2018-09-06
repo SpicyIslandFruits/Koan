@@ -9,6 +9,7 @@ import android.arch.lifecycle.ViewModel
 class ReceivedStuffs: ViewModel(){
     val receivedCurriculum = MutableLiveData<MutableList<String>>()
     val receivedBulletinBoardLinks = MutableLiveData<MutableList<String>>()
+    val receivedBulletinBoardUnreadCount = MutableLiveData<MutableList<String>>()
 }
 
 /**

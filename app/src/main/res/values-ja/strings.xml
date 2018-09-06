@@ -33,4 +33,18 @@
     <string name="realm_error">データの保存に失敗しました、アカウント画面から再ログインしてください</string>
     <string name="recover_cookie_error">クッキーの取得に失敗しました、インターネット接続かログイン情報を確認してください</string>
 
+    <string name="lesson_bulletin_bulletin_link">授業掲示板</string>
+    <string name="lesson_bulletin_link">授業</string>
+    <string name="notification_bulletin_link">お知らせ\n掲示板</string>
+    <string name="individual_bulletin_link">個別連絡</string>
+    <string name="student_affair_office_bulletin_link">教務</string>
+    <string name="minor_course_bulletin_link">副専攻・\n副プログラム</string>
+    <string name="teaching_profession_bulletin_link">教職</string>
+    <string name="scholarship_bulletin_link">奨学支援</string>
+    <string name="career_bulletin_link">キャリア支援</string>
+    <string name="school_life_bulletin_link">学生生活</string>
+    <string name="study_abroad_study_bulletin_link">留学生向け</string>
+    <string name="study_abroad_bulletin_link">海外留学</string>
+    <string name="other_bulletin_link">その他</string>
+
 </resources>

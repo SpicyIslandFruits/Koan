@@ -15,7 +15,7 @@ import org.jsoup.Jsoup
 object IsRecovering{
     var isRecoveringCookies = false
     var isRecoveringCurriculum = false
-    var isRecoveringBulletinBoardLinks = false
+    var isRecoveringBulletinBoardLinksAndUnreadCount = false
 }
 
 object KoanService {
@@ -172,16 +172,17 @@ object KoanService {
 
     /**
      * TODO: メソッドを完成させる
-     * TODO: 現在このメソッドを実行すると必ずonErrorに行きます
      * TODO: 具体的には、getStringObservableCallableを実行して掲示板のリンクをObservableで取得してくる
      * TODO: このメソッドを呼び出す場合...
-     * TODO: onNextでreceivedStuffsに文字列を保存する処理
+     * TODO: 2つのデータを取ってくるのでonNextでreceivedStuffsに文字列を保存する処理はせずにここで保存します
      * TODO: onErrorでisRecoveringCookiesをfalseに変えてrecoverCookiesを手順通りに行う処理を書いたメソッドを実行する処理をアクティビティに書く
      */
-    fun getBulletinBoardLinks(): Observable<MutableList<String>> {
+    fun getBulletinBoardLinksAndUnreadCount(): Observable<MutableMap<String, MutableList<String>>> {
         val koanCookies = KoanService.getCookieMapFromCookieManager()
         return Observable.fromCallable{
-            var koanBulletinLinkList = mutableListOf<String>()
+            val koanBulletinLinkListAndUnreadCount = mutableMapOf<String, MutableList<String>>()
+            val koanBulletinLinkList = mutableListOf<String>()
+            val koanBulletinUnreadCount = mutableListOf<String>()
 
             val res = Jsoup.connect(BulletinBoardLink)
                     .cookies(koanCookies).followRedirects(false).method(Connection.Method.GET).execute()
@@ -203,7 +204,14 @@ object KoanService {
             koanBulletinLinkList.add(11, urlBegin + StudyAbroadBulletinLink)
             koanBulletinLinkList.add(12, urlBegin + OtherBulletinLink)
 
-            koanBulletinLinkList
+            val elements = Jsoup.connect(urlBegin).cookies(koanCookies).method(Connection.Method.GET).execute().parse().body().getElementsByTag("td")
+            for (i in bulletinUnreadCountTagPositions)
+                koanBulletinUnreadCount.add(elements[i].text())
+
+            koanBulletinLinkListAndUnreadCount["koanBulletinLinkList"] = koanBulletinLinkList
+            koanBulletinLinkListAndUnreadCount["koanBulletinUnreadCount"] = koanBulletinUnreadCount
+
+            koanBulletinLinkListAndUnreadCount
         }
     }
 
