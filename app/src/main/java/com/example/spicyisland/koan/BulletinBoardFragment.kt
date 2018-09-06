@@ -9,7 +9,8 @@ import android.view.ViewGroup
 import com.example.spicyisland.koan.databinding.FragmentBulletinBoardBinding
 
 /**
- * TODO: receivedStuffs.receivedStrings.value.get("bulletinBoard")から取得したものをbinding.bulletinBoardに代入する処理を書く
+ * receivedStuffs.receivedBulletinBoardLinks.valueに取ってきた時間割が入るのでそれをバインディングに代入している
+ * TODO: レイアウトの方に上の変数がnullだったときリンクを押したらリンク取得中と通知を出す処理を書く
  */
 class BulletinBoardFragment : Fragment() {
 
