@@ -42,10 +42,8 @@ class MainActivity : AppCompatActivity() {
 
         /**
          * ReceivedStuffsの初期化
-         * curriculumは初期化してはならない
          */
         receivedStuffs = ViewModelProviders.of(this).get(ReceivedStuffs::class.java)
-        receivedStuffs.receivedBulletinBoardLinks.value = mutableListOf()
 
         /**
          * realmの初期化
@@ -113,8 +111,9 @@ class MainActivity : AppCompatActivity() {
                             /**
                              * 掲示板のデータはクッキーが変わると使用不能になるので
                              * データを空にする処理
+                             * 時間割を消すと文字まで消えてしまうので禁止
                              */
-                            receivedStuffs.receivedBulletinBoardLinks.value = mutableListOf()
+                            receivedStuffs.receivedBulletinBoardLinks.value = null
                         }
 
                         override fun onNext(t: Map<String, String>) {
