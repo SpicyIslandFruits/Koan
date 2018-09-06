@@ -254,9 +254,8 @@ class MainActivity : AppCompatActivity() {
                     override fun onNext(receivedKoanBulletinBoardLinksAndUnreadCount: MutableMap<String, MutableList<String>>) {
                         /**
                          * 掲示板のリンク(13個)と未読数を取ってくる
+                         * 掲示板のリンクの方はKoanService側でやっています
                          */
-                        receivedStuffs.receivedBulletinBoardLinks.value =
-                                receivedKoanBulletinBoardLinksAndUnreadCount["koanBulletinLinkList"]
                         receivedStuffs.receivedBulletinBoardUnreadCount.value =
                                 receivedKoanBulletinBoardLinksAndUnreadCount["koanBulletinUnreadCount"]
                     }

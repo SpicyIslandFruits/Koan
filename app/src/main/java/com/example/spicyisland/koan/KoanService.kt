@@ -1,10 +1,13 @@
 package com.example.spicyisland.koan
 
+import android.os.Looper
 import android.webkit.CookieManager
 import io.reactivex.Observable
+import io.reactivex.Observable.fromCallable
 import io.realm.Realm
 import org.jsoup.Connection
 import org.jsoup.Jsoup
+import java.util.logging.Handler
 
 /**
  * サービスはangularの真似をしてオブジェクトお保持するようにしてみた
@@ -32,7 +35,7 @@ object KoanService {
                                      tag: String,
                                      tagPositions: ArrayList<Int>): Observable<MutableList<String>> {
 
-        return Observable.fromCallable {
+        return fromCallable {
             val elementTexts = mutableListOf<String>()
             val elements = Jsoup.connect(url).cookies(cookies).method(Connection.Method.GET).execute().parse().body().getElementsByTag(tag)
             for (i in tagPositions)
@@ -51,7 +54,7 @@ object KoanService {
                                          isSaveCookies: Boolean = false,
                                          url: String = KoanUrl): Observable<Map<String, String>> {
 
-        return Observable.fromCallable {
+        return fromCallable {
             val koanCookies = Jsoup.connect(KoanMainPage).followRedirects(false).method(Connection.Method.GET).execute().cookies()
             val idpCookies = Jsoup.connect(KoanSsoLoginPage).cookies(koanCookies).method(Connection.Method.GET).execute().cookies()
 
@@ -85,7 +88,7 @@ object KoanService {
      * もし間違っていた場合onErrorに行く
      */
     fun checkIDAndPass(id: String, password: String): Observable<Unit> {
-        return Observable.fromCallable {
+        return fromCallable {
             val koanCookies = Jsoup.connect(KoanMainPage).followRedirects(false).method(Connection.Method.GET).execute().cookies()
             val idpCookies = Jsoup.connect(KoanSsoLoginPage).cookies(koanCookies).method(Connection.Method.GET).execute().cookies()
 
@@ -179,7 +182,7 @@ object KoanService {
      */
     fun getBulletinBoardLinksAndUnreadCount(): Observable<MutableMap<String, MutableList<String>>> {
         val koanCookies = KoanService.getCookieMapFromCookieManager()
-        return Observable.fromCallable{
+        return fromCallable{
             val koanBulletinLinkListAndUnreadCount = mutableMapOf<String, MutableList<String>>()
             val koanBulletinLinkList = mutableListOf<String>()
             val koanBulletinUnreadCount = mutableListOf<String>()
@@ -204,11 +207,16 @@ object KoanService {
             koanBulletinLinkList.add(11, urlBegin + StudyAbroadBulletinLink)
             koanBulletinLinkList.add(12, urlBegin + OtherBulletinLink)
 
+            val mainHandler = android.os.Handler(Looper.getMainLooper())
+
+            mainHandler.post{
+                receivedStuffs.receivedBulletinBoardLinks.value = koanBulletinLinkList
+            }
+
             val elements = Jsoup.connect(urlBegin).cookies(koanCookies).method(Connection.Method.GET).execute().parse().body().getElementsByTag("td")
             for (i in bulletinUnreadCountTagPositions)
                 koanBulletinUnreadCount.add(elements[i].text())
 
-            koanBulletinLinkListAndUnreadCount["koanBulletinLinkList"] = koanBulletinLinkList
             koanBulletinLinkListAndUnreadCount["koanBulletinUnreadCount"] = koanBulletinUnreadCount
 
             koanBulletinLinkListAndUnreadCount
