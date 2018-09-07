@@ -75,8 +75,11 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if (!isOnCreateJustExecuted) {
+            /**
+             * クッキーのチェックも兼ねて時間割の取得はonStartで呼ぶ
+             * もしクッキーが使えなくなっていたらすべてのデータを再取得する
+             */
             getAndSaveAndSubscribeCurriculum()
-            getAndSubscribeBulletinBoardLinks()
         } else {
             isOnCreateJustExecuted = false
         }
@@ -256,6 +259,8 @@ class MainActivity : AppCompatActivity() {
                          * 掲示板のリンク(13個)と未読数を取ってくる
                          * 掲示板のリンクの方はKoanService側でやっています
                          */
+                        receivedStuffs.receivedBulletinBoardLinks.value =
+                                receivedKoanBulletinBoardLinksAndUnreadCount["koanBulletinLinks"]
                         receivedStuffs.receivedBulletinBoardUnreadCount.value =
                                 receivedKoanBulletinBoardLinksAndUnreadCount["koanBulletinUnreadCount"]
                     }

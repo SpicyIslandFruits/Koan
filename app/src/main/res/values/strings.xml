@@ -45,7 +45,8 @@
     <string name="open_koan">Open koan in web browser</string>
     <string name="frequently_asked_question">FAQ</string>
     <string name="logout">Logout</string>
-    <string name="still_getting_cookie">Cookie has not set yet. Auto login is unavailable.</string>
+    <!--TODO: 英語訳を見直す-->
+    <string name="cookie_error">Cookie has not set yet. Auto login is unavailable.</string>
     <string name="realm_error">Failed to load data. Please logout.</string>
     <string name="recover_cookie_error">Failed to get cookies. Please check internet connection or account information.</string>
 

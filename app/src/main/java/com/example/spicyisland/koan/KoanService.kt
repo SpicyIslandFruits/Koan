@@ -1,13 +1,11 @@
 package com.example.spicyisland.koan
 
-import android.os.Looper
 import android.webkit.CookieManager
 import io.reactivex.Observable
 import io.reactivex.Observable.fromCallable
 import io.realm.Realm
 import org.jsoup.Connection
 import org.jsoup.Jsoup
-import java.util.logging.Handler
 
 /**
  * サービスはangularの真似をしてオブジェクトお保持するようにしてみた
@@ -184,44 +182,36 @@ object KoanService {
         val koanCookies = KoanService.getCookieMapFromCookieManager()
         return fromCallable{
             val koanBulletinLinkListAndUnreadCount = mutableMapOf<String, MutableList<String>>()
-            val koanBulletinLinkList = mutableListOf<String>()
+            val koanBulletinLinks = mutableListOf<String>()
             val koanBulletinUnreadCount = mutableListOf<String>()
 
             val res = Jsoup.connect(BulletinBoardLink)
-                    .cookies(koanCookies).followRedirects(false).method(Connection.Method.GET).execute()
-            val flowExecutionKey = res.header("location")
+                    .cookies(koanCookies).method(Connection.Method.GET).execute()
 
-            val urlBegin = KoanUrlWithoutSlash+flowExecutionKey
+            val urlBegin = res.url().toString()
 
-            koanBulletinLinkList.add(0, urlBegin + LessonBulletinBulletinLink)
-            koanBulletinLinkList.add(1, urlBegin + LessonBulletinLink)
-            koanBulletinLinkList.add(2, urlBegin + NotificationBulletinLink)
-            koanBulletinLinkList.add(3, urlBegin + IndividualBulletinLink)
-            koanBulletinLinkList.add(4, urlBegin + StudentAffairsOfficeBulletinLink)
-            koanBulletinLinkList.add(5, urlBegin + MinorCourseBulletinLink)
-            koanBulletinLinkList.add(6, urlBegin + TeachingProfessionBulletinLink)
-            koanBulletinLinkList.add(7, urlBegin + ScholarshipBulletinLink)
-            koanBulletinLinkList.add(8, urlBegin + CareerBulletinLink)
-            koanBulletinLinkList.add(9, urlBegin + SchoolLifeBulletinLink)
-            koanBulletinLinkList.add(10, urlBegin + StudyAbroadStudentBulletinLink)
-            koanBulletinLinkList.add(11, urlBegin + StudyAbroadBulletinLink)
-            koanBulletinLinkList.add(12, urlBegin + OtherBulletinLink)
-
-            /**
-             * 取ってきたリンクをメインスレッドに投げる処理
-             */
-            val mainHandler = android.os.Handler(Looper.getMainLooper())
-            mainHandler.post{
-                receivedStuffs.receivedBulletinBoardLinks.value = koanBulletinLinkList
-            }
+            koanBulletinLinks.add(0, urlBegin + LessonBulletinBulletinLink)
+            koanBulletinLinks.add(1, urlBegin + LessonBulletinLink)
+            koanBulletinLinks.add(2, urlBegin + NotificationBulletinLink)
+            koanBulletinLinks.add(3, urlBegin + IndividualBulletinLink)
+            koanBulletinLinks.add(4, urlBegin + StudentAffairsOfficeBulletinLink)
+            koanBulletinLinks.add(5, urlBegin + MinorCourseBulletinLink)
+            koanBulletinLinks.add(6, urlBegin + TeachingProfessionBulletinLink)
+            koanBulletinLinks.add(7, urlBegin + ScholarshipBulletinLink)
+            koanBulletinLinks.add(8, urlBegin + CareerBulletinLink)
+            koanBulletinLinks.add(9, urlBegin + SchoolLifeBulletinLink)
+            koanBulletinLinks.add(10, urlBegin + StudyAbroadStudentBulletinLink)
+            koanBulletinLinks.add(11, urlBegin + StudyAbroadBulletinLink)
+            koanBulletinLinks.add(12, urlBegin + OtherBulletinLink)
 
             /**
              * 未読数を取ってくる処理
              */
-            val elements = Jsoup.connect(urlBegin).cookies(koanCookies).method(Connection.Method.GET).execute().parse().body().getElementsByTag("td")
+            val elements = res.parse().body().getElementsByTag("td")
             for (i in bulletinUnreadCountTagPositions)
                 koanBulletinUnreadCount.add(elements[i].text())
 
+            koanBulletinLinkListAndUnreadCount["koanBulletinLinks"] = koanBulletinLinks
             koanBulletinLinkListAndUnreadCount["koanBulletinUnreadCount"] = koanBulletinUnreadCount
 
             koanBulletinLinkListAndUnreadCount

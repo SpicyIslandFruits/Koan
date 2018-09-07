@@ -24,7 +24,7 @@
     <string name="open_koan">ブラウザでkoanを開く</string>
     <string name="frequently_asked_question">よくある質問</string>
     <string name="logout">ログアウト</string>
-    <string name="still_getting_cookie">Cookieの取得が完了していないため、自動ログインは行われません</string>
+    <string name="cookie_error">Cookieが無効になっているか、取得が完了していないため、自動ログインは行われません</string>
     <string name="logout_conformation_title">ログアウト</string>
     <string name="logout_confirmation_message">本当にログアウトしてもよろしいですか？</string>
     <string name="feedback">作者にエールを送る</string>
@@ -34,6 +34,7 @@
     <string name="realm_error">データの保存に失敗しました、アカウント画面から再ログインしてください</string>
     <string name="recover_cookie_error">クッキーの取得に失敗しました、インターネット接続かログイン情報を確認してください</string>
 
+    <!--こいつらの英語訳をする-->
     <string name="lesson_bulletin_bulletin_link">授業掲示板</string>
     <string name="lesson_bulletin_link">授業</string>
     <string name="notification_bulletin_link">お知らせ\n掲示板</string>
