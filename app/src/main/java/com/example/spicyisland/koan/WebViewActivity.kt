@@ -10,6 +10,8 @@ import kotlinx.android.synthetic.main.activity_web_view.*
 
 class WebViewActivity : AppCompatActivity() {
 
+    var isFirstConnection = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -54,6 +56,7 @@ class WebViewActivity : AppCompatActivity() {
      */
     inner class MyWebViewClient : WebViewClient(){
         override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+            isFirstConnection = false
             /**
              * urlがログイン画面のものになっていた場合は自動ログインが完了していないと判断してトーストを出す
              */
@@ -61,6 +64,15 @@ class WebViewActivity : AppCompatActivity() {
                 Toast.makeText(this@WebViewActivity, R.string.cookie_error, Toast.LENGTH_LONG).show()
             }
             super.onPageStarted(view, url, favicon)
+        }
+
+        override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+            if (!isFirstConnection && request!!.url.toString().contains(BulletinBoardLink)) {
+                receivedStuffs.receivedBulletinBoardLinks.value = null
+                receivedStuffs.receivedBulletinBoardUnreadCount.value = null
+                Toast.makeText(applicationContext, R.string.recover_bulletin_board_link, Toast.LENGTH_LONG).show()
+            }
+            return super.shouldOverrideUrlLoading(view, request)
         }
     }
 

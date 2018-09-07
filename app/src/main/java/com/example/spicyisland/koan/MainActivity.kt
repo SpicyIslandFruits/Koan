@@ -74,11 +74,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if (!isOnCreateJustExecuted) {
+        if (!isOnCreateJustExecuted && receivedStuffs.receivedBulletinBoardLinks.value == null) {
             /**
              * クッキーのチェックも兼ねて時間割の取得はonStartで呼ぶ
              * もしクッキーが使えなくなっていたらすべてのデータを再取得する
+             * webView側でユーザーによって時間割が開かれたかを検知し、もしそうだった場合時間割のリンクを消すので
+             * ここで取り直す
              */
+            getAndSubscribeBulletinBoardLinks()
+            getAndSaveAndSubscribeCurriculum()
+        } else if (!isOnCreateJustExecuted) {
             getAndSaveAndSubscribeCurriculum()
         } else {
             isOnCreateJustExecuted = false

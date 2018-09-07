@@ -48,5 +48,6 @@
     <string name="study_abroad_study_bulletin_link">留学生向け</string>
     <string name="study_abroad_bulletin_link">海外留学</string>
     <string name="other_bulletin_link">その他</string>
+    <string name="recover_bulletin_board_link">掲示板にアクセスしたため、掲示のリンクが無効になりました。リンクと件数を再取得します。</string>
 
 </resources>
