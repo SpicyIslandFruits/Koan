@@ -59,7 +59,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[0]}' />
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[0] == null ? @string/getting_bulletin_link_num : receivedStuffs.receivedBulletinBoardUnreadCount[0] == null ? @string/getting_bulletin_link_num : receivedStuffs.receivedBulletinBoardUnreadCount[0]}' />
 
             </LinearLayout>
 
@@ -108,7 +108,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[1]}' />
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[1] == null ? @string/getting_bulletin_link_num : receivedStuffs.receivedBulletinBoardUnreadCount[1]}' />
 
             </LinearLayout>
 
@@ -157,7 +157,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[2]}' />
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[2] == null ? @string/getting_bulletin_link_num : receivedStuffs.receivedBulletinBoardUnreadCount[2]}' />
 
             </LinearLayout>
 
@@ -206,7 +206,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[3]}' />
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[3] == null ? @string/getting_bulletin_link_num : receivedStuffs.receivedBulletinBoardUnreadCount[3]}' />
 
             </LinearLayout>
 
@@ -255,7 +255,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[4]}' />
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[4] == null ? @string/getting_bulletin_link_num : receivedStuffs.receivedBulletinBoardUnreadCount[4]}' />
 
             </LinearLayout>
 
@@ -304,7 +304,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[5]}' />
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[5] == null ? @string/getting_bulletin_link_num : receivedStuffs.receivedBulletinBoardUnreadCount[5]}' />
 
             </LinearLayout>
 
@@ -353,7 +353,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[6]}' />
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[6] == null ? @string/getting_bulletin_link_num : receivedStuffs.receivedBulletinBoardUnreadCount[6]}' />
 
             </LinearLayout>
 
@@ -402,7 +402,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[7]}' />
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[7] == null ? @string/getting_bulletin_link_num : receivedStuffs.receivedBulletinBoardUnreadCount[7]}' />
 
             </LinearLayout>
 
@@ -451,7 +451,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[8]}' />
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[8] == null ? @string/getting_bulletin_link_num : receivedStuffs.receivedBulletinBoardUnreadCount[8]}' />
 
             </LinearLayout>
 
@@ -500,7 +500,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[9]}' />
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[9] == null ? @string/getting_bulletin_link_num : receivedStuffs.receivedBulletinBoardUnreadCount[9]}' />
 
             </LinearLayout>
 
@@ -549,7 +549,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[10]}' />
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[10] == null ? @string/getting_bulletin_link_num : receivedStuffs.receivedBulletinBoardUnreadCount[10]}' />
 
             </LinearLayout>
 
@@ -598,7 +598,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[11]}' />
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[11] == null ? @string/getting_bulletin_link_num : receivedStuffs.receivedBulletinBoardUnreadCount[11]}' />
 
             </LinearLayout>
 
@@ -647,7 +647,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[12]}' />
+                    android:text='@{receivedStuffs.receivedBulletinBoardUnreadCount[12] == null ? @string/getting_bulletin_link_num : receivedStuffs.receivedBulletinBoardUnreadCount[12]}' />
 
             </LinearLayout>
 
