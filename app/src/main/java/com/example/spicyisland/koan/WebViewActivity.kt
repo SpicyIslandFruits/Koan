@@ -1,5 +1,6 @@
 package com.example.spicyisland.koan
 
+import android.content.Intent
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -30,10 +31,15 @@ class WebViewActivity : AppCompatActivity() {
         webView.settings.javaScriptEnabled = true
         webView.settings.javaScriptCanOpenWindowsAutomatically = true
 
+        val url = intent.getStringExtra("LINK")
         /**
          * TODO: urlを指定してロードできるようにする、指定しない場合はKoanMainPageに行く
          */
-        webView.loadUrl(KoanMainPage)
+        if (url.isEmpty()) {
+            webView.loadUrl(KoanMainPage)
+        } else {
+            webView.loadUrl(url)
+        }
 
     }
 

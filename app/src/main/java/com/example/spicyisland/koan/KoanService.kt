@@ -207,12 +207,17 @@ object KoanService {
             koanBulletinLinkList.add(11, urlBegin + StudyAbroadBulletinLink)
             koanBulletinLinkList.add(12, urlBegin + OtherBulletinLink)
 
+            /**
+             * 取ってきたリンクをメインスレッドに投げる処理
+             */
             val mainHandler = android.os.Handler(Looper.getMainLooper())
-
             mainHandler.post{
                 receivedStuffs.receivedBulletinBoardLinks.value = koanBulletinLinkList
             }
 
+            /**
+             * 未読数を取ってくる処理
+             */
             val elements = Jsoup.connect(urlBegin).cookies(koanCookies).method(Connection.Method.GET).execute().parse().body().getElementsByTag("td")
             for (i in bulletinUnreadCountTagPositions)
                 koanBulletinUnreadCount.add(elements[i].text())
