@@ -13,4 +13,5 @@
     <color name="tabTextColor">#666666</color>
     <color name="textColor">#212121</color>
     <color name="actionButtonOverflow">#757575</color>
+    <color name="subTextColor">#666666</color>
 </resources>
