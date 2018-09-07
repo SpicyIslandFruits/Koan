@@ -33,7 +33,7 @@ class BulletinBoardFragment : Fragment() {
         setOnClickListeners()
     }
 
-    fun setOnClickListeners() {
+    private fun setOnClickListeners() {
         lesson_bulletin_bulletin.setOnClickListener{
             openWebView(0)
         }
@@ -92,7 +92,7 @@ class BulletinBoardFragment : Fragment() {
      * TODO: ページの有効期限切れになるのでなんとかする
      * TODO: onStartでリンクの再取得をするため古いリンクが使えなくなるから
      */
-    fun openWebView(linkNum: Int) {
+    private fun openWebView(linkNum: Int) {
         if (receivedStuffs.receivedBulletinBoardLinks.value != null) {
             val intent = Intent(this.context, WebViewActivity::class.java)
             intent.putExtra("LINK", receivedStuffs.receivedBulletinBoardLinks.value!![linkNum])

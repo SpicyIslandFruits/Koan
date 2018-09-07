@@ -18,7 +18,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/lesson_bulletin_bulletin"
-            android:clickable="true"
+              android:clickable="true"
+            android:focusable="true"
             android:foreground="?android:selectableItemBackground"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
@@ -73,7 +74,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/lesson_bulletin"
-            android:clickable="true"
+              android:clickable="true"
+            android:focusable="true"
             android:foreground="?android:selectableItemBackground"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
@@ -128,7 +130,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/notification_bulletin"
-            android:clickable="true"
+              android:clickable="true"
+            android:focusable="true"
             android:foreground="?android:selectableItemBackground"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
@@ -183,7 +186,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/individual_bulletin"
-            android:clickable="true"
+              android:clickable="true"
+            android:focusable="true"
             android:foreground="?android:selectableItemBackground"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
@@ -238,7 +242,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/student_affairs_office_bulletin"
-            android:clickable="true"
+              android:clickable="true"
+            android:focusable="true"
             android:foreground="?android:selectableItemBackground"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
@@ -293,7 +298,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/minor_course_bulletin"
-            android:clickable="true"
+              android:clickable="true"
+            android:focusable="true"
             android:foreground="?android:selectableItemBackground"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
@@ -348,7 +354,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/teaching_profession_bulletin"
-            android:clickable="true"
+              android:clickable="true"
+            android:focusable="true"
             android:foreground="?android:selectableItemBackground"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
@@ -403,7 +410,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/scholarship_bulletin"
-            android:clickable="true"
+              android:clickable="true"
+            android:focusable="true"
             android:foreground="?android:selectableItemBackground"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
@@ -458,7 +466,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/career_bulletin"
-            android:clickable="true"
+              android:clickable="true"
+            android:focusable="true"
             android:foreground="?android:selectableItemBackground"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
@@ -513,7 +522,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/school_life_bulletin"
-            android:clickable="true"
+              android:clickable="true"
+            android:focusable="true"
             android:foreground="?android:selectableItemBackground"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
@@ -568,7 +578,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/study_abroad_student_bulletin"
-            android:clickable="true"
+              android:clickable="true"
+            android:focusable="true"
             android:foreground="?android:selectableItemBackground"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
@@ -623,7 +634,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/study_abroad_bulletin"
-            android:clickable="true"
+              android:clickable="true"
+            android:focusable="true"
             android:foreground="?android:selectableItemBackground"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
@@ -678,7 +690,8 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/other_bulletin"
-            android:clickable="true"
+              android:clickable="true"
+            android:focusable="true"
             android:foreground="?android:selectableItemBackground"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
