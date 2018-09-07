@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
          */
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportActionBar!!.title = "Curriculum"
+        supportActionBar!!.title = getText(title_curriculum)
         initContainer()
 
         /**
