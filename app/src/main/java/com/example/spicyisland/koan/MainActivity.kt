@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.example.spicyisland.koan.R.string.*
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -298,9 +299,9 @@ class MainActivity : AppCompatActivity() {
 
             override fun onPageSelected(position: Int) {
                 when(position){
-                    0 -> supportActionBar!!.title = "Curriculum"
-                    1 -> supportActionBar!!.title = "BulletinBoard"
-                    2 -> supportActionBar!!.title = "Account"
+                    0 -> supportActionBar!!.title = getText(title_curriculum)
+                    1 -> supportActionBar!!.title = getText(title_bulletin_board)
+                    2 -> supportActionBar!!.title = getText(title_account)
                 }
             }
 
