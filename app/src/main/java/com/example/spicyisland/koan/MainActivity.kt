@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import com.example.spicyisland.koan.R.string.*
 import io.reactivex.Observer
@@ -95,7 +96,7 @@ class MainActivity : AppCompatActivity() {
      * クッキーを再取得する処理、リンクや時間割も同時に取ってくる、基本的にすべてのデータを再取得する
      * 特にリンクはクッキーと噛み合っていないといけないため絶対に一緒に取ってくる
      */
-    private fun recoverAndSubscribeCookies(){
+    private fun recoverAndSubscribeCookies(showProgressBar: Boolean = false){
         /**
          * クッキーの再取得と同時にすべてtrueになり、全部完了しないと次のクッキーを取得させない
          * すべてのデータを空にする
@@ -117,6 +118,17 @@ class MainActivity : AppCompatActivity() {
                             IsRecovering.isRecoveringCookies = true
                             IsRecovering.isRecoveringCurriculum = true
                             IsRecovering.isRecoveringBulletinBoardLinksAndUnreadCount = true
+
+                            /**
+                             * 手動で更新した場合はプログレスバーを表示
+                             */
+                            if (showProgressBar) {
+                                try {
+                                    mainProgressBar.visibility = View.VISIBLE
+                                }catch (e: Exception) {
+                                    e.printStackTrace()
+                                }
+                            }
 
                             /**
                              * 掲示板のデータはクッキーが変わると使用不能になるので
@@ -180,6 +192,17 @@ class MainActivity : AppCompatActivity() {
                 .subscribe(object : Observer<MutableList<String>> {
                     override fun onComplete() {
                         IsRecovering.isRecoveringCurriculum = false
+                        /**
+                         * 手動更新した場合はプログレスバーが出ているのでこれで消す
+                         * ビューが破棄されている場合は何もしない
+                         */
+                        if (!IsRecovering.isRecoveringBulletinBoardLinksAndUnreadCount) {
+                            try {
+                                mainProgressBar.visibility = View.INVISIBLE
+                            }catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
                     }
                     override fun onSubscribe(d: Disposable) {}
 
@@ -229,6 +252,17 @@ class MainActivity : AppCompatActivity() {
                     override fun onError(e: Throwable) {
                         IsRecovering.isRecoveringCurriculum = false
                         /**
+                         * 手動更新した場合はプログレスバーが出ているのでこれで消す
+                         * ビューが破棄されている場合は何もしない
+                         */
+                        if (!IsRecovering.isRecoveringBulletinBoardLinksAndUnreadCount) {
+                            try {
+                                mainProgressBar.visibility = View.INVISIBLE
+                            }catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
+                        /**
                          * 通信に失敗した場合クッキーが無効になったとみなしクッキーの取得からやり直す
                          * クッキーの再取得をする場合はすべてのデータが再取得される
                          * アクティビティが破棄されていた場合メソッドを実行できないので何もしない
@@ -256,6 +290,17 @@ class MainActivity : AppCompatActivity() {
                 .subscribe(object : Observer<MutableMap<String, MutableList<String>>> {
                     override fun onComplete() {
                         IsRecovering.isRecoveringBulletinBoardLinksAndUnreadCount = false
+                        /**
+                         * 手動更新した場合はプログレスバーが出ているのでこれで消す
+                         * ビューが破棄されている場合は何もしない
+                         */
+                        if (!IsRecovering.isRecoveringCurriculum) {
+                            try {
+                                mainProgressBar.visibility = View.INVISIBLE
+                            }catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
                     }
 
                     override fun onSubscribe(d: Disposable) {}
@@ -273,6 +318,17 @@ class MainActivity : AppCompatActivity() {
 
                     override fun onError(e: Throwable) {
                         IsRecovering.isRecoveringBulletinBoardLinksAndUnreadCount = false
+                        /**
+                         * 手動更新した場合はプログレスバーが出ているのでこれで消す
+                         * ビューが破棄されている場合は何もしない
+                         */
+                        if (!IsRecovering.isRecoveringCurriculum) {
+                            try {
+                                mainProgressBar.visibility = View.INVISIBLE
+                            }catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
                         /**
                          * 通信に失敗した場合クッキーが無効になったとみなしクッキーの取得からやり直す
                          * クッキーの再取得をする場合はすべてのデータが再取得される
@@ -318,11 +374,18 @@ class MainActivity : AppCompatActivity() {
         val id = item.itemId
 
         when (id) {
-            R.id.action_curriculum -> {container.currentItem = 0; return true}
-            R.id.action_notifications -> {container.currentItem = 1; return true}
-            R.id.action_account -> {container.currentItem = 2; return true}
+//            R.id.action_curriculum -> {container.currentItem = 0; return true}
+//            R.id.action_notifications -> {container.currentItem = 1; return true}
+//            R.id.action_account -> {container.currentItem = 2; return true}
             R.id.action_koan -> {
                 startActivity(Intent(this, WebViewActivity::class.java))
+            }
+            R.id.action_refresh -> {
+                if (!IsRecovering.isRecoveringCookies && !IsRecovering.isRecoveringCurriculum && !IsRecovering.isRecoveringBulletinBoardLinksAndUnreadCount) {
+                    recoverAndSubscribeCookies(true)
+                } else {
+                    Toast.makeText(this@MainActivity, R.string.auto_refreshing, Toast.LENGTH_LONG).show()
+                }
             }
         }
         return super.onOptionsItemSelected(item)

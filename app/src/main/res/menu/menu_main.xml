@@ -2,23 +2,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.spicyisland.myapplication.MainActivity">
-    <item
-        android:id="@+id/action_curriculum"
-        android:orderInCategory="100"
-        android:title="@string/title_curriculum"
-        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/action_curriculum"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/title_curriculum"-->
+        <!--app:showAsAction="never" />-->
 
-    <item
-        android:id="@+id/action_notifications"
-        android:orderInCategory="100"
-        android:title="@string/title_notifications"
-        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/action_notifications"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/title_notifications"-->
+        <!--app:showAsAction="never" />-->
 
-    <item
-        android:id="@+id/action_account"
-        android:orderInCategory="100"
-        android:title="@string/title_account"
-        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/action_account"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/title_account"-->
+        <!--app:showAsAction="never" />-->
 
     <item
         android:id="@+id/action_koan"
@@ -26,4 +26,10 @@
         android:icon="@drawable/ic_open_in_browser_black_24dp"
         android:title="@string/title_koan"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        android:title="@string/refresh"
+        app:showAsAction="never"/>
 </menu>
