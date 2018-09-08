@@ -6,6 +6,7 @@
     <color name="navItemChecked">#DB4437</color>
     <color name="navItemUnchecked">#808080</color>
     <color name="lineColor">#F0F0F0</color>
+    <color name="lineColor2">#E0E0E0</color>
     <color name="curriculumBackgroundGreen">#009688</color>
     <color name="curriculumTextColor">#757575</color>
     <color name="titleTextColor">#212121</color>
