@@ -1,4 +1,4 @@
-package com.example.spicyisland.koan
+package com.example.spicyisland.koan.Application
 
 import android.app.Application
 import com.beardedhen.androidbootstrap.TypefaceProvider
