@@ -2,18 +2,20 @@ package com.example.spicyisland.koan
 
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
-
+import android.os.Bundle
+import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.os.Bundle
+import android.support.v4.view.GravityCompat
 import android.support.v4.view.ViewPager
+import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import com.example.spicyisland.koan.R.string.*
+import com.example.spicyisland.koan.R.string.title_curriculum
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -21,26 +23,28 @@ import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
 import io.realm.RealmList
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
-/**
- * TODO: receivedStuffs = ViewModelProviders.of(this).get(ReceivedStuffs::class.java)を書く
- * TODO: Realmにデータがなければログイン画面、あればそれをreceivedStuffs.receivedStrings.valueに追加する
- * TODO: onCreateViewにisRecoveringCookieがfalseのときにクッキーを取得してから時間割と掲示板のリンクを取得する一連の処理を書く
- * TODO: onStartに時間割と掲示板のリンクを取得する処理を書く
- * recoverKoanCookiesをするときは時間割以外のすべてのデータを削除してからやること
- */
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
     private var isOnCreateJustExecuted = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        /**
-         * 見た目の整形
-         */
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
+
         supportActionBar!!.title = getText(title_curriculum)
+
+        val toggle = ActionBarDrawerToggle(
+                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        nav_view.setNavigationItemSelectedListener(this)
+
         initContainer()
 
         /**
@@ -71,7 +75,104 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+    }
 
+    override fun onBackPressed() {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        // Handle navigation view item clicks here.
+        when (item.itemId) {
+            R.id.nav_camera -> {
+                // Handle the camera action
+            }
+            R.id.nav_gallery -> {
+
+            }
+            R.id.nav_slideshow -> {
+
+            }
+            R.id.nav_manage -> {
+
+            }
+            R.id.nav_share -> {
+
+            }
+            R.id.nav_send -> {
+
+            }
+        }
+
+        drawer_layout.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+    private fun initContainer(){
+        mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
+        container.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(state: Int) {}
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+            }
+
+            override fun onPageSelected(position: Int) {
+                when(position){
+                    0 -> supportActionBar!!.title = getText(R.string.title_curriculum)
+                    1 -> supportActionBar!!.title = getText(R.string.title_bulletin_board)
+                    2 -> supportActionBar!!.title = getText(R.string.title_account)
+                }
+            }
+
+        })
+        container.adapter = mSectionsPagerAdapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        when (id) {
+//            R.id.action_curriculum -> {container.currentItem = 0; return true}
+//            R.id.action_notifications -> {container.currentItem = 1; return true}
+//            R.id.action_account -> {container.currentItem = 2; return true}
+            R.id.action_koan -> {
+                startActivity(Intent(this, WebViewActivity::class.java))
+            }
+            R.id.action_refresh -> {
+                if (!IsRecovering.isRecoveringCookies && !IsRecovering.isRecoveringCurriculum && !IsRecovering.isRecoveringBulletinBoardLinksAndUnreadCount) {
+                    recoverAndSubscribeCookies(true)
+                } else {
+                    Toast.makeText(this@MainActivity, R.string.auto_refreshing, Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+
+        override fun getItem(position: Int): Fragment {
+            when(position){
+                0 -> return CurriculumFragment()
+                1 -> return BulletinBoardFragment()
+                2 -> return AccountFragment()
+            }
+            return CurriculumFragment()
+        }
+
+        override fun getCount(): Int {
+            return 3
+        }
     }
 
     override fun onStart() {
@@ -343,68 +444,4 @@ class MainActivity : AppCompatActivity() {
 
                 })
     }
-
-    private fun initContainer(){
-        mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
-        container.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
-            override fun onPageScrollStateChanged(state: Int) {}
-
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-
-            }
-
-            override fun onPageSelected(position: Int) {
-                when(position){
-                    0 -> supportActionBar!!.title = getText(title_curriculum)
-                    1 -> supportActionBar!!.title = getText(title_bulletin_board)
-                    2 -> supportActionBar!!.title = getText(title_account)
-                }
-            }
-
-        })
-        container.adapter = mSectionsPagerAdapter
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-
-        when (id) {
-//            R.id.action_curriculum -> {container.currentItem = 0; return true}
-//            R.id.action_notifications -> {container.currentItem = 1; return true}
-//            R.id.action_account -> {container.currentItem = 2; return true}
-            R.id.action_koan -> {
-                startActivity(Intent(this, WebViewActivity::class.java))
-            }
-            R.id.action_refresh -> {
-                if (!IsRecovering.isRecoveringCookies && !IsRecovering.isRecoveringCurriculum && !IsRecovering.isRecoveringBulletinBoardLinksAndUnreadCount) {
-                    recoverAndSubscribeCookies(true)
-                } else {
-                    Toast.makeText(this@MainActivity, R.string.auto_refreshing, Toast.LENGTH_LONG).show()
-                }
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
-
-        override fun getItem(position: Int): Fragment {
-            when(position){
-                0 -> return CurriculumFragment()
-                1 -> return BulletinBoardFragment()
-                2 -> return AccountFragment()
-            }
-            return CurriculumFragment()
-        }
-
-        override fun getCount(): Int {
-            return 3
-        }
-    }
-
 }

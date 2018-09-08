@@ -1,4 +1,4 @@
-package com.example.spicyisland.koan
+package com.example.spicyisland.koan.Others
 
 val sampleMutableList = mutableListOf("sample1", "sample2", "sample3","sample4",
         "sample5", "sample6", "sample7", "smaple8", "sample9", "sample10", "sample11", "sample12",
