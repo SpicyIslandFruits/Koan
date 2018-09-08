@@ -3,8 +3,9 @@
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#f5f5f5</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="navItemChecked">#DB4437</color>
+    <color name="navItemChecked">#6200EE</color>
     <color name="navItemUnchecked">#808080</color>
+    <color name="navItemCheckedBackground">#F5F5F5</color>
     <color name="lineColor">#F0F0F0</color>
     <color name="lineColor2">#E0E0E0</color>
     <color name="curriculumBackgroundGreen">#009688</color>
