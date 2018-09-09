@@ -108,10 +108,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 container.setCurrentItem(2, true)
             }
             R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
+                /**
+                 * TODO: シェアするときの文字を完成させる
+                 */
+                val shareIntent = Intent(Intent.ACTION_SEND)
+                shareIntent.setType("text/plain")
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Koan")
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "Koanの非公式クライアントアプリです！")
+                startActivity(Intent.createChooser(shareIntent, getText(R.string.share_this_app)))
             }
         }
 

@@ -47,6 +47,8 @@
     <string name="open_koan">Open koan in web browser</string>
     <string name="frequently_asked_question">FAQ</string>
     <string name="logout">Logout</string>
+    <string name="share">Share</string>
+
     <!--TODO: 英語訳を見直す-->
     <string name="cookie_error">Cookie has not set yet. Auto login is unavailable.</string>
     <string name="realm_error">Failed to load data. Please logout.</string>
@@ -60,6 +62,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="share_this_app">Share this app</string>
 
     <!--英語訳する-->
     <string name="lesson_bulletin_bulletin_link">Class Information Board</string>

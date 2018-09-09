@@ -31,9 +31,11 @@
     <string name="feedback">Feedback</string>
     <string name="curriculum_not_found">現在表示可能な時間割がありません。少々お待ちください</string>
     <string name="link_not_set_yet">リンクを取得しています。</string>
+    <string name="share">共有</string>
 
     <string name="realm_error">データの保存に失敗しました、アカウント画面から再ログインしてください</string>
     <string name="recover_cookie_error">クッキーの取得に失敗しました、インターネット接続かログイン情報を確認してください</string>
+    <string name="share_this_app">アプリを共有する</string>
 
     <!--こいつらの英語訳をする-->
     <string name="lesson_bulletin_bulletin_link">授業掲示板</string>
