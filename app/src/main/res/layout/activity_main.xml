@@ -20,7 +20,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         android:background="@android:color/white"
-        app:itemTextColor="@color/navItemUnchecked"
+        app:itemTextColor="@color/textColor"
         app:itemIconTint="@color/navItemUnchecked"
         app:itemBackground="@android:color/transparent"
         app:headerLayout="@layout/nav_header_main"
