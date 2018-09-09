@@ -28,7 +28,7 @@
     <string name="cookie_error">Cookieが無効になっているか、取得が完了していないため、自動ログインは行われません</string>
     <string name="logout_conformation_title">ログアウト</string>
     <string name="logout_confirmation_message">本当にログアウトしてもよろしいですか？</string>
-    <string name="feedback">作者にエールを送る</string>
+    <string name="feedback">Feedback</string>
     <string name="curriculum_not_found">現在表示可能な時間割がありません。少々お待ちください</string>
     <string name="link_not_set_yet">リンクを取得しています。</string>
 
@@ -50,7 +50,7 @@
     <string name="study_abroad_bulletin_link">海外留学</string>
     <string name="other_bulletin_link">その他</string>
     <string name="recover_bulletin_board_link">掲示板にアクセスしたため、掲示のリンクが無効になりました。リンクと件数を再取得します。</string>
-    <string name="getting_bulletin_link_num">データ取得中...</string>
+    <string name="getting_bulletin_link_num">データ取得中…</string>
     <string name="refresh">更新</string>
     <string name="auto_refreshing">現在自動更新中です。</string>
 

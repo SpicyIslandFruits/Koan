@@ -29,8 +29,9 @@
     <string name="title_activity_login">Sign in</string>
     <string name="logout_conformation_title">Logout</string>
     <string name="logout_confirmation_message">Are you sure to logout?</string>
-    <string name="feedback">Send me your feedback</string>
+    <string name="feedback">Feedback</string>
     <string name="curriculum_not_found">There\'s no curriculum available now. Please wait a while</string>
+    <string name="link_not_set_yet">リンクを取得しています。</string>
 
 
     <!-- Strings related to login -->
@@ -59,4 +60,23 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <!--英語訳する-->
+    <string name="lesson_bulletin_bulletin_link">Class Information Board</string>
+    <string name="lesson_bulletin_link">Class</string>
+    <string name="notification_bulletin_link">Notice Message Board</string>
+    <string name="individual_bulletin_link">Personal Message</string>
+    <string name="student_affair_office_bulletin_link">Educational Affairs</string>
+    <string name="minor_course_bulletin_link">Interdisciplinary Program</string>
+    <string name="teaching_profession_bulletin_link">Teaching Profession</string>
+    <string name="scholarship_bulletin_link">Scholarship Support</string>
+    <string name="career_bulletin_link">Career Support</string>
+    <string name="school_life_bulletin_link">Campus Life</string>
+    <string name="study_abroad_study_bulletin_link">International Students</string>
+    <string name="study_abroad_bulletin_link">Study Abroad</string>
+    <string name="other_bulletin_link">Others</string>
+    <string name="recover_bulletin_board_link">掲示板にアクセスしたため、掲示のリンクが無効になりました。リンクと件数を再取得します。</string>
+    <string name="getting_bulletin_link_num">データ取得中…</string>
+    <string name="refresh">Refresh</string>
+    <string name="auto_refreshing">現在自動更新中です。</string>
 </resources>
