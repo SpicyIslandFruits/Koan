@@ -9,6 +9,7 @@ import io.reactivex.Observable.fromCallable
 import io.realm.Realm
 import org.jsoup.Connection
 import org.jsoup.Jsoup
+import org.jsoup.select.Elements
 
 /**
  * サービスはangularの真似をしてオブジェクトお保持するようにしてみた
@@ -34,11 +35,18 @@ object KoanService {
     fun getStringsObservableCallableFromTagAndTagPosition(url: String,
                                      cookies: Map<String, String>?,
                                      tag: String,
-                                     tagPositions: ArrayList<Int>): Observable<MutableList<String>> {
+                                     tagPositions: ArrayList<Int>, isGettingCurriculum: Boolean = false): Observable<MutableList<String>> {
 
         return fromCallable {
             val elementTexts = mutableListOf<String>()
-            val elements = Jsoup.connect(url).cookies(cookies).method(Connection.Method.GET).execute().parse().body().getElementsByTag(tag)
+            val body = Jsoup.connect(url).cookies(cookies).method(Connection.Method.GET).execute().parse().body()
+
+            val elements = if (isGettingCurriculum) {
+                body.select("table.rishu-koma").first().getElementsByTag(tag)
+            }else {
+                body.getElementsByTag(tag)
+            }
+
             for (i in tagPositions)
                 elementTexts.add(elements[i].text())
             elementTexts
@@ -171,7 +179,7 @@ object KoanService {
     fun getAndSaveCurriculum(): Observable<MutableList<String>> {
         val koanCookies = getCookieMapFromCookieManager()
         return getStringsObservableCallableFromTagAndTagPosition(KoanCurriculum, koanCookies,
-                "td", curriculumTagPositions)
+                "td", curriculumTagPositions, true)
     }
 
     /**
