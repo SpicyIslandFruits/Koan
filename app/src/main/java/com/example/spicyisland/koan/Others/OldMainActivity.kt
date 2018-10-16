@@ -186,7 +186,7 @@
 //     * データの保存処理とtry..catchが多い為長い、、、
 //     */
 //    private fun getAndSaveAndSubscribeCurriculum() {
-//        KoanService.getAndSaveCurriculum()
+//        KoanService.setCookieToGlobalAndGetCurriculum()
 //                .subscribeOn(Schedulers.newThread())
 //                .observeOn(AndroidSchedulers.mainThread())
 //                .subscribe(object : Observer<MutableList<String>> {

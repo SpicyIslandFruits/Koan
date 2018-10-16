@@ -309,10 +309,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
      * データの保存処理とtry..catchが多い為長い、、、
      */
     private fun getAndSaveAndSubscribeCurriculum() {
-        KoanService.getAndSaveCurriculum()
+        KoanService.setCookieToGlobalAndGetCurriculum()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Observer<MutableList<String>> {
+                .subscribe(object : Observer<MutableMap<String, MutableList<String>>> {
                     override fun onComplete() {
                         IsRecovering.isRecoveringCurriculum = false
                         /**
@@ -332,16 +332,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     /**
                      * 取得したデータをrealmListの形に直して保存し、グローバル変数にも入れる
                      */
-                    override fun onNext(curriculum: MutableList<String>) {
+                    override fun onNext(curriculumAndSyllabusLinks: MutableMap<String, MutableList<String>>) {
                         /**
                          * 非同期処理なのでここでrealm初期化
                          * データの形式をrealmListに変更
+                         * 時間割とシラバスのリンクについてやる
+                         * TODO: 今はcurriculumSyllabusLinksがないときにはぬるぽが出るが、わんちゃんtry_catch文でエラー処理したほうがいいかもしれない
                          */
                         val realmCurriculum = RealmList<String>()
+                        val realmSyllabusLinks = RealmList<String>()
                         val tempRealm = Realm.getDefaultInstance()
                         val userData = tempRealm.where(User::class.java).findFirst()
-                        for (curriculumData in curriculum)
+                        for (curriculumData in curriculumAndSyllabusLinks["curriculum"]!!)
                             realmCurriculum.add(curriculumData)
+                        for (syllabusLinks in curriculumAndSyllabusLinks["syllabusLinks"]!!)
+                            realmSyllabusLinks.add(syllabusLinks)
 
                         /**
                          * realmに保存
@@ -350,6 +355,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         try {
                             tempRealm.beginTransaction()
                             userData!!.curriculum = realmCurriculum
+                            userData.syllabusLinks = realmSyllabusLinks
                             tempRealm.commitTransaction()
                         }catch (e: Exception){
                             tempRealm.cancelTransaction()
@@ -364,7 +370,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                         /**
                          * グローバル変数に入れる処理
                          */
-                        receivedStuffs.receivedCurriculum.value = curriculum
+                        receivedStuffs.receivedCurriculum.value = curriculumAndSyllabusLinks["curriculum"]
+                        receivedStuffs.receivedSyllabusLinks.value = curriculumAndSyllabusLinks["syllabusLinks"]
 
                         /**
                          * realm閉じる
@@ -385,6 +392,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                 e.printStackTrace()
                             }
                         }
+                        
                         /**
                          * 通信に失敗した場合クッキーが無効になったとみなしクッキーの取得からやり直す
                          * クッキーの再取得をする場合はすべてのデータが再取得される

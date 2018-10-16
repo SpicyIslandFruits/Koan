@@ -9,7 +9,6 @@ import io.reactivex.Observable.fromCallable
 import io.realm.Realm
 import org.jsoup.Connection
 import org.jsoup.Jsoup
-import org.jsoup.select.Elements
 
 /**
  * サービスはangularの真似をしてオブジェクトお保持するようにしてみた
@@ -50,6 +49,63 @@ object KoanService {
             for (i in tagPositions)
                 elementTexts.add(elements[i].text())
             elementTexts
+        }
+    }
+
+    fun getCurriculumAndSyllabusLinksObservableCallable(url: String = KoanCurriculum,
+                                                        cookies: Map<String, String>?,
+                                                        curriculumTagPositions: ArrayList<Int>,
+                                                        curriculumTag: String = "td",
+                                                        syllabusLinkTag: String = "a"): Observable<MutableMap<String, MutableList<String>>> {
+        return fromCallable {
+            /**
+             * 時間割とシラバスのリンクを格納しておく変数
+             * このメソッドはこれをリターンする
+             */
+            val curriculumAndSyllabusLinks = mutableMapOf<String, MutableList<String>>()
+
+            /**
+             * 時間割のリンクに接続し時間割が書かれているテーブル(rishu-koma)を取ってくる
+             */
+            val curriculumTable = Jsoup.connect(url).cookies(cookies)
+                    .method(Connection.Method.GET).execute().parse().body()
+                    .select("table.rishu-koma").first()
+
+            /**
+             * tdタグとそれらの場所から時間割の文字列を取得してくる
+             * curriculumに代入する
+             */
+            val curriculumElements = curriculumTable.getElementsByTag(curriculumTag)
+            val curriculum = mutableListOf<String>()
+            for (i in curriculumTagPositions) {
+                curriculum.add(curriculumElements[i].text())
+            }
+
+            /**
+             * シラバスのリンクを生成するための引数が書かれているタグから文字列を取ってきて
+             * それらを連結させてシラバスのリンクを生成し、syllabusLinksに代入する
+             */
+            val syllabusLinks = mutableListOf<String>()
+            val syllabusRefers = curriculumTable.getElementsByTag(syllabusLinkTag)
+            for (syllabusRefer in syllabusRefers) {
+                val syllabusReferArguments = syllabusRefer.attr("onclick").replace("[^-?0-9]+".toRegex(), "/")
+                        .split("/")
+                syllabusLinks.add(
+                        "https://koan.osaka-u.ac.jp/campusweb/campussquare.do?_flowId=SYW0001000-flow&_eventId=syllabus&nendo="
+                        + syllabusReferArguments[1]
+                        +"&jikanwarishozokucd="
+                        +syllabusReferArguments[2]
+                        +"&jikanwaricd="
+                        +syllabusReferArguments[3]
+                )
+            }
+
+            /**
+             * 上で取得した時間割とシラバスのリンクをcurriculumAndSyllabusLinksに代入して返す
+             */
+            curriculumAndSyllabusLinks["curriculum"] = curriculum
+            curriculumAndSyllabusLinks["syllabusLinks"] = syllabusLinks
+            curriculumAndSyllabusLinks
         }
     }
 
@@ -176,10 +232,9 @@ object KoanService {
      * TODO: onNextでデータの保存をtryしてエラーをcatchした場合再ログインを求めるトーストを表示する処理、receivedStuffsに入れる処理を書く
      * TODO: onErrorでisRecoveringCookiesをfalseに変えてrecoverCookiesを手順通りに行う処理を書いたメソッドを実行する処理をアクティビティに書く
      */
-    fun getAndSaveCurriculum(): Observable<MutableList<String>> {
+    fun setCookieToGlobalAndGetCurriculum(): Observable<MutableMap<String, MutableList<String>>> {
         val koanCookies = getCookieMapFromCookieManager()
-        return getStringsObservableCallableFromTagAndTagPosition(KoanCurriculum, koanCookies,
-                "td", curriculumTagPositions, true)
+        return getCurriculumAndSyllabusLinksObservableCallable(KoanCurriculum, koanCookies,curriculumTagPositions)
     }
 
     /**

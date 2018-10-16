@@ -10,6 +10,7 @@ class ReceivedStuffs: ViewModel(){
     val receivedCurriculum = MutableLiveData<MutableList<String>>()
     val receivedBulletinBoardLinks = MutableLiveData<MutableList<String>>()
     val receivedBulletinBoardUnreadCount = MutableLiveData<MutableList<String>>()
+    val receivedSyllabusLinks = MutableLiveData<MutableList<String>>()
 }
 
 /**

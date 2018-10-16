@@ -12,4 +12,5 @@ open class User: RealmObject() {
     var userData = byteArrayOf()
     var iv = byteArrayOf()
     var curriculum = RealmList<String>()
+    var syllabusLinks = RealmList<String>()
 }
