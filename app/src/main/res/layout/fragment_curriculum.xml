@@ -6,6 +6,9 @@
         <variable
             name="receivedStuffs"
             type="com.example.spicyisland.koan.Models.ReceivedStuffs" />
+        <variable
+            name="owner"
+            type="com.example.spicyisland.koan.Fragments.CurriculumFragment" />
     </data>
     <android.support.constraint.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -284,6 +287,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[0]}'
                 android:background='@{receivedStuffs.receivedCurriculum[0].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(0)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline8"
@@ -300,6 +304,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[6]}'
                 android:background='@{receivedStuffs.receivedCurriculum[6].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(6)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline8"
@@ -316,6 +321,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[12]}'
                 android:background='@{receivedStuffs.receivedCurriculum[12].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(12)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline8"
@@ -332,6 +338,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[18]}'
                 android:background='@{receivedStuffs.receivedCurriculum[18].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(18)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline8"
@@ -348,6 +355,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[24]}'
                 android:background='@{receivedStuffs.receivedCurriculum[24].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(24)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline8"
@@ -364,6 +372,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[30]}'
                 android:background='@{receivedStuffs.receivedCurriculum[30].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(30)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline8"
@@ -380,6 +389,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[1]}'
                 android:background='@{receivedStuffs.receivedCurriculum[1].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(1)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline9"
@@ -396,6 +406,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[7]}'
                 android:background='@{receivedStuffs.receivedCurriculum[7].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(7)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline9"
@@ -412,6 +423,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[13]}'
                 android:background='@{receivedStuffs.receivedCurriculum[13].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(13)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline9"
@@ -428,6 +440,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[19]}'
                 android:background='@{receivedStuffs.receivedCurriculum[19].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(19)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline9"
@@ -444,6 +457,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[25]}'
                 android:background='@{receivedStuffs.receivedCurriculum[25].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(25)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline9"
@@ -460,6 +474,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[31]}'
                 android:background='@{receivedStuffs.receivedCurriculum[31].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(31)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline9"
@@ -476,6 +491,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[2]}'
                 android:background='@{receivedStuffs.receivedCurriculum[2].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(2)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
@@ -492,6 +508,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[8]}'
                 android:background='@{receivedStuffs.receivedCurriculum[8].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(8)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
@@ -508,6 +525,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[14]}'
                 android:background='@{receivedStuffs.receivedCurriculum[14].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(14)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
@@ -524,6 +542,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[20]}'
                 android:background='@{receivedStuffs.receivedCurriculum[20].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(20)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
@@ -540,6 +559,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[26]}'
                 android:background='@{receivedStuffs.receivedCurriculum[26].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(26)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
@@ -556,6 +576,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[32]}'
                 android:background='@{receivedStuffs.receivedCurriculum[32].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(32)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline10"
@@ -572,6 +593,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[3]}'
                 android:background='@{receivedStuffs.receivedCurriculum[3].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(3)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline11"
@@ -588,6 +610,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[9]}'
                 android:background='@{receivedStuffs.receivedCurriculum[9].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(9)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline11"
@@ -604,6 +627,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[15]}'
                 android:background='@{receivedStuffs.receivedCurriculum[15].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(15)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline11"
@@ -620,6 +644,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[21]}'
                 android:background='@{receivedStuffs.receivedCurriculum[21].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(21)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline11"
@@ -636,6 +661,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[27]}'
                 android:background='@{receivedStuffs.receivedCurriculum[27].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(27)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline11"
@@ -652,6 +678,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[33]}'
                 android:background='@{receivedStuffs.receivedCurriculum[33].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(33)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline11"
@@ -668,6 +695,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[4]}'
                 android:background='@{receivedStuffs.receivedCurriculum[4].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(4)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline12"
@@ -684,6 +712,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[10]}'
                 android:background='@{receivedStuffs.receivedCurriculum[10].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(10)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline12"
@@ -700,6 +729,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[16]}'
                 android:background='@{receivedStuffs.receivedCurriculum[16].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(16)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline12"
@@ -716,6 +746,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[22]}'
                 android:background='@{receivedStuffs.receivedCurriculum[22].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(22)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline12"
@@ -732,6 +763,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[28]}'
                 android:background='@{receivedStuffs.receivedCurriculum[28].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(28)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline12"
@@ -748,6 +780,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[34]}'
                 android:background='@{receivedStuffs.receivedCurriculum[34].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(34)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline12"
@@ -764,6 +797,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[5]}'
                 android:background='@{receivedStuffs.receivedCurriculum[5].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(5)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
@@ -780,6 +814,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[11]}'
                 android:background='@{receivedStuffs.receivedCurriculum[11].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(11)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -796,6 +831,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[17]}'
                 android:background='@{receivedStuffs.receivedCurriculum[17].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(17)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
@@ -812,6 +848,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[23]}'
                 android:background='@{receivedStuffs.receivedCurriculum[23].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(23)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
@@ -828,6 +865,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[29]}'
                 android:background='@{receivedStuffs.receivedCurriculum[29].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(29)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
@@ -844,6 +882,7 @@
                 android:padding="3dp"
                 android:text='@{receivedStuffs.receivedCurriculum[35]}'
                 android:background='@{receivedStuffs.receivedCurriculum[35].isEmpty ? null : @drawable/rounded_corner_background_green}'
+                android:onClick='@{() -> owner.onClickCurriculum(35)}'
                 android:textColor="@android:color/white"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"

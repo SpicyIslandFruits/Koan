@@ -201,13 +201,13 @@ object KoanService {
         val userData = mutableMapOf<String, String>()
         val realm = Realm.getDefaultInstance()
         val encryptedUserData = realm.where(User::class.java).findFirst()
-        if (encryptedUserData != null) {
+        return if (encryptedUserData != null) {
             val decrypted = DeCryptor().decryptData(encryptedUserData.userData, encryptedUserData.iv)
             userData["koanID"] = decrypted.substring(0, 8)
             userData["Password"] = decrypted.substring(8)
-            return userData
+            userData
         } else {
-            return null
+            null
         }
     }
 
@@ -218,11 +218,10 @@ object KoanService {
      * TODO: onErrorでトーストの表示とisRecoveringCookiesをfalseにするメソッドをアクティビティに書く
      */
     fun recoverCookies(): Observable<Map<String, String>> {
-        val userData: Map<String, String>?
-        if (getAndDecryptIDAndPassFromRealm() != null) {
-            userData = getAndDecryptIDAndPassFromRealm()
+        val userData: Map<String, String>? = if (getAndDecryptIDAndPassFromRealm() != null) {
+            getAndDecryptIDAndPassFromRealm()
         } else {
-            userData = mapOf()
+            mapOf()
         }
         return getKoanCookiesObservableCallable(userData!!["koanID"], userData["Password"], true)
     }

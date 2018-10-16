@@ -337,14 +337,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                          * 非同期処理なのでここでrealm初期化
                          * データの形式をrealmListに変更
                          * 時間割とシラバスのリンクについてやる
+                         * リンクをつける時間割を判別するためにavailableCurriculumPositionに有効な時間割の場所を書く
+                         * リンクを保存するときは先頭にリンクポジションをつけて保存する
+                         * onClickの中で押された時間割と合致するリンクポジションがある場合はそのリンクを開くようにする
                          * TODO: 今はcurriculumSyllabusLinksがないときにはぬるぽが出るが、わんちゃんtry_catch文でエラー処理したほうがいいかもしれない
                          */
                         val realmCurriculum = RealmList<String>()
                         val realmSyllabusLinks = RealmList<String>()
+                        val availableCurriculumPositions = RealmList<Int>()
                         val tempRealm = Realm.getDefaultInstance()
                         val userData = tempRealm.where(User::class.java).findFirst()
-                        for (curriculumData in curriculumAndSyllabusLinks["curriculum"]!!)
+                        for ((position, curriculumData) in curriculumAndSyllabusLinks["curriculum"]!!.withIndex()) {
                             realmCurriculum.add(curriculumData)
+                            //有効だった時間割を記憶するメソッド
+                            if (curriculumData != "")
+                                availableCurriculumPositions.add(position)
+                        }
                         for (syllabusLinks in curriculumAndSyllabusLinks["syllabusLinks"]!!)
                             realmSyllabusLinks.add(syllabusLinks)
 
@@ -356,6 +364,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                             tempRealm.beginTransaction()
                             userData!!.curriculum = realmCurriculum
                             userData.syllabusLinks = realmSyllabusLinks
+                            userData.availableCurriculumPositions = availableCurriculumPositions
                             tempRealm.commitTransaction()
                         }catch (e: Exception){
                             tempRealm.cancelTransaction()
@@ -392,7 +401,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                                 e.printStackTrace()
                             }
                         }
-                        
+
                         /**
                          * 通信に失敗した場合クッキーが無効になったとみなしクッキーの取得からやり直す
                          * クッキーの再取得をする場合はすべてのデータが再取得される
