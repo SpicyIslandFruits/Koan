@@ -30,21 +30,19 @@ object KoanService {
      * TODO: onErrorには基本的にクッキーが間違っていると判断してクッキーの取得からやり直す処理を書く
      * TODO: クッキーの取得をやり直す場合、receivedStuffにはいっているデータをすべて削除し、必要なデータをすべて取得し直す
      * TODO: それでもエラーが出た場合は、インターネット接続の確認、ログインのやり直しを求めるトーストを表示
+     * TODO: 少し編集したのでこれでエラーが出ないか一回実行して確認する←まだやっていないのでいつか絶対やる
      */
     fun getStringsObservableCallableFromTagAndTagPosition(url: String,
                                      cookies: Map<String, String>?,
                                      tag: String,
-                                     tagPositions: ArrayList<Int>, isGettingCurriculum: Boolean = false): Observable<MutableList<String>> {
+                                     tagPositions: ArrayList<Int>): Observable<MutableList<String>> {
 
         return fromCallable {
             val elementTexts = mutableListOf<String>()
-            val body = Jsoup.connect(url).cookies(cookies).method(Connection.Method.GET).execute().parse().body()
-
-            val elements = if (isGettingCurriculum) {
-                body.select("table.rishu-koma").first().getElementsByTag(tag)
-            }else {
-                body.getElementsByTag(tag)
-            }
+            val elements = Jsoup.connect(url)
+                    .cookies(cookies)
+                    .method(Connection.Method.GET)
+                    .execute().parse().body().getElementsByTag(tag)
 
             for (i in tagPositions)
                 elementTexts.add(elements[i].text())
