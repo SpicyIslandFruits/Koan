@@ -6,7 +6,7 @@
         <import type="android.view.View"/>
         <variable
             name="receivedStuffs"
-            type="com.example.spicyisland.koan.Models.ReceivedStuffs" />
+            type="com.mk.spicyisland.koan.Models.ReceivedStuffs" />
     </data>
     <android.support.v7.widget.GridLayout
         android:layout_width="match_parent"

@@ -5,10 +5,10 @@
         <import type="android.view.View"/>
         <variable
             name="receivedStuffs"
-            type="com.example.spicyisland.koan.Models.ReceivedStuffs" />
+            type="com.mk.spicyisland.koan.Models.ReceivedStuffs" />
         <variable
             name="owner"
-            type="com.example.spicyisland.koan.Fragments.CurriculumFragment" />
+            type="com.mk.spicyisland.koan.Fragments.CurriculumFragment" />
     </data>
     <android.support.constraint.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
