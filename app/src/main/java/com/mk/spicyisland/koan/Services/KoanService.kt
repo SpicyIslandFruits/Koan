@@ -9,6 +9,7 @@ import io.reactivex.Observable.fromCallable
 import io.realm.Realm
 import org.jsoup.Connection
 import org.jsoup.Jsoup
+import java.util.*
 
 /**
  * サービスはangularの真似をしてオブジェクトお保持するようにしてみた
@@ -231,7 +232,8 @@ object KoanService {
      */
     fun setCookieToGlobalAndGetCurriculum(): Observable<MutableMap<String, MutableList<String>>> {
         val koanCookies = getCookieMapFromCookieManager()
-        return getCurriculumAndSyllabusLinksObservableCallable(KoanCurriculum, koanCookies,curriculumTagPositions)
+        val curriculumUrl = if (Locale.getDefault().displayLanguage == "English") KoanCurriculumEn else KoanCurriculum
+        return getCurriculumAndSyllabusLinksObservableCallable(curriculumUrl, koanCookies,curriculumTagPositions)
     }
 
     /**

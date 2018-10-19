@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.mk.spicyisland.koan.Application.MyApplication"
+        android:name=".Application.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/handai_icon"
         android:label="@string/app_name"
@@ -13,25 +13,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.mk.spicyisland.koan.Activities.LoginActivity"
+            android:name=".Activities.LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.mk.spicyisland.koan.Activities.WebViewActivity"
-            android:parentActivityName="com.mk.spicyisland.koan.Activities.MainActivity"
+            android:name=".Activities.WebViewActivity"
+            android:parentActivityName=".Activities.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.mk.spicyisland.koan.Activities.MainActivity"
+            android:name=".Activities.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activities.FaqActivity"
+            android:label="@string/frequently_asked_question"
+            android:parentActivityName=".Activities.MainActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

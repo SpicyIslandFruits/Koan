@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Koan</string>
+    <string name="title_koan">Koan</string>
     <string name="title_home">ホーム</string>
     <string name="title_account">アカウント</string>
     <string name="title_dashboard">Dashboard</string>
@@ -32,10 +33,33 @@
     <string name="curriculum_not_found">現在表示可能な時間割がありません。少々お待ちください</string>
     <string name="link_not_set_yet">リンクを取得しています。</string>
     <string name="share">共有</string>
+    <string name="prompt_ID">Koan ID</string>
 
     <string name="realm_error">データの保存に失敗しました、アカウント画面から再ログインしてください</string>
     <string name="recover_cookie_error">クッキーの取得に失敗しました、インターネット接続かログイン情報を確認してください</string>
     <string name="share_this_app">アプリを共有する</string>
+
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Koan</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="first_lesson">1</string>
+    <string name="second_lesson">2</string>
+    <string name="third_lesson">3</string>
+    <string name="fourth_lesson">4</string>
+    <string name="fifth_lesson">5</string>
+    <string name="sixth_lesson">6</string>
+    <string name="first_lesson_time">8:50~</string>
+    <string name="second_lesson_time">10:30~</string>
+    <string name="third_lesson_time">13:00~</string>
+    <string name="fourth_lesson_time">14:40~</string>
+    <string name="fifth_lesson_time">16:20~</string>
+    <string name="sixth_lesson_time">18:00~</string>
+    <string name="title_activity_login">Sign in</string>
 
     <!--こいつらの英語訳をする-->
     <string name="lesson_bulletin_bulletin_link">授業掲示板</string>
@@ -55,5 +79,8 @@
     <string name="getting_bulletin_link_num">データ取得中…</string>
     <string name="refresh">更新</string>
     <string name="auto_refreshing">現在自動更新中です。</string>
+    <string name="email_subject">sample subject</string>
+    <string name="email_body">sample body</string>
+    <string name="email_address">sample email adress</string>
 
 </resources>

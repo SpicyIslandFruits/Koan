@@ -11,12 +11,10 @@ import android.webkit.CookieManager
 import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_account.*
 import android.support.v7.app.AlertDialog
+import com.mk.spicyisland.koan.Activities.FaqActivity
 import com.mk.spicyisland.koan.Activities.LoginActivity
 import com.mk.spicyisland.koan.R
 import com.mk.spicyisland.koan.Models.User
-import android.net.Uri.fromParts
-
-
 
 /**
  * アカウント画面
@@ -43,6 +41,10 @@ class AccountFragment : Fragment() {
 
         feedbackButton.setOnClickListener{
             sendFeedback()
+        }
+
+        FAQButton.setOnClickListener{
+            openFaqActivity()
         }
     }
 
@@ -107,9 +109,14 @@ class AccountFragment : Fragment() {
 
     private fun sendFeedback() {
         val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                "mailto", "spicyisland1998@gmail.com", null))
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject")
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Body")
+                "mailto", getString(R.string.email_address), null))
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject))
+        emailIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.email_body))
         startActivity(Intent.createChooser(emailIntent, "Send Feedback:"))
+    }
+
+    private fun openFaqActivity() {
+        val intent = Intent(this.context, FaqActivity::class.java)
+        startActivity(intent)
     }
 }
