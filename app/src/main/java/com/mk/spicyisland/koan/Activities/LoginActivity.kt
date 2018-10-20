@@ -162,7 +162,7 @@ class LoginActivity : AppCompatActivity() {
      */
     private fun hideKeyboard() {
         (applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-                .hideSoftInputFromWindow(currentFocus.windowToken, 0)
+                .hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
     }
 
     /**
