@@ -113,8 +113,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                  */
                 val shareIntent = Intent(Intent.ACTION_SEND)
                 shareIntent.setType("text/plain")
-                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Koan")
-                shareIntent.putExtra(Intent.EXTRA_TEXT, "Koanの非公式クライアントアプリです！")
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, getText(R.string.share_app_subject))
+                shareIntent.putExtra(Intent.EXTRA_TEXT, getText(R.string.share_app_body))
                 startActivity(Intent.createChooser(shareIntent, getText(R.string.share_this_app)))
             }
         }

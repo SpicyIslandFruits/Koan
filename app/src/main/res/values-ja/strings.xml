@@ -79,8 +79,10 @@
     <string name="getting_bulletin_link_num">データ取得中…</string>
     <string name="refresh">更新</string>
     <string name="auto_refreshing">現在自動更新中です。</string>
-    <string name="email_subject">sample subject</string>
-    <string name="email_body">sample body</string>
-    <string name="email_address">sample email adress</string>
+    <string name="email_subject">KoanアプリのFeedback！</string>
+    <string name="email_body">Koanアプリのフィードバックです。疑問点やバグ、要望やその他のメッセージを書いてください。もしよければストアで評価してください！</string>
+    <string name="email_address">spicyisland1998@gmail.com</string>
+    <string name="share_app_body">私はKoanの非公式クライアントアプリを使っています。\n▼ダウンロードはこちら！\n\nhttps://sample.url</string>
+    <string name="share_app_subject">Koanアプリをシェア</string>
 
 </resources>
