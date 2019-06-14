@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".Application.MyApplication"
+        android:name=".application.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/handai_icon"
         android:label="@string/app_name"
@@ -13,15 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activities.LoginActivity"
+            android:name=".activities.LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.WebViewActivity"
-            android:parentActivityName=".Activities.MainActivity"
+            android:name=".activities.WebViewActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -33,9 +33,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.FaqActivity"
+            android:name=".activities.FaqActivity"
             android:label="@string/frequently_asked_question"
-            android:parentActivityName=".Activities.MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:screenOrientation="portrait"/>
     </application>
 

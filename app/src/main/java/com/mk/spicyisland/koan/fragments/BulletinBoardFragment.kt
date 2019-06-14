@@ -1,4 +1,4 @@
-package com.mk.spicyisland.koan.Fragments
+package com.mk.spicyisland.koan.fragments
 
 import android.content.Intent
 import android.databinding.DataBindingUtil
@@ -9,9 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.mk.spicyisland.koan.R
-import com.mk.spicyisland.koan.Activities.WebViewActivity
+import com.mk.spicyisland.koan.activities.WebViewActivity
 import com.mk.spicyisland.koan.databinding.FragmentBulletinBoardBinding
-import com.mk.spicyisland.koan.Models.receivedStuffs
+import com.mk.spicyisland.koan.models.receivedStuffs
 import kotlinx.android.synthetic.main.fragment_bulletin_board.*
 
 /**

@@ -1,9 +1,9 @@
-package com.mk.spicyisland.koan.Services
+package com.mk.spicyisland.koan.services
 
 import android.webkit.CookieManager
-import com.mk.spicyisland.koan.ConstData.*
-import com.mk.spicyisland.koan.Models.User
-import com.mk.spicyisland.koan.Tools.DeCryptor
+import com.mk.spicyisland.koan.constants.*
+import com.mk.spicyisland.koan.models.User
+import com.mk.spicyisland.koan.tools.DeCryptor
 import io.reactivex.Observable
 import io.reactivex.Observable.fromCallable
 import io.realm.Realm

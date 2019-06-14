@@ -1,4 +1,4 @@
-package com.mk.spicyisland.koan.Models
+package com.mk.spicyisland.koan.models
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel

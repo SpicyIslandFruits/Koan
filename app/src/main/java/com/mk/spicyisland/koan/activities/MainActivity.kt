@@ -1,4 +1,4 @@
-package com.mk.spicyisland.koan.Activities
+package com.mk.spicyisland.koan.activities
 
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
@@ -16,15 +16,15 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.mk.spicyisland.koan.*
-import com.mk.spicyisland.koan.Fragments.AccountFragment
-import com.mk.spicyisland.koan.Fragments.BulletinBoardFragment
-import com.mk.spicyisland.koan.Fragments.CurriculumFragment
-import com.mk.spicyisland.koan.Models.ReceivedStuffs
-import com.mk.spicyisland.koan.Models.User
-import com.mk.spicyisland.koan.Models.receivedStuffs
+import com.mk.spicyisland.koan.fragments.AccountFragment
+import com.mk.spicyisland.koan.fragments.BulletinBoardFragment
+import com.mk.spicyisland.koan.fragments.CurriculumFragment
+import com.mk.spicyisland.koan.models.ReceivedStuffs
+import com.mk.spicyisland.koan.models.User
+import com.mk.spicyisland.koan.models.receivedStuffs
 import com.mk.spicyisland.koan.R.string.title_curriculum
-import com.mk.spicyisland.koan.Services.IsRecovering
-import com.mk.spicyisland.koan.Services.KoanService
+import com.mk.spicyisland.koan.services.IsRecovering
+import com.mk.spicyisland.koan.services.KoanService
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable

@@ -1,4 +1,4 @@
-package com.mk.spicyisland.koan.ConstData
+package com.mk.spicyisland.koan.constants
 
 /**
  * .followRedirects(false)をセットしてkoanCookiesを取得する

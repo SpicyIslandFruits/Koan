@@ -1,4 +1,4 @@
-package com.mk.spicyisland.koan.Fragments
+package com.mk.spicyisland.koan.fragments
 
 import android.content.Intent
 import android.net.Uri
@@ -11,10 +11,10 @@ import android.webkit.CookieManager
 import io.realm.Realm
 import kotlinx.android.synthetic.main.fragment_account.*
 import android.support.v7.app.AlertDialog
-import com.mk.spicyisland.koan.Activities.FaqActivity
-import com.mk.spicyisland.koan.Activities.LoginActivity
+import com.mk.spicyisland.koan.activities.FaqActivity
+import com.mk.spicyisland.koan.activities.LoginActivity
 import com.mk.spicyisland.koan.R
-import com.mk.spicyisland.koan.Models.User
+import com.mk.spicyisland.koan.models.User
 
 /**
  * アカウント画面

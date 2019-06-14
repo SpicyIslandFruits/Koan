@@ -6,14 +6,14 @@
         <import type="android.view.View"/>
         <variable
             name="receivedStuffs"
-            type="com.mk.spicyisland.koan.Models.ReceivedStuffs" />
+            type="com.mk.spicyisland.koan.models.ReceivedStuffs" />
     </data>
     <android.support.v7.widget.GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:columnCount="3"
         app:rowCount="5"
-        tools:context=".Fragments.BulletinBoardFragment"
+        tools:context=".fragments.BulletinBoardFragment"
         android:padding="16dp">
 
         <android.support.v7.widget.CardView

@@ -1,4 +1,4 @@
-package com.mk.spicyisland.koan.Activities
+package com.mk.spicyisland.koan.activities
 
 import android.content.Context
 import android.content.Intent
@@ -17,9 +17,9 @@ import kotlinx.android.synthetic.main.activity_login.*
 import android.support.v4.content.ContextCompat
 import android.view.WindowManager
 import com.mk.spicyisland.koan.R
-import com.mk.spicyisland.koan.Services.KoanService
-import com.mk.spicyisland.koan.Tools.EnCryptor
-import com.mk.spicyisland.koan.Models.User
+import com.mk.spicyisland.koan.services.KoanService
+import com.mk.spicyisland.koan.tools.EnCryptor
+import com.mk.spicyisland.koan.models.User
 
 /**
  * ログインアクティビティ

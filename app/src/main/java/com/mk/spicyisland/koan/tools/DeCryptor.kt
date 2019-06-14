@@ -1,4 +1,4 @@
-package com.mk.spicyisland.koan.Tools
+package com.mk.spicyisland.koan.tools
 
 import java.security.*
 import javax.crypto.*

@@ -1,4 +1,4 @@
-package com.mk.spicyisland.koan.ConstData
+package com.mk.spicyisland.koan.constants
 
 /**
  * 時間割の文字列が入っているtdタグの番号

@@ -1,4 +1,4 @@
-package com.mk.spicyisland.koan.Models
+package com.mk.spicyisland.koan.models
 
 import io.realm.RealmList
 import io.realm.RealmObject

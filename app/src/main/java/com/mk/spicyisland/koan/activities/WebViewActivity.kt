@@ -1,4 +1,4 @@
-package com.mk.spicyisland.koan.Activities
+package com.mk.spicyisland.koan.activities
 
 import android.graphics.Bitmap
 import android.support.v7.app.AppCompatActivity
@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.webkit.*
 import android.widget.Toast
-import com.mk.spicyisland.koan.ConstData.BulletinBoardLink
-import com.mk.spicyisland.koan.ConstData.KoanMainPage
-import com.mk.spicyisland.koan.Models.receivedStuffs
+import com.mk.spicyisland.koan.constants.BulletinBoardLink
+import com.mk.spicyisland.koan.constants.KoanMainPage
+import com.mk.spicyisland.koan.models.receivedStuffs
 import com.mk.spicyisland.koan.R
 import kotlinx.android.synthetic.main.activity_web_view.*
 

@@ -1,4 +1,4 @@
-package com.mk.spicyisland.koan.Fragments
+package com.mk.spicyisland.koan.fragments
 
 import android.content.Intent
 import android.databinding.DataBindingUtil
@@ -7,11 +7,11 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.mk.spicyisland.koan.Activities.WebViewActivity
-import com.mk.spicyisland.koan.Models.User
+import com.mk.spicyisland.koan.activities.WebViewActivity
+import com.mk.spicyisland.koan.models.User
 import com.mk.spicyisland.koan.R
 import com.mk.spicyisland.koan.databinding.FragmentCurriculumBinding
-import com.mk.spicyisland.koan.Models.receivedStuffs
+import com.mk.spicyisland.koan.models.receivedStuffs
 import io.realm.Realm
 
 /**
