@@ -9,6 +9,7 @@ import io.reactivex.Observable.fromCallable
 import io.realm.Realm
 import org.jsoup.Connection
 import org.jsoup.Jsoup
+import java.lang.Exception
 import java.util.*
 
 /**
@@ -66,9 +67,9 @@ object KoanService {
             /**
              * 時間割のリンクに接続し時間割が書かれているテーブル(rishu-koma)を取ってくる
              */
-            val curriculumTable = Jsoup.connect(url).cookies(cookies)
-                    .method(Connection.Method.GET).execute().parse().body()
-                    .select("table.rishu-koma").first()
+            val httpResponse = Jsoup.connect(url).cookies(cookies).method(Connection.Method.GET).execute()
+            val curriculumBody = httpResponse.parse().body()
+            val curriculumTable = curriculumBody.select("table.rishu-koma").first()
 
             /**
              * tdタグとそれらの場所から時間割の文字列を取得してくる
@@ -178,16 +179,30 @@ object KoanService {
         val koanCookiesString = cookieManager.getCookie(url)
         var koanCookies: MutableMap<String, String>? = mutableMapOf()
         if (koanCookiesString != null) {
-            val koanCookie = koanCookiesString.split("=", ";")
-            for (i in 0 until koanCookie.size step 2)
-                koanCookies!![koanCookie[i]] = koanCookie[i + 1]
-
-            if (koanCookies!!.size != expectedCookieSize){
+            koanCookies = processCookies(koanCookiesString)
+            if (koanCookies.size != expectedCookieSize){
                 koanCookies = null
             }
         }else{
             koanCookies = null
         }
+
+        return koanCookies
+    }
+
+    /**
+     * @param koanCookiesString
+     * @return koanCookies: MutableMap<String, String>
+     */
+    private fun processCookies(koanCookiesString: String): MutableMap<String, String> {
+        val koanCookies: MutableMap<String, String>? = mutableMapOf()
+        val koanCookie = koanCookiesString.split("=", ";")
+        for (i in 0 until koanCookie.size step 2)
+            koanCookies!![koanCookie[i].replace("\\s".toRegex(), "")] = koanCookie[i + 1]
+
+        koanCookies!!.remove("")
+
+        koanCookies["Campus-Osaka"] = koanCookies["Campus-Osaka"] + "=="
 
         return koanCookies
     }
@@ -233,7 +248,7 @@ object KoanService {
     fun setCookieToGlobalAndGetCurriculum(): Observable<MutableMap<String, MutableList<String>>> {
         val koanCookies = getCookieMapFromCookieManager()
         val curriculumUrl = if (Locale.getDefault().displayLanguage == "English") KoanCurriculumEn else KoanCurriculum
-        return getCurriculumAndSyllabusLinksObservableCallable(curriculumUrl, koanCookies,curriculumTagPositions)
+        return getCurriculumAndSyllabusLinksObservableCallable(curriculumUrl, koanCookies, curriculumTagPositions)
     }
 
     /**
