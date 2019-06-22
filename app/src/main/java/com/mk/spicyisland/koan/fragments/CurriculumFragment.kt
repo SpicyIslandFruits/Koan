@@ -28,7 +28,7 @@ class CurriculumFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_curriculum, container, false)
         binding.receivedStuffs = receivedStuffs
         binding.owner = this
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
 
         return binding.root
     }

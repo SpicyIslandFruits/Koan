@@ -26,7 +26,7 @@ class BulletinBoardFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_bulletin_board, container, false)
         binding.receivedStuffs = receivedStuffs
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
 
         return binding.root
     }
