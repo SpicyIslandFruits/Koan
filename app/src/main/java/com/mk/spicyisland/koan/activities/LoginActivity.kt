@@ -2,7 +2,7 @@ package com.mk.spicyisland.koan.activities
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -14,7 +14,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_login.*
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.view.WindowManager
 import com.mk.spicyisland.koan.R
 import com.mk.spicyisland.koan.services.KoanService

@@ -1,16 +1,16 @@
 package com.mk.spicyisland.koan.activities
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.NavigationView
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.GravityCompat
-import android.support.v4.view.ViewPager
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.navigation.NavigationView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.core.view.GravityCompat
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -22,7 +22,6 @@ import com.mk.spicyisland.koan.fragments.CurriculumFragment
 import com.mk.spicyisland.koan.models.ReceivedStuffs
 import com.mk.spicyisland.koan.models.User
 import com.mk.spicyisland.koan.models.receivedStuffs
-import com.mk.spicyisland.koan.R.string.title_curriculum
 import com.mk.spicyisland.koan.services.IsRecovering
 import com.mk.spicyisland.koan.services.KoanService
 import io.reactivex.Observer
@@ -45,7 +44,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        supportActionBar!!.title = getText(title_curriculum)
+        supportActionBar!!.title = getText(R.string.title_curriculum)
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -181,7 +180,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return super.onOptionsItemSelected(item)
     }
 
-    inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+    inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         override fun getItem(position: Int): Fragment {
             when(position){

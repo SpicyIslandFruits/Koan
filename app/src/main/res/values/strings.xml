@@ -87,4 +87,5 @@
     <string name="email_address">spicyisland1998@gmail.com</string>
     <string name="share_app_body">私はKoanの非公式クライアントアプリを使っています。\n▼ダウンロードはこちら！\n\nhttps://sample.url</string>
     <string name="share_app_subject">Koanアプリをシェア</string>
+    <string name="koan_logo">Koan Logo</string>
 </resources>

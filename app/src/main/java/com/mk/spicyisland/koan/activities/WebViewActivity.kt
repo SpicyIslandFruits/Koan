@@ -1,7 +1,7 @@
 package com.mk.spicyisland.koan.activities
 
 import android.graphics.Bitmap
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
 import android.webkit.*

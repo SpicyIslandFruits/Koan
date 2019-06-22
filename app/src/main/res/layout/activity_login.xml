@@ -26,9 +26,10 @@
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:contentDescription="@string/koan_logo"
         app:srcCompat="@drawable/koan_logo" />
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -41,9 +42,9 @@
             android:maxLines="1"
             android:singleLine="true" />
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp">
@@ -60,7 +61,7 @@
             android:maxLines="1"
             android:singleLine="true" />
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.beardedhen.androidbootstrap.BootstrapButton
         android:id="@+id/sign_in_button"
