@@ -85,7 +85,7 @@
     <string name="email_subject">KoanアプリのFeedback！</string>
     <string name="email_body">Koanアプリのフィードバックです。疑問点やバグ、要望やその他のメッセージを書いてください。もしよければストアで評価してください！</string>
     <string name="email_address">spicyisland1998@gmail.com</string>
-    <string name="share_app_body">私はKoanの非公式クライアントアプリを使っています。\n▼ダウンロードはこちら！\n\nhttps://sample.url</string>
+    <string name="share_app_body">私はKoanの非公式クライアントアプリを使っています。\n▼ダウンロードはこちら！\n\nhttps://play.google.com/store/apps/details?id=com.mk.spicyisland.koan</string>
     <string name="share_app_subject">Koanアプリをシェア</string>
     <string name="koan_logo">Koan Logo</string>
 </resources>
