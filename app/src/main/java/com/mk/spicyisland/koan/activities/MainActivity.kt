@@ -205,7 +205,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
              * webView側でユーザーによって時間割が開かれたかを検知し、もしそうだった場合時間割のリンクを消すので
              * ここで取り直す
              */
-            getAndSubscribeBulletinBoardLinks()
+//            getAndSubscribeBulletinBoardLinks()
             getAndSaveAndSubscribeCurriculum()
         } else if (!isOnCreateJustExecuted) {
             getAndSaveAndSubscribeCurriculum()
