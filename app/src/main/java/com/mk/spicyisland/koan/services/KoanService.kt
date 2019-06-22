@@ -263,7 +263,7 @@ object KoanService {
         return fromCallable{
             val koanBulletinLinkListAndUnreadCount = mutableMapOf<String, MutableList<String>>()
             val koanBulletinLinks = mutableListOf<String>()
-            val koanBulletinUnreadCount = mutableListOf<String>()
+//            val koanBulletinUnreadCount = mutableListOf<String>()
 
             val res = Jsoup.connect(BulletinBoardLink)
                     .cookies(koanCookies).method(Connection.Method.GET).execute()
@@ -287,12 +287,12 @@ object KoanService {
             /**
              * 未読数を取ってくる処理
              */
-            val elements = res.parse().body().getElementsByTag("td")
-            for (i in bulletinUnreadCountTagPositions)
-                koanBulletinUnreadCount.add(elements[i].text())
+//            val elements = res.parse().body().getElementsByTag("td")
+//            for (i in bulletinUnreadCountTagPositions)
+//                koanBulletinUnreadCount.add(elements[i].text())
 
             koanBulletinLinkListAndUnreadCount["koanBulletinLinks"] = koanBulletinLinks
-            koanBulletinLinkListAndUnreadCount["koanBulletinUnreadCount"] = koanBulletinUnreadCount
+//            koanBulletinLinkListAndUnreadCount["koanBulletinUnreadCount"] = koanBulletinUnreadCount
 
             koanBulletinLinkListAndUnreadCount
         }
