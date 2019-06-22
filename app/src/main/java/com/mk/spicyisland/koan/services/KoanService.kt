@@ -9,7 +9,6 @@ import io.reactivex.Observable.fromCallable
 import io.realm.Realm
 import org.jsoup.Connection
 import org.jsoup.Jsoup
-import java.lang.Exception
 import java.util.*
 
 /**
@@ -177,7 +176,7 @@ object KoanService {
     fun getCookieMapFromCookieManager(url: String = KoanUrl, expectedCookieSize: Int = 3): MutableMap<String, String>? {
         val cookieManager = CookieManager.getInstance()
         val koanCookiesString = cookieManager.getCookie(url)
-        var koanCookies: MutableMap<String, String>? = mutableMapOf()
+        var koanCookies: MutableMap<String, String>?
         if (koanCookiesString != null) {
             koanCookies = processCookies(koanCookiesString)
             if (koanCookies.size != expectedCookieSize){
